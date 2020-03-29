@@ -1,26 +1,43 @@
 <template>
-  <div id="app">
-<!--    <img alt="Vue logo" src="./assets/logo.png">-->
-    <CpStartPage />
+  <div id="app" class="flex flex-col h-full font-sans antialiased">
+    <div class="flex-auto flex-shrink-0">
+      <cp-header :title="headerTitle" />
+      <cp-start-page />
+    </div>
+    <cp-footer class="flex-shrink-0" />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
+import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
+import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpStartPage from '@/components/TheStartPage/TheStartPage.component.vue';
+import { headerTitle } from '@/data/header-title.data';
+import { IHeaderTitle } from '@/types/header-title.type';
 
 @Component({
   components: {
+    CpFooter,
+    CpHeader,
     CpStartPage,
   },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  /**
+   * Props
+   */
+  @Prop({ type: Object, default: () => headerTitle })
+  public headerTitle: IHeaderTitle;
+}
 </script>
 
 <style lang="scss">
 #app {
-  @apply h-full;
-  @apply font-sans antialiased;
   background: linear-gradient(
       theme('colors.teal.400'),
       theme('colors.teal.400') theme('spacing.40'),

@@ -1,9 +1,7 @@
 import { IStartPage } from '@/types/start-page.type';
-import { headerTitle } from '@/data/header-title.data';
 import { activities } from '@/data/activities.data';
 
 export const startPageContent: IStartPage = {
-  headerTitle,
   bannerTop: {
     headline: '',
     subHeadline: '',

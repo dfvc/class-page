@@ -96,7 +96,7 @@ export const activities: IActivity[] = [
   },
   {
     subject: subjectsMap.hgp,
-    description: 'Responder às perguntas das páginas 92 e 93 e a ficha n.º 8 do caderno de atividades.',
+    description: 'Responder às perguntas das páginas 92 e 93 e à ficha n.º 8 do caderno de atividades.',
     deliveryMethod: 'Início das aulas.',
     dateCreation: '13-03-2020',
     dateChanged: '',

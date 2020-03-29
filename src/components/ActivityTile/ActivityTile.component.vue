@@ -41,11 +41,11 @@
         <div class="cp-activity-tile__expand flex items-center">
           <img
             :src="require(`@/images/expand.svg`)"
-            alt="Expandir"
+            :alt="glossary.app.EXPAND"
             class="w-4 mr-1"
           >
           <span class="text-sm md:text-base text-teal-700 leading-none">
-            Ver Detalhes
+            {{ glossary.activity.SEE_DETAIL }}
           </span>
         </div>
         <div
@@ -54,7 +54,7 @@
         >
           <img
             :src="require(`@/images/delivery.svg`)"
-            alt="Data de Entrega"
+            :alt="glossary.activity.DELIVERY_DATE"
             class="w-4 mr-1"
           >
           <span class="text-sm md:text-base text-teal-700 leading-none">
@@ -73,10 +73,15 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import CpActivityDetailModal from '@/components/ActivityDetailModal/ActivityDetailModal.component.vue';
 import VClamp from 'vue-clamp';
+import { glossary } from '@/glossary/index.glossary';
 
 @Component({
   name: 'cp-activity-tile',
@@ -103,6 +108,8 @@ export default class CpActivityTile extends Vue {
    * Data
    */
   public isActivityDetailModalOpen: boolean = false;
+
+  public glossary = glossary;
 
   /**
    * Methods

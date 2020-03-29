@@ -9,7 +9,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Prop,
+  Vue,
+} from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import { reverse, sortBy } from 'lodash';
