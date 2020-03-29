@@ -1,0 +1,24 @@
+.fluid-container {
+  @apply max-w-screen-xl;
+  @apply mx-auto px-3;
+
+  @screen md {
+    @apply px-4;
+  }
+
+  @screen xl {
+    @apply px-8;
+  }
+
+  &--with-vertical {
+    @apply py-3;
+
+    @screen md {
+      @apply py-4;
+    }
+
+    @screen xl {
+      @apply py-8;
+    }
+  }
+}

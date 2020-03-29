@@ -6,11 +6,17 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint --format table",
+    "lint:fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
+    "body-scroll-lock": "^3.0.1",
     "core-js": "^3.6.4",
+    "lodash": "^4.17.15",
+    "tailwindcss": "^1.2.0",
     "vue": "^2.6.11",
+    "vue-clamp": "^0.3.0",
     "vue-class-component": "^7.2.2",
     "vue-property-decorator": "^8.3.0"
   },

@@ -14,6 +14,21 @@ module.exports = {
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-empty': ['error', { allowEmptyCatch: true }],
+    'no-plusplus': 'off',
+    'no-multiple-empty-lines': ['error', { max: 1 }],
+    'import/no-extraneous-dependencies': 'off',
+    'class-methods-use-this': 'off',
+    'max-len': 'off',
+    'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'no-param-reassign': ['error', { props: false }],
+    'vue/no-v-html': 'off',
+    '@typescript-eslint/indent': ['error', 2],
+    '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/no-inferrable-types': 'off',
+    '@typescript-eslint/interface-name-prefix': 'off',
   },
   overrides: [
     {
