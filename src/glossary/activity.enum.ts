@@ -3,6 +3,7 @@ export enum EActivityGlossary {
   DELIVERY = 'Entrega',
   DATE = 'Data',
   METHOD = 'Forma',
+  REQUEST_DATE = 'Data',
   DELIVERY_DATE = 'Data de Entrega',
   DELIVERY_METHOD = 'Método de Entrega',
   ATTACHMENT = 'Anexo',

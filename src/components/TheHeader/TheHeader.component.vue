@@ -1,10 +1,10 @@
 <template>
   <header
     :class="{ 'cp-header--shadowed': hasShadow }"
-    class="cp-header sticky top-0 bg-teal-400"
+    class="cp-header sticky top-0 z-30 bg-teal-400"
   >
     <div class="cp-header__inner fluid-container flex items-center py-6">
-      <cp-offcanvas-menu class="mr-3 md:mr-4 lg:mr-6" />
+      <cp-offcanvas-menu :navigation-items="navigationItems" />
       <cp-header-title :title="title" />
     </div>
   </header>
@@ -17,10 +17,11 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import { IHeaderTitle } from '@/types/header-title.type';
+import { IHeaderNavigationItem } from '@/types/header-menu.type';
 import CpOffcanvasMenu from '@/components/TheOffcanvasMenu/TheOffcanvasMenu.component.vue';
 import CpHeaderTitle from '@/components/TheHeaderTitle/TheHeaderTitle.component.vue';
 
-const SHADOW_TRESHOLD: number = 88;
+const SHADOW_THRESHOLD: number = 88;
 
 @Component({
   name: 'cp-header',
@@ -33,6 +34,9 @@ export default class CpHeader extends Vue {
   /**
    * Props
    */
+  @Prop({ type: Array, required: true })
+  public navigationItems: IHeaderNavigationItem[];
+
   @Prop({ type: Object, required: true })
   public title: IHeaderTitle;
 
@@ -40,7 +44,7 @@ export default class CpHeader extends Vue {
    * Computed Props
    */
   public get hasShadow(): boolean {
-    return this.scrollTopPosition > SHADOW_TRESHOLD;
+    return this.scrollTopPosition > SHADOW_THRESHOLD;
   }
 
   /**
@@ -70,7 +74,7 @@ export default class CpHeader extends Vue {
 
 <style lang="scss" scoped>
   .cp-header {
-    &--shadowed {
+    &--shadoweddd {
       &:after {
         @apply absolute top-0;
         @apply h-full w-full;

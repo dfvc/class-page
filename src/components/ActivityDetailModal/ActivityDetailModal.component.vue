@@ -1,5 +1,5 @@
 <template>
-  <div class="cp-activity-detail-modal cursor-default">
+  <div class="cp-activity-detail-modal z-40 cursor-default">
     <cp-background-overlay
       :is-visible="isVisible"
       @on-click-background-overlay="clickBackgroundOverlay"

@@ -1,7 +1,7 @@
 <template>
   <article
     :style="{ borderColor: activity.subject.color }"
-    class="cp-activity-tile flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8"
+    class="cp-activity-tile relative flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8"
     @click="openActivityDetailModal"
   >
     <div class="cp-activity-tile__icon flex-shrink-0 flex items-center">
@@ -38,18 +38,22 @@
       </v-clamp>
 
       <div class="cp-activity-tile__footer flex justify-between items-center mt-3">
-        <div class="cp-activity-tile__expand flex items-center">
+        <div
+          :title="glossary.activity.REQUEST_DATE"
+          class="cp-activity-tile__expand flex items-center"
+        >
           <img
-            :src="require(`@/images/expand.svg`)"
-            :alt="glossary.app.EXPAND"
+            :src="require(`@/images/calendar.svg`)"
+            :alt="glossary.activity.REQUEST_DATE"
             class="w-4 mr-1"
           >
           <span class="text-sm md:text-base text-teal-700 leading-none">
-            {{ glossary.activity.SEE_DETAIL }}
+            {{ activity.dateCreation }}
           </span>
         </div>
         <div
           v-if="hasDeliveryDate"
+          :title="glossary.activity.DELIVERY_DATE"
           class="cp-activity-tile__delivery-date flex items-center"
         >
           <img
@@ -62,6 +66,15 @@
           </span>
         </div>
       </div>
+    </div>
+
+    <div class="cp-activity-tile__detail-tag absolute top-0 right-0">
+      <img
+        :src="require(`@/images/expand.svg`)"
+        :title="glossary.app.SEE_DETAIL"
+        :alt="glossary.app.EXPAND"
+        class="w-4 mt-px mr-px"
+      >
     </div>
 
     <cp-activity-detail-modal
