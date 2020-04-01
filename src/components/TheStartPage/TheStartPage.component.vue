@@ -1,5 +1,5 @@
 <template>
-  <main class="cp-startpage">
+  <main class="cp-start-page">
     <cp-banner :content="content.bannerTop" />
     <cp-activity-list
       :activities="content.activities"

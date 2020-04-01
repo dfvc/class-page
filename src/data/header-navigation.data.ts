@@ -6,15 +6,15 @@ export const headerNavigationItems: IHeaderNavigationItem[] = [
     text: 'Início',
   },
   {
-    url: '#',
-    text: 'Tarefas Propostas',
+    url: '/atividades',
+    text: 'Atividades Propostas',
   },
   {
-    url: '#',
+    url: 'utilidades',
     text: 'Utilidades',
   },
   {
-    url: '#',
+    url: '/acerca',
     text: 'Acerca',
   },
 ];
