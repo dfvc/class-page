@@ -8,7 +8,7 @@
       <button
         class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
         :title="glossary.app.CLOSE"
-        @click.stop="$emit('on-close-offcanvas-navigation')"
+        @click="onClickCloseButton"
       >
         <img
           :src="require(`@/images/cross.svg`)"
@@ -23,14 +23,14 @@
           :key="index"
           class="cp-offcanvas-navigation__item"
         >
-          <a
-            :href="item.url"
+          <router-link
+            :to="item.url"
             :title="item.text"
-            :target="getItemTarget(item)"
             class="cp-offcanvas-navigation__link block py-2"
+            @click.native="onClickCloseButton"
           >
             {{ item.text }}
-          </a>
+          </router-link>
         </li>
       </ul>
     </nav>
@@ -67,8 +67,8 @@ export default class CpOffcanvasNavigation extends Vue {
   /**
    * Methods
    */
-  public getItemTarget(item: IHeaderNavigationItem): string {
-    return item.target === undefined ? '_self' : item.target;
+  public onClickCloseButton(): void {
+    this.$emit('on-close-offcanvas-navigation');
   }
 }
 </script>
