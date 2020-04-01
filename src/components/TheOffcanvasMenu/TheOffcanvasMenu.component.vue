@@ -5,7 +5,7 @@ import { disableBodyScroll } from "body-scroll-lock";import { clearAllBodyScroll
     <button
       type="button"
       title="Menu"
-      class="cp-offcanvas-menu__trigger flex flex-col justify-between items-center p-4 rounded-full w-12 h-12 bg-teal-400 shadow-lg"
+      class="cp-offcanvas-menu__trigger flex flex-col justify-between items-center p-4 rounded-full w-12 h-12 bg-teal-400 shadow-lg hover:shadow-sm transition-shadow duration-200"
       @click="openMenu"
     >
       <span class="cp-offcanvas-menu__trigger-bar h-1/2 w-5 bg-white" />
@@ -76,7 +76,10 @@ export default class CpOffcanvasMenu extends Vue {
   @Watch('isMenuOpen')
   public onIsVisibleChange() {
     if (this.isMenuOpen) {
-      disableBodyScroll(this.$el);
+      disableBodyScroll(
+        this.$el,
+        { reserveScrollBarGap: true },
+      );
     } else {
       enableBodyScroll(this.$el);
     }
