@@ -8,8 +8,8 @@ Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
 const router = new VueRouter({
+  mode: process.env.NODE_ENV === 'production' ? 'hash' : 'history',
   routes,
-  mode: 'history',
 });
 
 new Vue({

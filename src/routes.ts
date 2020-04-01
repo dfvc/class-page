@@ -9,6 +9,10 @@ export const routes = [
     component: CpStartPage,
   },
   {
+    path: '*',
+    component: CpStartPage,
+  },
+  {
     path: '/atividades',
     component: CpActivityPage,
   },
