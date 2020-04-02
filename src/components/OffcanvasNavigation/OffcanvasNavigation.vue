@@ -26,9 +26,14 @@
           <router-link
             :to="item.url"
             :title="item.text"
-            class="cp-offcanvas-navigation__link block py-2"
+            class="cp-offcanvas-navigation__link flex p-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
             @click.native="onClickCloseButton"
           >
+            <img
+              :src="require(`@/images/${item.icon}`)"
+              :alt="item.text"
+              class="mr-2 w-6"
+            >
             {{ item.text }}
           </router-link>
         </li>
@@ -83,8 +88,13 @@ export default class CpOffcanvasNavigation extends Vue {
 
     &__item {
       &:not(:last-of-type) {
-        @apply border-b border-teal-300;
+        @apply border-b border-teal-200;
       }
+    }
+
+    .router-link-exact-active {
+      @apply text-white;
+      @apply pointer-events-none;
     }
 
     &__transition-enter-active,
