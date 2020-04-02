@@ -2,8 +2,8 @@ const tailwind = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const purgecss = require('@fullhuman/postcss-purgecss')({
   content: [
-    './src/components/**/*.vue',
-    './src/styles/**/*.scss',
+    './src/**/*.vue',
+    './src/**/*.scss',
   ],
   whitelistPatterns: [
     // Vue transition related
