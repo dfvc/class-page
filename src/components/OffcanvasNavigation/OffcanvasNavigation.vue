@@ -28,7 +28,7 @@
           <router-link
             :to="item.url"
             :title="item.text"
-            class="cp-offcanvas-navigation__link flex items-center p-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
+            class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
             @click.native="onClickCloseButton"
           >
             <cp-icon
