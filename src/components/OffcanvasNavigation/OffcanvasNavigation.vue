@@ -1,20 +1,22 @@
 <template>
   <transition
-    v-if="isVisible"
     name="cp-offcanvas-navigation__transition"
     mode="in-out"
   >
-    <nav class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-teal-400 text-teal-900 text-xl shadow-2xl">
+    <nav
+      v-show="isVisible"
+      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-teal-400 text-teal-900 text-xl shadow-2xl"
+    >
       <button
         class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
         :title="glossary.app.CLOSE"
         @click="onClickCloseButton"
       >
-        <img
-          :src="require(`@/images/cross.svg`)"
+        <cp-icon
           :alt="glossary.app.CLOSE"
-          class="w-6"
-        >
+          name="cross"
+          class="text-white h-6 w-6"
+        />
       </button>
 
       <ul class="h-full overflow-y-auto overflow-x-hidden scrolling-touch -mt-2">
@@ -26,14 +28,14 @@
           <router-link
             :to="item.url"
             :title="item.text"
-            class="cp-offcanvas-navigation__link flex p-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
+            class="cp-offcanvas-navigation__link flex items-center p-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
             @click.native="onClickCloseButton"
           >
-            <img
-              :src="require(`@/images/${item.icon}`)"
+            <cp-icon
+              :name="item.icon"
               :alt="item.text"
-              class="mr-2 w-6"
-            >
+              class="mr-2 h-6 w-6"
+            />
             {{ item.text }}
           </router-link>
         </li>
