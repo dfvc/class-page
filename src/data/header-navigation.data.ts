@@ -4,21 +4,21 @@ export const headerNavigationItems: IHeaderNavigationItem[] = [
   {
     url: '/',
     text: 'Início',
-    icon: 'home.svg',
+    icon: 'home',
   },
   {
     url: '/atividades',
     text: 'Atividades Propostas',
-    icon: 'dossiers.svg',
+    icon: 'dossiers',
   },
   {
     url: 'utilidades',
     text: 'Utilidades',
-    icon: 'cloud-computing.svg',
+    icon: 'cloud-computing',
   },
   {
     url: '/acerca',
     text: 'Acerca',
-    icon: 'question-mark.svg',
+    icon: 'question-mark',
   },
 ];

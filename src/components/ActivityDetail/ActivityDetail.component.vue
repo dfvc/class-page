@@ -6,12 +6,12 @@
     <section class="cp-activity-detail fluid-container fluid-container--with-vertical fixed m-auto bg-white rounded-lg shadow-2xl">
       <div class="cp-activity-detail__content flex flex-col h-full overflow-y-scroll scrolling-touch">
         <div class="cp-activity-detail__header sticky top-0 flex justify-between items-center bg-teal-500 rounded-lg">
-          <img
-            :src="require(`@/images/${activity.subject.icon}`)"
+          <cp-icon
+            :name="activity.subject.icon"
             :title="activity.subject.name"
             :alt="activity.subject.name"
-            class="flex-shrink-0 ml-3 w-8"
-          >
+            class="flex-shrink-0 ml-3 text-white h-8 w-8"
+          />
           <h1 class="cp-activity-tile__headline flex-grow text-lg md:text-xl text-white p-3">
             {{ activity.subject.name }}
           </h1>
@@ -20,11 +20,11 @@
             :title="glossary.app.CLOSE"
             @click.stop="$emit('on-close-activity-detail')"
           >
-            <img
-              :src="require(`@/images/cross.svg`)"
+            <cp-icon
               :alt="glossary.app.CLOSE"
-              class="w-6"
-            >
+              name="cross"
+              class="text-white h-6 w-6"
+            />
           </button>
         </div>
 
@@ -77,11 +77,11 @@
                     target="_blank"
                     class="flex items-center"
                   >
-                    <img
-                      :src="require(`@/images/${attachmentIcon(attachment)}`)"
+                    <cp-icon
+                      :name="attachmentIcon(attachment)"
                       :alt="glossary.activity.ATTACHMENT"
-                      class="mr-2 w-5"
-                    >
+                      class="mr-2 text-teal-700 h-5 w-5"
+                    />
                     <span>{{ attachment.text }}</span>
                   </a>
                 </li>
@@ -156,11 +156,11 @@ export default class CpActivityDetail extends Vue {
   public attachmentIcon(attachment: IActivityAttachment): string {
     switch (attachment.type) {
       case EAttachmentTypes.DOC:
-        return 'document.svg';
+        return 'document';
       case EAttachmentTypes.URL:
-        return 'link.svg';
+        return 'link';
       default:
-        return 'attachment.svg';
+        return 'attachment';
     }
   }
 }

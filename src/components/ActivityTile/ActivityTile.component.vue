@@ -9,12 +9,12 @@
         :style="{ backgroundColor: activity.subject.color }"
         class="cp-activity-tile__icon-wrapper rounded-full mr-3 md:mr-4 p-2"
       >
-        <img
-          :src="require(`@/images/${activity.subject.icon}`)"
+        <cp-icon
+          :name="activity.subject.icon"
           :title="activity.subject.name"
           :alt="activity.subject.name"
-          class="w-8"
-        >
+          class="text-white h-8 w-8"
+        />
       </div>
     </div>
 
@@ -42,11 +42,11 @@
           :title="glossary.activity.REQUEST_DATE"
           class="cp-activity-tile__expand flex items-center"
         >
-          <img
-            :src="require(`@/images/calendar.svg`)"
+          <cp-icon
             :alt="glossary.activity.REQUEST_DATE"
-            class="w-4 mr-1"
-          >
+            name="calendar"
+            class="text-teal-700 h-4 w-4 mr-1"
+          />
           <span class="text-sm md:text-base text-teal-700 leading-none">
             {{ activity.dateCreation }}
           </span>
@@ -56,11 +56,11 @@
           :title="glossary.activity.DELIVERY_DATE"
           class="cp-activity-tile__delivery-date flex items-center"
         >
-          <img
-            :src="require(`@/images/delivery.svg`)"
+          <cp-icon
             :alt="glossary.activity.DELIVERY_DATE"
-            class="w-4 mr-1"
-          >
+            name="delivery"
+            class="text-teal-700 h-4 w-4 mr-1"
+          />
           <span class="text-sm md:text-base text-teal-700 leading-none">
             {{ activity.deliveryDate }}
           </span>
@@ -69,12 +69,12 @@
     </div>
 
     <div class="cp-activity-tile__detail-tag absolute top-0 right-0">
-      <img
-        :src="require(`@/images/expand.svg`)"
+      <cp-icon
         :title="glossary.app.SEE_DETAIL"
         :alt="glossary.app.EXPAND"
-        class="w-4 mt-px mr-px"
-      >
+        name="expand"
+        class="text-teal-700 h-4 w-4 mt-px mr-px"
+      />
     </div>
 
     <cp-activity-detail-modal
