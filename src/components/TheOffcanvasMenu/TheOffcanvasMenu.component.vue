@@ -32,7 +32,7 @@ import {
   Prop,
   Vue, Watch,
 } from 'vue-property-decorator';
-import { IHeaderNavigationItem } from '@/types/header-menu.type';
+import { IMainNavigationItem } from '@/types/header-menu.type';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import CpOffcanvasNavigation from '@/components/OffcanvasNavigation/OffcanvasNavigation.vue';
 import {
@@ -52,7 +52,7 @@ export default class CpOffcanvasMenu extends Vue {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public navigationItems: IHeaderNavigationItem[];
+  public navigationItems: IMainNavigationItem[];
 
   /**
    * Data

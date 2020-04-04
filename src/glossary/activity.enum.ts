@@ -10,4 +10,9 @@ export enum EActivityGlossary {
   ATTACHMENTS = 'Anexos',
   REGISTRATION = 'Atividade registada a',
   SEE_DETAIL = 'Ver Detalhes',
+  LAST_ACTIVITIES_LIST_TITLE = 'Últimas Atividades',
+  SEE_ALL_ACTIVITIES = 'Ver todas',
+  ACTIVITY_LIST_TITLE = 'Lista de Atividades Propostas',
+  SUBJECTS_PLACEHOLDER_SELECT = 'Filtar por Disciplina',
+  SUBJECTS_NO_MATCHES_SELECT = 'Disciplina não encontrada',
 }

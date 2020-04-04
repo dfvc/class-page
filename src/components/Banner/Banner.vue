@@ -1,5 +1,5 @@
 <template>
-  <div class="cp-banner fluid-container">
+  <div class="cp-banner">
     <component
       :is="tag"
       :href="link"

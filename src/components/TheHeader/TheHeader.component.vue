@@ -17,7 +17,7 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import { IHeaderTitle } from '@/types/header-title.type';
-import { IHeaderNavigationItem } from '@/types/header-menu.type';
+import { IMainNavigationItem } from '@/types/header-menu.type';
 import CpOffcanvasMenu from '@/components/TheOffcanvasMenu/TheOffcanvasMenu.component.vue';
 import CpHeaderTitle from '@/components/TheHeaderTitle/TheHeaderTitle.component.vue';
 
@@ -35,7 +35,7 @@ export default class CpHeader extends Vue {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public navigationItems: IHeaderNavigationItem[];
+  public navigationItems: IMainNavigationItem[];
 
   @Prop({ type: Object, required: true })
   public title: IHeaderTitle;
