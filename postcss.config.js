@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const tailwind = require('tailwindcss');
 const autoprefixer = require('autoprefixer');
 const purgecss = require('@fullhuman/postcss-purgecss')({
@@ -15,6 +16,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
   ],
   defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 });
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = {
   plugins: [

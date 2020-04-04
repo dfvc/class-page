@@ -17,10 +17,7 @@ const router = new VueRouter({
   mode: process.env.NODE_ENV === 'production' ? 'hash' : 'history',
   routes,
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-      return savedPosition;
-    }
-    return { x: 0, y: 0 };
+    return savedPosition || { x: 0, y: 0 };
   },
 });
 
