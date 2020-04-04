@@ -21,6 +21,9 @@ import InlineSvg from 'vue-inline-svg';
   },
 })
 export default class CpIcon extends Vue {
+  /**
+   * Props
+   */
   @Prop({ type: String, required: true })
   public name: string;
 

@@ -9,11 +9,11 @@
     >
       <button
         class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
-        :title="glossary.app.CLOSE"
+        :title="$glossary.app.CLOSE"
         @click="onClickCloseButton"
       >
         <cp-icon
-          :alt="glossary.app.CLOSE"
+          :alt="$glossary.app.CLOSE"
           name="cross"
           class="text-white h-6 w-6"
         />
@@ -50,8 +50,7 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { IHeaderNavigationItem } from '@/types/header-menu.type';
-import { glossary } from '@/glossary/index.glossary';
+import { IMainNavigationItem } from '@/types/header-menu.type';
 
 @Component({
   name: 'cp-offcanvas-navigation',
@@ -61,15 +60,10 @@ export default class CpOffcanvasNavigation extends Vue {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public items: IHeaderNavigationItem[];
+  public items: IMainNavigationItem[];
 
   @Prop({ type: Boolean, default: false })
   public isVisible: boolean;
-
-  /**
-   * Data
-   */
-  public glossary = glossary;
 
   /**
    * Methods

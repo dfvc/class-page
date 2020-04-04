@@ -17,11 +17,11 @@
           </h1>
           <button
             class="cp-activity-detail__close-button flex-shrink-0 flex justify-between items-center mx-3 p-0 w-6 h-6"
-            :title="glossary.app.CLOSE"
+            :title="$glossary.app.CLOSE"
             @click.stop="$emit('on-close-activity-detail')"
           >
             <cp-icon
-              :alt="glossary.app.CLOSE"
+              :alt="$glossary.app.CLOSE"
               name="cross"
               class="text-white h-6 w-6"
             />
@@ -31,7 +31,7 @@
         <div class="cp-activity-detail__body flex-grow">
           <div class="cp-activity-detail__item mt-6">
             <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
-              {{ glossary.activity.DESCRIPTION }}
+              {{ $glossary.activity.DESCRIPTION }}
             </h2>
             <div
               v-html="activity.description"
@@ -44,15 +44,15 @@
             class="cp-activity-detail__item mt-6"
           >
             <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
-              {{ glossary.activity.DELIVERY }}
+              {{ $glossary.activity.DELIVERY }}
             </h2>
             <div class="cp-activity-detail__item-content text-sm md:text-base text-teal-900">
               <ul class="pl-8 list-disc">
                 <li v-if="hasDeliveryDate">
-                  {{ glossary.activity.DATE }}: {{ activity.deliveryDate }}
+                  {{ $glossary.activity.DATE }}: {{ activity.deliveryDate }}
                 </li>
                 <li v-if="hasDeliveryMethod">
-                  {{ glossary.activity.METHOD }}: <span v-html="activity.deliveryMethod" />
+                  {{ $glossary.activity.METHOD }}: <span v-html="activity.deliveryMethod" />
                 </li>
               </ul>
             </div>
@@ -63,7 +63,7 @@
             class="cp-activity-detail__item mt-6"
           >
             <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
-              {{ glossary.activity.ATTACHMENTS }}
+              {{ $glossary.activity.ATTACHMENTS }}
             </h2>
             <div class="cp-activity-detail__item-content text-sm md:text-base text-teal-900">
               <ul class="pl-4">
@@ -73,13 +73,13 @@
                 >
                   <a
                     :href="attachment.url"
-                    :title="glossary.activity.ATTACHMENT"
+                    :title="$glossary.activity.ATTACHMENT"
                     target="_blank"
                     class="flex items-center"
                   >
                     <cp-icon
                       :name="attachmentIcon(attachment)"
-                      :alt="glossary.activity.ATTACHMENT"
+                      :alt="$glossary.activity.ATTACHMENT"
                       class="mr-2 text-teal-700 h-5 w-5"
                     />
                     <span>{{ attachment.text }}</span>
@@ -92,7 +92,7 @@
 
         <div class="cp-activity-detail__footer">
           <p class="mt-6 text-right text-xs text-gray-500">
-            {{ glossary.activity.REGISTRATION }} {{ activity.dateCreation }}
+            {{ $glossary.activity.REGISTRATION }} {{ activity.dateCreation }}
           </p>
         </div>
       </div>
@@ -112,7 +112,6 @@ import {
 } from '@/types/activity.type';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import { EAttachmentTypes } from '@/enums/attachment-types.enum';
-import { glossary } from '@/glossary/index.glossary';
 
 @Component({
   name: 'cp-activity-detail',
@@ -144,11 +143,6 @@ export default class CpActivityDetail extends Vue {
   public get hasAttachments(): boolean {
     return this.activity.attachments !== undefined && this.activity.attachments.length > 0;
   }
-
-  /**
-   * Data
-   */
-  public glossary = glossary;
 
   /**
    * Methods
