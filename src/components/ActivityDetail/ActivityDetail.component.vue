@@ -4,7 +4,7 @@
     name="cp-activity-detail__transition"
   >
     <section class="cp-activity-detail fluid-container fluid-container--with-vertical fixed m-auto bg-white rounded-lg shadow-2xl">
-      <div class="cp-activity-detail__content flex flex-col h-full overflow-y-scroll scrolling-touch">
+      <div class="cp-activity-detail__content flex flex-col h-full overflow-y-auto scrolling-touch">
         <div class="cp-activity-detail__header sticky top-0 flex justify-between items-center bg-teal-500 rounded-lg">
           <cp-icon
             :name="activity.subject.icon"
