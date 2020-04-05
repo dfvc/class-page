@@ -1,6 +1,6 @@
 import { ISubject } from '@/types/subject.type';
 
-export const subjects: ISubject[] = [
+const allSubjects: ISubject[] = [
   {
     name: 'Matemática',
     shortName: 'Mat',
@@ -68,3 +68,7 @@ export const subjects: ISubject[] = [
     color: '#fb1',
   },
 ];
+
+export const subjects = allSubjects.sort(
+  (a, b) => (a.name > b.name ? 1 : -1),
+);
