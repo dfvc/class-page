@@ -104,22 +104,3 @@ export default class CpActivityList extends Vue {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-  /deep/ .vs {
-    &__dropdown-toggle {
-      min-height: theme('spacing.12');
-    }
-
-    &__selected {
-      @apply border-teal-600;
-      @apply bg-teal-400;
-      @apply text-white uppercase;
-      min-height: theme('spacing.8');
-    }
-
-    &__deselect {
-      @apply ml-2;
-    }
-  }
-</style>

@@ -13,6 +13,8 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     /^(?!cursor-move).+-move$/,
     // Vue-router default classes
     /^router-link(|-exact)-active$/,
+    // vue-select
+    /vs.*/,
   ],
   defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
 });

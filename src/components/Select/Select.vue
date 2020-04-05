@@ -6,6 +6,7 @@ import { disableBodyScroll } from "body-scroll-lock";import { enableBodyScroll }
     :multiple="multiple"
     :label="label.length ? label : false"
     :placeholder="placeholder"
+    class="cp-select"
     @input="onSelect"
   >
     <template
@@ -83,24 +84,41 @@ export default class CpSelect extends Vue {
 </script>
 
 <style lang="scss" scoped>
-  /deep/ .vs {
-    &__search {
-      @apply text-teal-900;
+  .cp-select {
+    /deep/ .vs {
+      &__search {
+        @apply text-teal-900;
 
-      &::placeholder {
-        @apply text-gray-500;
-      }
-    }
-
-    &__dropdown-option {
-      @apply p-3;
-
-      &:hover {
-        @apply bg-teal-400;
+        &::placeholder {
+          @apply text-gray-500;
+        }
       }
 
-      &--highlight {
+      &__dropdown-option {
+        @apply p-3;
+
+        &:hover {
+          @apply bg-teal-400;
+        }
+
+        &--highlight {
+          @apply bg-teal-400;
+        }
+      }
+
+      &__dropdown-toggle {
+        min-height: theme('spacing.12');
+      }
+
+      &__selected {
+        @apply border-teal-600;
         @apply bg-teal-400;
+        @apply text-white uppercase;
+        min-height: theme('spacing.8');
+      }
+
+      &__deselect {
+        @apply ml-2;
       }
     }
   }
