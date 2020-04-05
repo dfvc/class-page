@@ -1,12 +1,9 @@
 import { shallowMount } from '@vue/test-utils';
-import HelloWorld from '@/components/HelloWorld.vue';
+import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message';
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg },
-    });
-    expect(wrapper.text()).toMatch(msg);
+describe('CpFooter component', () => {
+  it('mount without errors', () => {
+    const wrapper = shallowMount(CpFooter);
+    expect(wrapper.isVueInstance()).toBeTruthy();
   });
 });

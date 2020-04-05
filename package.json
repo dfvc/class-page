@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "build:docs": "vue-cli-service build --dest docs",
-    "test:unit": "vue-cli-service test:unit",
+    "test:unit": "vue-cli-service test:unit --watchAll",
     "lint": "vue-cli-service lint --format table",
     "lint:fix": "vue-cli-service lint --fix"
   },
