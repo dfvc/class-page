@@ -1,15 +1,13 @@
-export const propsData = {
-  activity: {
-    subject: {
-      name: 'Subject Name',
-      shortName: 'SN',
-      icon: 'subjects/iconfile',
-      color: '#000',
-    },
-    description: 'activity description',
-    dateCreation: '01-01-2020',
-    dateChanged: '',
+export const activity = {
+  subject: {
+    name: 'Subject Name',
+    shortName: 'SN',
+    icon: 'subjects/iconfile',
+    color: '#000',
   },
+  description: 'activity description',
+  dateCreation: '01-01-2020',
+  dateChanged: '',
 };
 
 export const attachments = [

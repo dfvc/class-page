@@ -5,15 +5,23 @@ import {
 import CpActivityDetail from '@/components/ActivityDetail/ActivityDetail.component.vue';
 import { EAttachmentTypes } from '@/enums/attachment-types.enum';
 import {
+  activity,
   attachments,
-  propsData,
 } from '@/components/ActivityDetail/_tests/ActivityDetail.fixture';
 
 describe('CpActivityDetail', () => {
   let wrapper: Wrapper<CpActivityDetail>;
 
   beforeEach((): void => {
-    wrapper = shallowMount(CpActivityDetail, { propsData });
+    wrapper = shallowMount(CpActivityDetail, {
+      propsData: {
+        activity,
+      }
+    });
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
   });
 
   /**
@@ -39,12 +47,11 @@ describe('CpActivityDetail', () => {
       ({ deliveryDate, expected }) => {
         wrapper.setProps({
           activity: {
-            ...propsData.activity,
+            ...activity,
             deliveryDate,
-          }
+          },
         });
-        // @ts-ignore
-        expect(wrapper.vm.hasDeliveryDate).toBe(expected);
+        expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
       },
     );
 
@@ -58,12 +65,11 @@ describe('CpActivityDetail', () => {
       ({ deliveryMethod, expected }) => {
         wrapper.setProps({
           activity: {
-            ...propsData.activity,
+            ...activity,
             deliveryMethod,
-          }
+          },
         });
-        // @ts-ignore
-        expect(wrapper.vm.hasDeliveryMethod).toBe(expected);
+        expect((wrapper.vm as any).hasDeliveryMethod).toBe(expected);
       },
     );
 
@@ -77,12 +83,11 @@ describe('CpActivityDetail', () => {
       ({ attachments, expected }) => {
         wrapper.setProps({
           activity: {
-            ...propsData.activity,
+            ...activity,
             attachments,
-          }
+          },
         });
-        // @ts-ignore
-        expect(wrapper.vm.hasAttachments).toBe(expected);
+        expect((wrapper.vm as any).hasAttachments).toBe(expected);
       },
     );
   });
@@ -100,8 +105,7 @@ describe('CpActivityDetail', () => {
     `(
       '"attachmentIcon" returns "$expected" when attachment type is $verboseAttachment',
       ({ attachment, expected }) => {
-        // @ts-ignore
-        expect(wrapper.vm.attachmentIcon(attachment)).toEqual(expected);
+        expect((wrapper.vm as any).attachmentIcon(attachment)).toEqual(expected);
       },
     );
   });

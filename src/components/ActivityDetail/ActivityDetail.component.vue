@@ -110,14 +110,10 @@ import {
   IActivity,
   IActivityAttachment,
 } from '@/types/activity.type';
-import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import { EAttachmentTypes } from '@/enums/attachment-types.enum';
 
 @Component({
   name: 'cp-activity-detail',
-  components: {
-    CpBackgroundOverlay,
-  },
 })
 export default class CpActivityDetail extends Vue {
   /**
