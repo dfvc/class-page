@@ -7,7 +7,7 @@ import { EAttachmentTypes } from '@/enums/attachment-types.enum';
 import {
   activity,
   attachments,
-} from '@/components/ActivityDetail/_tests/ActivityDetail.fixture';
+} from '@/components/ActivityDetail/__tests__/ActivityDetail.fixture';
 
 describe('CpActivityDetail', () => {
   let wrapper: Wrapper<CpActivityDetail>;
