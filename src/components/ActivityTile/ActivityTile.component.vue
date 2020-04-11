@@ -39,11 +39,11 @@
 
       <div class="cp-activity-tile__footer flex justify-between items-center mt-3">
         <div
-          :title="$glossary.activity.REQUEST_DATE"
+          :title="$glossary('activity.REQUEST_DATE')"
           class="cp-activity-tile__expand flex items-center"
         >
           <cp-icon
-            :alt="$glossary.activity.REQUEST_DATE"
+            :alt="$glossary('activity.REQUEST_DATE')"
             name="calendar"
             class="text-teal-700 h-4 w-4 mr-1"
           />
@@ -53,11 +53,11 @@
         </div>
         <div
           v-if="hasDeliveryDate"
-          :title="$glossary.activity.DELIVERY_DATE"
+          :title="$glossary('activity.DELIVERY_DATE')"
           class="cp-activity-tile__delivery-date flex items-center"
         >
           <cp-icon
-            :alt="$glossary.activity.DELIVERY_DATE"
+            :alt="$glossary('activity.DELIVERY_DATE')"
             name="delivery"
             class="text-teal-700 h-4 w-4 mr-1"
           />
@@ -70,8 +70,8 @@
 
     <div class="cp-activity-tile__detail-tag absolute top-0 right-0">
       <cp-icon
-        :title="$glossary.app.SEE_DETAIL"
-        :alt="$glossary.app.EXPAND"
+        :title="$glossary('app.SEE_DETAIL')"
+        :alt="$glossary('app.EXPAND')"
         name="expand"
         class="text-teal-700 h-4 w-4 mt-px mr-px"
       />

@@ -27,3 +27,9 @@ export const attachments = [
     type: 'jpg',
   },
 ];
+
+export const selectors = {
+  activityDeliveryDate: '.cp-activity-detail__item-delivery-date',
+  activityDeliveryMethod: '.cp-activity-detail__item-delivery-method',
+  activityAttachments: '.cp-activity-detail__item-attachments',
+};

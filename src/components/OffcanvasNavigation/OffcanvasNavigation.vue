@@ -9,11 +9,11 @@
     >
       <button
         class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
-        :title="$glossary.app.CLOSE"
+        :title="$glossary('app.CLOSE')"
         @click="onClickCloseButton"
       >
         <cp-icon
-          :alt="$glossary.app.CLOSE"
+          :alt="$glossary('app.CLOSE')"
           name="cross"
           class="text-white h-6 w-6"
         />

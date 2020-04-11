@@ -6,8 +6,8 @@
       :multiple="true"
       label="name"
       label-selected="shortName"
-      :placeholder="$glossary.activity.SUBJECTS_PLACEHOLDER_SELECT"
-      :no-matches-message="$glossary.activity.SUBJECTS_NO_MATCHES_SELECT"
+      :placeholder="$glossary('activity.SUBJECTS_PLACEHOLDER_SELECT')"
+      :no-matches-message="$glossary('activity.SUBJECTS_NO_MATCHES_SELECT')"
       class="mt-4 md:w-1/2 lg:w-2/5"
       @onSelect="subjectSelectionChanged"
     />

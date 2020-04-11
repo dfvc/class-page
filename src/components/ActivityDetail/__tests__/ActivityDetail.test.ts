@@ -7,6 +7,7 @@ import { EAttachmentTypes } from '@/enums/attachment-types.enum';
 import {
   activity,
   attachments,
+  selectors,
 } from '@/components/ActivityDetail/__tests__/ActivityDetail.fixture';
 
 describe('CpActivityDetail', () => {
@@ -16,7 +17,14 @@ describe('CpActivityDetail', () => {
     wrapper = shallowMount(CpActivityDetail, {
       propsData: {
         activity,
-      }
+        isVisible: true,
+      },
+      mocks: {
+        $glossary: jest.fn(() => ''),
+      },
+      stubs: {
+        CpIcon: '<div />',
+      },
     });
   });
 
@@ -51,6 +59,7 @@ describe('CpActivityDetail', () => {
             deliveryDate,
           },
         });
+
         expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
       },
     );
@@ -69,6 +78,7 @@ describe('CpActivityDetail', () => {
             deliveryMethod,
           },
         });
+
         expect((wrapper.vm as any).hasDeliveryMethod).toBe(expected);
       },
     );
@@ -87,6 +97,7 @@ describe('CpActivityDetail', () => {
             attachments,
           },
         });
+
         expect((wrapper.vm as any).hasAttachments).toBe(expected);
       },
     );
@@ -106,6 +117,85 @@ describe('CpActivityDetail', () => {
       '"attachmentIcon" returns "$expected" when attachment type is $verboseAttachment',
       ({ attachment, expected }) => {
         expect((wrapper.vm as any).attachmentIcon(attachment)).toEqual(expected);
+      },
+    );
+  });
+
+  /**
+   * Template / User Interaction
+   */
+  describe('Template / User Interaction', () => {
+    test.each`
+      isVisible | visibility  | expected
+      ${true}   | ${'is'}     | ${true}
+      ${false}  | ${'is not'} | ${false}
+    `(
+      'template $visibility rendered when isVisible is $isVisible',
+      async ({ isVisible, expected }) => {
+        wrapper.setProps({
+          ...activity,
+          isVisible,
+        });
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.html().length > 0).toBe(expected);
+      },
+    );
+
+    test.each`
+      deliveryDate    | condition                       | expected
+      ${''}           | ${'not rendered when not set'}  | ${false}
+      ${'31-01-2020'} | ${'rendered when set'}          | ${true}
+    `(
+      'delivery date is $condition',
+      async ({ deliveryDate, expected }) => {
+        wrapper.setProps({
+          activity: {
+            ...activity,
+            deliveryDate,
+          },
+        });
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find(selectors.activityDeliveryDate).exists()).toBe(expected);
+      },
+    );
+
+    test.each`
+      deliveryMethod        | condition                       | expected
+      ${''}                 | ${'not rendered when not set'}  | ${false}
+      ${'delivery method'}  | ${'rendered when set'}          | ${true}
+    `(
+      'delivery method is $condition',
+      async ({ deliveryMethod, expected }) => {
+        wrapper.setProps({
+          activity: {
+            ...activity,
+            deliveryMethod,
+          },
+        });
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find(selectors.activityDeliveryMethod).exists()).toBe(expected);
+      },
+    );
+
+    test.each`
+      attachments     | condition                       | expected
+      ${''}           | ${'not rendered when not set'}  | ${false}
+      ${attachments}  | ${'rendered when set'}          | ${true}
+    `(
+      'attachments are $condition',
+      async ({ attachments, expected }) => {
+        wrapper.setProps({
+          activity: {
+            ...activity,
+            attachments,
+          },
+        });
+        await wrapper.vm.$nextTick();
+
+        expect(wrapper.find(selectors.activityAttachments).exists()).toBe(expected);
       },
     );
   });
