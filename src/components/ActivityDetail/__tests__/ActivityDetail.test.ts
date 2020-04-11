@@ -138,7 +138,7 @@ describe('CpActivityDetail', () => {
         });
         await wrapper.vm.$nextTick();
 
-        expect(wrapper.html().length > 0).toBe(expected);
+        expect((wrapper.vm.$el.childElementCount || 0) > 0).toBe(expected);
       },
     );
 
