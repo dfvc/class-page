@@ -80,6 +80,7 @@
     <cp-activity-detail-modal
       :activity="activity"
       :is-visible="isActivityDetailModalOpen"
+      class="cp-activity-tile__detail-modal"
       @on-close-activity-detail-modal="closeActivityDetailModal"
     />
   </article>

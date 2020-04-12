@@ -47,7 +47,7 @@ describe('CpActivityDetail', () => {
   describe('Computed Props', () => {
     test.each`
       deliveryDate    | verboseDeliveryDate | expected
-      ${{}}           | ${'not defined'}    | ${false}
+      ${undefined}    | ${'not defined'}    | ${false}
       ${''}           | ${'empty'}          | ${false}
       ${'31-01-2020'} | ${'not empty'}      | ${true}
     `(
@@ -66,7 +66,7 @@ describe('CpActivityDetail', () => {
 
     test.each`
       deliveryMethod        | verboseDeliveryMethod | expected
-      ${{}}                 | ${'not defined'}      | ${false}
+      ${undefined}          | ${'not defined'}      | ${false}
       ${''}                 | ${'empty'}            | ${false}
       ${'delivery method'}  | ${'not empty'}        | ${true}
     `(
@@ -85,7 +85,7 @@ describe('CpActivityDetail', () => {
 
     test.each`
       attachments     | verboseAttachments  | expected
-      ${{}}           | ${'not defined'}    | ${false}
+      ${undefined}    | ${'not defined'}    | ${false}
       ${''}           | ${'empty'}          | ${false}
       ${attachments}  | ${'not empty'}      | ${true}
     `(
