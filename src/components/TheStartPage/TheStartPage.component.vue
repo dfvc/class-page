@@ -41,7 +41,7 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
-import CpBanner from '@/components/Banner/Banner.vue';
+import CpBanner from '@/components/Banner/Banner.component.vue';
 import { startPageContent } from '@/data/start-page.data';
 import { activitiesNavigationItem } from '@/data/main-navigation.data';
 import { IStartPage } from '@/types/start-page.type';

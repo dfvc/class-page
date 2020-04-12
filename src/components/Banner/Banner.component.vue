@@ -8,13 +8,13 @@
     >
       <h1
         v-if="hasHeadline"
-        class="text-2xl md:text-3xl"
+        class="cp-banner__headline text-2xl md:text-3xl"
       >
         {{ content.headline }}
       </h1>
       <p
         v-if="hasSubHeadline"
-        class="text-base"
+        class="cp-banner__sub-headline text-base"
       >
         {{ content.subHeadline }}
       </p>

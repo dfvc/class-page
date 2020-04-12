@@ -14,7 +14,6 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
-import CpBanner from '@/components/Banner/Banner.vue';
 import { activityPageContent } from '@/data/activity-page.data';
 import { IStartPage } from '@/types/start-page.type';
 
@@ -22,7 +21,6 @@ import { IStartPage } from '@/types/start-page.type';
   name: 'cp-activity-page',
   components: {
     CpActivityList,
-    CpBanner,
   },
 })
 export default class CpActivityPage extends Vue {
