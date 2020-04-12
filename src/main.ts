@@ -2,7 +2,7 @@ import '@/styles/_index.scss';
 import Vue from 'vue';
 import { glossary } from '@/glossary/index.glossary';
 import { routes } from '@/routes';
-import CpIcon from '@/components/Icon/Icon.vue';
+import CpIcon from '@/components/Icon/Icon.component.vue';
 import VueRouter from 'vue-router';
 import App from './App.vue';
 

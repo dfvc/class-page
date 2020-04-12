@@ -34,7 +34,7 @@ import {
 } from 'vue-property-decorator';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
-import CpOffcanvasNavigation from '@/components/OffcanvasNavigation/OffcanvasNavigation.vue';
+import CpOffcanvasNavigation from '@/components/OffcanvasNavigation/OffcanvasNavigation.component.vue';
 import {
   disableBodyScroll,
   enableBodyScroll,
