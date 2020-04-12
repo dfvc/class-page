@@ -5,7 +5,7 @@
   >
     <div
       class="cp-background-overlay fixed top-0 right-0 bottom-0 left-0 bg-gray-600 opacity-50"
-      @click.stop="$emit('on-click-background-overlay')"
+      @click.stop="clickBackgroundOverlay()"
     />
   </transition>
 </template>
@@ -26,6 +26,13 @@ export default class CpBackgroundOverlay extends Vue {
    */
   @Prop({ type: Boolean, default: false })
   public isVisible: boolean;
+
+  /**
+   * Methods
+   */
+  public clickBackgroundOverlay(): void {
+    this.$emit('on-click-background-overlay');
+  }
 }
 </script>
 
