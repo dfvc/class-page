@@ -1,6 +1,3 @@
-import CpBackgroundOverlay
-  from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
-
 jest.mock('body-scroll-lock');
 
 import {
@@ -8,6 +5,8 @@ import {
   Wrapper,
 } from '@vue/test-utils';
 import CpActivityDetailModal from '@/components/ActivityDetailModal/ActivityDetailModal.component.vue';
+import CpActivityDetail from '@/components/ActivityDetail/ActivityDetail.component.vue';
+import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import {
   activity,
   events,
@@ -18,7 +17,6 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
-import CpActivityDetail from '@/components/ActivityDetail/ActivityDetail.component.vue';
 
 describe('CpActivityDetailModal', () => {
   let wrapper: Wrapper<CpActivityDetailModal>;
@@ -36,8 +34,8 @@ describe('CpActivityDetailModal', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
     wrapper.destroy();
+    jest.clearAllMocks();
   });
 
   /**

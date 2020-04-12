@@ -8,7 +8,7 @@
       label-selected="shortName"
       :placeholder="$glossary('activity.SUBJECTS_PLACEHOLDER_SELECT')"
       :no-matches-message="$glossary('activity.SUBJECTS_NO_MATCHES_SELECT')"
-      class="mt-4 md:w-1/2 lg:w-2/5"
+      class="cp-activity-list__filter mt-4 md:w-1/2 lg:w-2/5"
       @onSelect="subjectSelectionChanged"
     />
     <cp-activity-tile
@@ -66,7 +66,7 @@ export default class CpActivityList extends Vue {
     let visibleActivities = this.activities;
 
     visibleActivities = this.filterActivities(visibleActivities);
-    visibleActivities = this.sortActivities(visibleActivities);
+    visibleActivities = this.sortActivitiesByDateCreation(visibleActivities);
     visibleActivities = this.sliceActivities(visibleActivities);
 
     return visibleActivities;
@@ -91,7 +91,7 @@ export default class CpActivityList extends Vue {
     );
   }
 
-  private sortActivities(activities: IActivity[]): IActivity[] {
+  private sortActivitiesByDateCreation(activities: IActivity[]): IActivity[] {
     const iteratees = (activity: IActivity) => reverse(activity.dateCreation.split('-'));
 
     return sortBy(activities, iteratees).reverse();

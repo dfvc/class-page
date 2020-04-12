@@ -29,7 +29,6 @@ import {
   Prop,
 } from 'vue-property-decorator';
 import vSelect from 'vue-select';
-import 'vue-select/src/scss/vue-select.scss';
 
 @Component({
   name: 'cp-select',
@@ -82,6 +81,10 @@ export default class CpSelect extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+  @import 'node_modules/vue-select/src/scss/vue-select.scss';
+</style>
 
 <style lang="scss" scoped>
   .cp-select {
