@@ -8,8 +8,8 @@
       class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-teal-400 text-teal-900 text-xl shadow-2xl"
     >
       <button
-        class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
         :title="$glossary('app.CLOSE')"
+        class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
         @click="onClickCloseButton"
       >
         <cp-icon

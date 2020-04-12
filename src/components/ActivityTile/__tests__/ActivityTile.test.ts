@@ -29,6 +29,7 @@ describe('CpActivityTile', () => {
 
   afterEach(() => {
     wrapper.destroy();
+    jest.clearAllMocks();
   });
 
   /**

@@ -27,6 +27,7 @@ describe('CpActivityList', () => {
 
   afterEach(() => {
     wrapper.destroy();
+    jest.clearAllMocks();
   });
 
   /**
