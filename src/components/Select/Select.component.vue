@@ -6,6 +6,7 @@ import { disableBodyScroll } from "body-scroll-lock";import { enableBodyScroll }
     :multiple="multiple"
     :label="label.length ? label : false"
     :placeholder="placeholder"
+    :searchable="false"
     class="cp-select"
     @input="onSelect"
   >

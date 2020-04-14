@@ -1,7 +1,7 @@
 <template>
   <article
     :style="{ borderColor: activity.subject.color }"
-    class="cp-activity-tile relative flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8"
+    class="cp-activity-tile relative flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8 border-t duration-300 hover:shadow-md group"
     @click="openActivityDetailModal"
   >
     <div class="cp-activity-tile__icon flex-shrink-0 flex items-center">
@@ -18,12 +18,12 @@
       </div>
     </div>
 
-    <div class="cp-activity-tile__content flex-grow flex flex-col">
+    <div class="cp-activity-tile__content flex-grow flex flex-col items-start">
       <v-clamp
         :max-lines="1"
         tag="h1"
         autoresize
-        class="cp-activity-tile__headline mb-2 text-lg md:text-xl text-teal-500"
+        class="cp-activity-tile__headline mb-2 text-lg md:text-xl text-teal-500 group-hover:pl-2 duration-200"
       >
         {{ activity.subject.name }}
       </v-clamp>
@@ -32,12 +32,12 @@
         :max-lines="2"
         tag="p"
         autoresize
-        class="cp-activity-tile__preview text-sm md:text-base text-teal-900"
+        class="cp-activity-tile__preview w-full text-sm md:text-base text-teal-900"
       >
         {{ activity.description }}
       </v-clamp>
 
-      <div class="cp-activity-tile__footer flex justify-between items-center mt-3">
+      <div class="cp-activity-tile__footer flex justify-between items-center w-full mt-3">
         <div
           :title="$glossary('activity.REQUEST_DATE')"
           class="cp-activity-tile__expand flex items-center"
@@ -137,12 +137,28 @@ export default class CpActivityTile extends Vue {
 
 <style lang="scss" scoped>
   .cp-activity-tile {
-    @apply border-t;
-    @apply duration-300;
+    $root: &;
+
     border-top-color: theme('colors.gray.200') !important;
 
+    &__headline {
+      &:after {
+        @apply block;
+        @apply w-full;
+        @apply bg-teal-500;
+        @apply transform -translate-x-full;
+        @apply transition-transform duration-300 ease-in-out;
+        content: '';
+        height: 2px;
+      }
+    }
+
     &:hover {
-      @apply shadow-md;
+      #{$root}__headline {
+        &:after {
+          @apply translate-x-0;
+        }
+      }
     }
   }
 </style>
