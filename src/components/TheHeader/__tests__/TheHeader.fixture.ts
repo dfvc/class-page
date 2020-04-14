@@ -1,5 +1,5 @@
 import { IMainNavigationItem } from '@/types/header-menu.type';
-import {IHeaderTitle} from '@/types/header-title.type';
+import { IHeaderTitle } from '@/types/header-title.type';
 
 export const navigationItems: IMainNavigationItem[] = [
   {

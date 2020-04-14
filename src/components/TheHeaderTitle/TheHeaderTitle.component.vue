@@ -10,9 +10,11 @@
       <span
         v-if="title.subHeadlineRow1"
         :class="{ 'border-r border-teal-600 pr-2 mr-2': title.subHeadlineRow2 }"
+        class="cp-header-title__sub-headline-row1"
       >{{ title.subHeadlineRow1 }}</span>
       <span
         v-if="title.subHeadlineRow2"
+        class="cp-header-title__sub-headline-row2"
       >{{ title.subHeadlineRow2 }}</span>
     </div>
   </div>
