@@ -5,12 +5,11 @@ import {
   Wrapper,
 } from '@vue/test-utils';
 import CpActivityDetailModal from '@/components/ActivityDetailModal/ActivityDetailModal.component.vue';
-import CpActivityDetail from '@/components/ActivityDetail/ActivityDetail.component.vue';
-import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import {
   activity,
   events,
   methodMocks,
+  selectors,
 } from '@/components/ActivityDetailModal/__tests__/ActivityDetailModal.fixture';
 import {
   disableBodyScroll,
@@ -153,7 +152,7 @@ describe('CpActivityDetailModal', () => {
 
       expect(methodMocks.clickBackgroundOverlay).not.toHaveBeenCalled();
 
-      wrapper.find(CpBackgroundOverlay).vm.$emit(events.onClickBackgroundOverlay);
+      wrapper.find(selectors.CpBackgroundOverlay).vm.$emit(events.onClickBackgroundOverlay);
       expect(methodMocks.clickBackgroundOverlay).toHaveBeenCalled();
     });
 
@@ -164,7 +163,7 @@ describe('CpActivityDetailModal', () => {
 
       expect(methodMocks.closeActivityDetail).not.toHaveBeenCalled();
 
-      wrapper.find(CpActivityDetail).vm.$emit(events.onCloseActivityDetail);
+      wrapper.find(selectors.CpActivityDetail).vm.$emit(events.onCloseActivityDetail);
       expect(methodMocks.closeActivityDetail).toHaveBeenCalled();
     });
   });

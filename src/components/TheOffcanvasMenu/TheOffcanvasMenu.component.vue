@@ -1,5 +1,3 @@
-import { disableBodyScroll } from "body-scroll-lock";import { enableBodyScroll } from "body-scroll-lock";
-import { disableBodyScroll } from "body-scroll-lock";import { clearAllBodyScrollLocks } from "body-scroll-lock";
 <template>
   <div class="cp-offcanvas-menu mr-3 md:mr-4 lg:mr-6">
     <button

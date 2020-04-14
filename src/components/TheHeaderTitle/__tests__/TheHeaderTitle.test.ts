@@ -3,7 +3,10 @@ import {
   Wrapper,
 } from '@vue/test-utils';
 import CpHeaderTitle from '@/components/TheHeaderTitle/TheHeaderTitle.component.vue';
-import {selectors, title} from '@/components/TheHeaderTitle/__tests__/TheHeaderTitle.fixture';
+import {
+  selectors,
+  title,
+} from '@/components/TheHeaderTitle/__tests__/TheHeaderTitle.fixture';
 
 describe('CpHeaderTitle', () => {
   let wrapper: Wrapper<CpHeaderTitle>;

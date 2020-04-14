@@ -10,6 +10,11 @@ export const activity = {
   dateChanged: '',
 };
 
+export const selectors = {
+  CpBackgroundOverlay: 'cp-background-overlay-stub',
+  CpActivityDetail: 'cp-activity-detail-stub',
+}
+
 export const events = {
   onClickBackgroundOverlay: 'on-click-background-overlay',
   onCloseActivityDetailModal: 'on-close-activity-detail-modal',
