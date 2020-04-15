@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const appConfig = require('./config/app.config');
+
 module.exports = {
   publicPath: '',
   css: {
@@ -15,7 +18,7 @@ module.exports = {
     config
       .plugin('html')
       .tap((args) => {
-        args[0].title = '5º C | Tarefas Escolares';
+        args[0].title = appConfig.title;
         args[0].mainColor = '#4fd1c5';
 
         return args;

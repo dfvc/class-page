@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const defaultTheme = require('tailwindcss/defaultTheme');
+const appConfig = require('./config/app.config');
+
 module.exports = {
   theme: {
     extend: {
@@ -7,6 +11,9 @@ module.exports = {
       borderRadius: {
         xl: '1rem',
         xxl: '2rem',
+      },
+      colors: {
+        main: defaultTheme.colors[appConfig.theme],
       },
     },
   },
