@@ -3,7 +3,7 @@
     <button
       type="button"
       title="Menu"
-      class="cp-offcanvas-menu__trigger flex flex-col justify-between items-center p-4 rounded-full w-12 h-12 bg-teal-400 shadow-lg hover:shadow-sm transition-shadow duration-200"
+      class="cp-offcanvas-menu__trigger flex flex-col justify-between items-center p-4 rounded-full w-12 h-12 bg-main-400 shadow-lg hover:shadow-sm transition-shadow duration-200"
       @click="openMenu"
     >
       <span class="cp-offcanvas-menu__trigger-bar h-1/2 w-5 bg-white" />

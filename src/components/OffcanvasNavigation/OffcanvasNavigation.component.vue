@@ -5,7 +5,7 @@
   >
     <nav
       v-show="isVisible"
-      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-teal-400 text-teal-900 text-xl shadow-2xl"
+      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-main-400 text-main-900 text-xl shadow-2xl"
     >
       <button
         :title="$glossary('app.CLOSE')"
@@ -28,7 +28,7 @@
           <router-link
             :to="item.url"
             :title="item.text"
-            class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-teal-200 hover:border-l-8 transition-all duration-200"
+            class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
             @click.native="onClickCloseButton"
           >
             <cp-icon
@@ -84,7 +84,7 @@ export default class CpOffcanvasNavigation extends Vue {
 
     &__item {
       &:not(:last-of-type) {
-        @apply border-b border-teal-200;
+        @apply border-b border-main-200;
       }
     }
 

@@ -7,7 +7,7 @@
       />
     </div>
     <div class="fluid-container">
-      <h1 class="fluid-h1 my-6 bg-white text-teal-700 border-teal-700 border-b-2">
+      <h1 class="fluid-h1 my-6 bg-white text-main-700 border-main-700 border-b-2">
         {{ $glossary('activity.LAST_ACTIVITIES_LIST_TITLE') }}
       </h1>
     </div>
@@ -21,7 +21,7 @@
       <router-link
         :to="activitiesNavigationItem.url"
         :title="activitiesNavigationItem.text"
-        class="flex items-center py-2 text-teal-900 hover:text-teal-500"
+        class="flex items-center py-2 text-main-900 hover:text-main-500"
       >
         {{ $glossary('activity.SEE_ALL_ACTIVITIES') }}
         <cp-icon
@@ -72,8 +72,8 @@ export default class CpStartPage extends Vue {
   .cp-start-page {
     &__banner {
       background: linear-gradient(
-          theme('colors.teal.400'),
-          theme('colors.teal.400') 50%,
+          theme('colors.main.400'),
+          theme('colors.main.400') 50%,
           theme('colors.white') 50%,
           theme('colors.white')
       );

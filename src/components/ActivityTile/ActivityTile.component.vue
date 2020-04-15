@@ -23,7 +23,7 @@
         :max-lines="1"
         tag="h1"
         autoresize
-        class="cp-activity-tile__headline mb-2 text-lg md:text-xl text-teal-500 group-hover:pl-2 duration-200"
+        class="cp-activity-tile__headline mb-2 text-lg md:text-xl text-main-500 group-hover:pl-2 duration-200"
       >
         {{ activity.subject.name }}
       </v-clamp>
@@ -32,7 +32,7 @@
         :max-lines="2"
         tag="p"
         autoresize
-        class="cp-activity-tile__preview w-full text-sm md:text-base text-teal-900"
+        class="cp-activity-tile__preview w-full text-sm md:text-base text-main-900"
       >
         {{ activity.description }}
       </v-clamp>
@@ -45,9 +45,9 @@
           <cp-icon
             :alt="$glossary('activity.REQUEST_DATE')"
             name="calendar"
-            class="text-teal-700 h-4 w-4 mr-1"
+            class="text-main-700 h-4 w-4 mr-1"
           />
-          <span class="text-sm md:text-base text-teal-700 leading-none">
+          <span class="text-sm md:text-base text-main-700 leading-none">
             {{ activity.dateCreation }}
           </span>
         </div>
@@ -59,9 +59,9 @@
           <cp-icon
             :alt="$glossary('activity.DELIVERY_DATE')"
             name="delivery"
-            class="text-teal-700 h-4 w-4 mr-1"
+            class="text-main-700 h-4 w-4 mr-1"
           />
-          <span class="text-sm md:text-base text-teal-700 leading-none">
+          <span class="text-sm md:text-base text-main-700 leading-none">
             {{ activity.deliveryDate }}
           </span>
         </div>
@@ -73,7 +73,7 @@
         :title="$glossary('app.SEE_DETAIL')"
         :alt="$glossary('app.EXPAND')"
         name="expand"
-        class="text-teal-700 h-4 w-4 mt-px mr-px"
+        class="text-main-700 h-4 w-4 mt-px mr-px"
       />
     </div>
 
@@ -145,7 +145,7 @@ export default class CpActivityTile extends Vue {
       &:after {
         @apply block;
         @apply w-full;
-        @apply bg-teal-500;
+        @apply bg-main-500;
         @apply transform -translate-x-full;
         @apply transition-transform duration-300 ease-in-out;
         content: '';
