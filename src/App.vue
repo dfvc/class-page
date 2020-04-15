@@ -45,16 +45,16 @@ export default class App extends Vue {
 <style lang="scss">
 #app {
   /*background: linear-gradient(*/
-  /*    theme('colors.teal.400'),*/
-  /*    theme('colors.teal.400') theme('spacing.40'),*/
+  /*    theme('colors.main.400'),*/
+  /*    theme('colors.main.400') theme('spacing.40'),*/
   /*    theme('colors.white') theme('spacing.40'),*/
   /*    theme('colors.white')*/
   /*);*/
 
   /*@screen md {*/
   /*  background: linear-gradient(*/
-  /*      theme('colors.teal.400'),*/
-  /*      theme('colors.teal.400') calc(theme('spacing.40') + theme('spacing.4')),*/
+  /*      theme('colors.main.400'),*/
+  /*      theme('colors.main.400') calc(theme('spacing.40') + theme('spacing.4')),*/
   /*      theme('colors.white') calc(theme('spacing.40') + theme('spacing.4')),*/
   /*      theme('colors.white')*/
   /*  );*/
@@ -62,8 +62,8 @@ export default class App extends Vue {
 
   /*@screen lg {*/
   /*  background: linear-gradient(*/
-  /*      theme('colors.teal.400'),*/
-  /*      theme('colors.teal.400') theme('spacing.48'),*/
+  /*      theme('colors.main.400'),*/
+  /*      theme('colors.main.400') theme('spacing.48'),*/
   /*      theme('colors.white') theme('spacing.48'),*/
   /*      theme('colors.white')*/
   /*  );*/

@@ -91,7 +91,7 @@ export default class CpSelect extends Vue {
   .cp-select {
     /deep/ .vs {
       &__search {
-        @apply text-teal-900;
+        @apply text-main-900;
 
         &::placeholder {
           @apply text-gray-500;
@@ -102,11 +102,11 @@ export default class CpSelect extends Vue {
         @apply p-3;
 
         &:hover {
-          @apply bg-teal-400;
+          @apply bg-main-400;
         }
 
         &--highlight {
-          @apply bg-teal-400;
+          @apply bg-main-400;
         }
       }
 
@@ -115,8 +115,8 @@ export default class CpSelect extends Vue {
       }
 
       &__selected {
-        @apply border-teal-600;
-        @apply bg-teal-400;
+        @apply border-main-600;
+        @apply bg-main-400;
         @apply text-white uppercase;
         min-height: theme('spacing.8');
       }

@@ -1,7 +1,7 @@
 <template>
   <header
     :class="{ 'cp-header--shadowed': hasShadow }"
-    class="cp-header sticky top-0 z-30 bg-teal-400"
+    class="cp-header sticky top-0 z-30 bg-main-400"
   >
     <div class="cp-header__inner fluid-container flex items-center py-6">
       <cp-offcanvas-menu :navigation-items="navigationItems" />

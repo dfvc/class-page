@@ -5,11 +5,11 @@
     </h1>
     <div
       v-if="displaySubHeadline"
-      class="cp-header-title__sub-headline text-xs text-teal-900 leading-none tracking-tighter md:tracking-normal"
+      class="cp-header-title__sub-headline text-xs text-main-900 leading-none tracking-tighter md:tracking-normal"
     >
       <span
         v-if="title.subHeadlineRow1"
-        :class="{ 'border-r border-teal-600 pr-2 mr-2': title.subHeadlineRow2 }"
+        :class="{ 'border-r border-main-600 pr-2 mr-2': title.subHeadlineRow2 }"
         class="cp-header-title__sub-headline-row1"
       >{{ title.subHeadlineRow1 }}</span>
       <span

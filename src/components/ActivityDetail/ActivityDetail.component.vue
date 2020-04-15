@@ -5,7 +5,7 @@
   >
     <section class="cp-activity-detail fluid-container fluid-container--with-vertical fixed m-auto bg-white rounded-lg shadow-2xl">
       <div class="cp-activity-detail__content flex flex-col h-full overflow-y-auto scrolling-touch">
-        <div class="cp-activity-detail__header sticky top-0 flex justify-between items-center bg-teal-500 rounded-lg">
+        <div class="cp-activity-detail__header sticky top-0 flex justify-between items-center bg-main-500 rounded-lg">
           <cp-icon
             :name="activity.subject.icon"
             :title="activity.subject.name"
@@ -30,12 +30,12 @@
 
         <div class="cp-activity-detail__body flex-grow">
           <div class="cp-activity-detail__item mt-6">
-            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
+            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-main-500">
               {{ $glossary('activity.DESCRIPTION') }}
             </h2>
             <div
               v-html="activity.description"
-              class="cp-activity-detail__item-content text-sm md:text-base text-teal-900"
+              class="cp-activity-detail__item-content text-sm md:text-base text-main-900"
             />
           </div>
 
@@ -43,10 +43,10 @@
             v-if="hasDeliveryDate || hasDeliveryMethod"
             class="cp-activity-detail__item mt-6"
           >
-            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
+            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-main-500">
               {{ $glossary('activity.DELIVERY') }}
             </h2>
-            <div class="cp-activity-detail__item-content text-sm md:text-base text-teal-900">
+            <div class="cp-activity-detail__item-content text-sm md:text-base text-main-900">
               <ul class="pl-8 list-disc">
                 <li
                   v-if="hasDeliveryDate"
@@ -68,10 +68,10 @@
             v-if="hasAttachments"
             class="cp-activity-detail__item cp-activity-detail__item-attachments mt-6"
           >
-            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-teal-500">
+            <h2 class="cp-activity-detail__item-headline mb-1 underline text-lg md:text-xl text-main-500">
               {{ $glossary('activity.ATTACHMENTS') }}
             </h2>
-            <div class="cp-activity-detail__item-content text-sm md:text-base text-teal-900">
+            <div class="cp-activity-detail__item-content text-sm md:text-base text-main-900">
               <ul class="pl-4">
                 <li
                   v-for="(attachment, index) in activity.attachments"
@@ -86,7 +86,7 @@
                     <cp-icon
                       :name="attachmentIcon(attachment)"
                       :alt="$glossary('activity.ATTACHMENT')"
-                      class="mr-2 text-teal-700 h-5 w-5"
+                      class="mr-2 text-main-700 h-5 w-5"
                     />
                     <span>{{ attachment.text }}</span>
                   </a>
