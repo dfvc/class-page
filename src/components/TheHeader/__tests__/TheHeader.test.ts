@@ -76,6 +76,20 @@ describe('CpHeader', () => {
         (wrapper.vm as any).updateScrollTopPosition,
       );
     });
+
+    test('scroll event listener is removed from the window when destroying the component', () => {
+      window.removeEventListener = jest.fn();
+
+      expect(window.removeEventListener).toHaveBeenCalledTimes(0);
+
+      wrapper.destroy();
+
+      expect(window.removeEventListener).toHaveBeenCalledTimes(1);
+      expect(window.removeEventListener).toHaveBeenCalledWith(
+        'scroll',
+        (wrapper.vm as any).updateScrollTopPosition,
+      );
+    });
   });
 
   /**

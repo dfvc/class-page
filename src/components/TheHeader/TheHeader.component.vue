@@ -59,7 +59,7 @@ export default class CpHeader extends Vue {
     window.addEventListener('scroll', this.updateScrollTopPosition);
   }
 
-  public onBeforeDestroy(): void {
+  public beforeDestroy(): void {
     window.removeEventListener('scroll', this.updateScrollTopPosition);
   }
 
