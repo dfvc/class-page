@@ -140,6 +140,7 @@ export default class CpActivityTile extends Vue {
     $root: &;
 
     border-top-color: theme('colors.gray.200') !important;
+    background-color: rgba(255, 255, 255, .85);
 
     &__headline {
       &:after {

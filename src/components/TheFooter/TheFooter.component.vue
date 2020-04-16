@@ -1,7 +1,7 @@
 <template>
-  <div class="cp-footer mt-6 bg-main-400">
+  <div class="cp-footer bg-main-400">
     <div class="cp-footer__inner fluid-container py-6 text-main-800 text-sm text-center">
-      Página de Tarefas Escolares da Turma 5ºC
+      {{ $glossary('footer.DISCLAIMER') }}
     </div>
   </div>
 </template>
