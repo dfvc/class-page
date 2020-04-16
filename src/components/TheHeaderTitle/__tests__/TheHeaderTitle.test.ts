@@ -46,19 +46,19 @@ describe('CpHeaderTitle', () => {
       ${undefined}    | ${'subtitle 2'} | ${'not defined'}        | ${'defined'}            | ${true}
       ${'subtitle 1'} | ${'subtitle 2'} | ${'defined'}            | ${'defined'}            | ${true}
     `(
-      '"displaySubHeadline" returns $expected when subHeadlineRow1 is $verboseSubHeadlineRow1 and subHeadlineRow2 is $verboseSubHeadlineRow2',
-      ({ subHeadlineRow1, subHeadlineRow2, expected }) => {
-        wrapper.setProps({
-          title: {
-            ...title,
-            subHeadlineRow1,
-            subHeadlineRow2,
-          },
-        });
-
-        expect((wrapper.vm as any).displaySubHeadline()).toBe(expected);
+  '"displaySubHeadline" returns $expected when subHeadlineRow1 is $verboseSubHeadlineRow1 and subHeadlineRow2 is $verboseSubHeadlineRow2',
+  ({ subHeadlineRow1, subHeadlineRow2, expected }) => {
+    wrapper.setProps({
+      title: {
+        ...title,
+        subHeadlineRow1,
+        subHeadlineRow2,
       },
-    );
+    });
+
+    expect((wrapper.vm as any).displaySubHeadline()).toBe(expected);
+  },
+);
   });
 
   /**
@@ -70,24 +70,24 @@ describe('CpHeaderTitle', () => {
       ${true}             | ${'is'}     | ${true}
       ${false}            | ${'is not'} | ${false}
     `(
-      'sub-headline $render rendered when displaySubHeadline is $displaySubHeadline',
-      ({ displaySubHeadline, expected }) => {
-        wrapper.destroy();
-        wrapper = shallowMount(CpHeaderTitle, {
-          propsData: {
-            title,
-          },
-          computed: {
-            displaySubHeadline: {
-              set: jest.fn(),
-              get: jest.fn(() => displaySubHeadline),
-            },
-          },
-        });
-
-        expect((wrapper.find(selectors.subHeadline)).exists()).toBe(expected);
+  'sub-headline $render rendered when displaySubHeadline is $displaySubHeadline',
+  ({ displaySubHeadline, expected }) => {
+    wrapper.destroy();
+    wrapper = shallowMount(CpHeaderTitle, {
+      propsData: {
+        title,
       },
-    );
+      computed: {
+        displaySubHeadline: {
+          set: jest.fn(),
+          get: jest.fn(() => displaySubHeadline),
+        },
+      },
+    });
+
+    expect((wrapper.find(selectors.subHeadline)).exists()).toBe(expected);
+  },
+);
 
     test.each`
       subHeadlineRow1 | verboseSubHeadlineRow1  | render      | expected
@@ -95,19 +95,19 @@ describe('CpHeaderTitle', () => {
       ${undefined}    | ${'not defined'}        | ${'is not'} | ${false}
       ${'subtitle 1'} | ${'defined'}            | ${'is'}     | ${true}
     `(
-      'sub-headline first row $render rendered when subHeadlineRow1 is $verboseSubHeadlineRow1',
-      async ({ subHeadlineRow1, expected }) => {
-        wrapper.setProps({
-          title: {
-            ...title,
-            subHeadlineRow1,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect((wrapper.find(selectors.subHeadlineRow1)).exists()).toBe(expected);
+  'sub-headline first row $render rendered when subHeadlineRow1 is $verboseSubHeadlineRow1',
+  async ({ subHeadlineRow1, expected }) => {
+    wrapper.setProps({
+      title: {
+        ...title,
+        subHeadlineRow1,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect((wrapper.find(selectors.subHeadlineRow1)).exists()).toBe(expected);
+  },
+);
 
     test.each`
       subHeadlineRow2 | verboseSubHeadlineRow2  | render      | expected
@@ -115,18 +115,18 @@ describe('CpHeaderTitle', () => {
       ${undefined}    | ${'not defined'}        | ${'is not'} | ${false}
       ${'subtitle 1'} | ${'defined'}            | ${'is'}     | ${true}
     `(
-      'sub-headline second row $render rendered when subHeadlineRow2 is $verboseSubHeadlineRow2',
-      async ({ subHeadlineRow2, expected }) => {
-        wrapper.setProps({
-          title: {
-            ...title,
-            subHeadlineRow2,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect((wrapper.find(selectors.subHeadlineRow2)).exists()).toBe(expected);
+  'sub-headline second row $render rendered when subHeadlineRow2 is $verboseSubHeadlineRow2',
+  async ({ subHeadlineRow2, expected }) => {
+    wrapper.setProps({
+      title: {
+        ...title,
+        subHeadlineRow2,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect((wrapper.find(selectors.subHeadlineRow2)).exists()).toBe(expected);
+  },
+);
   });
 });

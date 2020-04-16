@@ -50,19 +50,19 @@ describe('CpActivityList', () => {
     });
 
     test.each`
-      selectedSubjects    | activities                                        | condition                                                   | expected
-      ${[]}               | ${'all activities'}                               | ${'selected subjects are empty'}                            | ${activities}
-      ${selectedSubjects} | ${selectedSubjects[0].shortName + ' activities'}  | ${'selected subjects are ' + selectedSubjects[0].shortName} | ${[activities[0]]}
+      testSelectedSubjects  | activities                                        | condition                                                   | expected
+      ${[]}                 | ${'all activities'}                               | ${'selected subjects are empty'}                            | ${activities}
+      ${selectedSubjects}   | ${`${selectedSubjects[0].shortName} activities`}  | ${`selected subjects are ${selectedSubjects[0].shortName}`} | ${[activities[0]]}
     `(
-      '"filterActivities" returns $activities when $condition',
-      ({ selectedSubjects, expected }) => {
-        wrapper.setData({
-          selectedSubjects,
-        });
+  '"filterActivities" returns $activities when $condition',
+  ({ testSelectedSubjects, expected }) => {
+    wrapper.setData({
+      selectedSubjects: testSelectedSubjects,
+    });
 
-        expect((wrapper.vm as any).filterActivities(activities)).toEqual(expected);
-      },
-    );
+    expect((wrapper.vm as any).filterActivities(activities)).toEqual(expected);
+  },
+);
 
     test('"sortActivitiesByDateCreation" returns activities properly sorted by creation date', () => {
       expect((wrapper.vm as any).sortActivitiesByDateCreation(activities)).toEqual([...activities].reverse());
@@ -73,18 +73,18 @@ describe('CpActivityList', () => {
       ${-1}         | ${'all activities'} | ${'maxActivities in not set (< 0)'} | ${activities}
       ${1}          | ${'first activity'} | ${'maxActivities is 1'}             | ${[activities[0]]}
     `(
-      '"sliceActivities" returns $activities when $condition',
-      ({ maxActivities, expected }) => {
-        wrapper.setProps({
-          activities: {
-            ...activities,
-          },
-          maxActivities,
-        });
-
-        expect((wrapper.vm as any).sliceActivities(activities)).toEqual(expected);
+  '"sliceActivities" returns $activities when $condition',
+  ({ maxActivities, expected }) => {
+    wrapper.setProps({
+      activities: {
+        ...activities,
       },
-    );
+      maxActivities,
+    });
+
+    expect((wrapper.vm as any).sliceActivities(activities)).toEqual(expected);
+  },
+);
   });
 
   /**
@@ -96,23 +96,23 @@ describe('CpActivityList', () => {
       ${true}       | ${'is'}               | ${true}
       ${false}      | ${'is not'}           | ${false}
     `(
-      'subject dropdown $verboseSubjectFilter rendered when subjectFilter is $subjectFilter',
-      async ({ subjectFilter, expected }) => {
-        wrapper.setProps({
-          activities: {
-            ...activities,
-          },
-          subjectFilter,
-        });
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.find(selectors.activityListFilter).exists()).toBe(expected);
+  'subject dropdown $verboseSubjectFilter rendered when subjectFilter is $subjectFilter',
+  async ({ subjectFilter, expected }) => {
+    wrapper.setProps({
+      activities: {
+        ...activities,
       },
-    );
+      subjectFilter,
+    });
+    await wrapper.vm.$nextTick();
 
-    test('"onSelect" event triggers "subjectSelectionChanged" method',() => {
+    expect(wrapper.find(selectors.activityListFilter).exists()).toBe(expected);
+  },
+);
+
+    test('"onSelect" event triggers "subjectSelectionChanged" method', () => {
       wrapper.setMethods({
-        subjectSelectionChanged: methodMocks.subjectSelectionChanged
+        subjectSelectionChanged: methodMocks.subjectSelectionChanged,
       });
 
       expect(methodMocks.subjectSelectionChanged).not.toHaveBeenCalled();

@@ -10,7 +10,7 @@ import {
   methodMocks,
   selectors,
 } from '@/components/OffcanvasNavigation/__tests__/OffcanvasNavigation.fixture';
-import VueRouter from 'vue-router'
+import VueRouter from 'vue-router';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
@@ -53,7 +53,7 @@ describe('CpOffcanvasNavigation', () => {
    * Methods
    */
   describe('Methods', () => {
-    test(`"onClickCloseButton" emits ${events.closeOffcanvasNavigation} event`,() => {
+    test(`"onClickCloseButton" emits ${events.closeOffcanvasNavigation} event`, () => {
       (wrapper.vm as any).onClickCloseButton();
 
       expect(wrapper.emitted()[events.closeOffcanvasNavigation]).toBeTruthy();
@@ -64,7 +64,7 @@ describe('CpOffcanvasNavigation', () => {
    * Template / User Interaction
    */
   describe('Template / User Interaction', () => {
-    test('click event on close button triggers "onClickCloseButton" method',async () => {
+    test('click event on close button triggers "onClickCloseButton" method', async () => {
       wrapper.setProps({
         items: {
           ...items,
@@ -72,7 +72,7 @@ describe('CpOffcanvasNavigation', () => {
         isVisible: true,
       });
       wrapper.setMethods({
-        onClickCloseButton: methodMocks.onClickCloseButton
+        onClickCloseButton: methodMocks.onClickCloseButton,
       });
 
       await wrapper.vm.$nextTick();
@@ -82,7 +82,7 @@ describe('CpOffcanvasNavigation', () => {
       expect(methodMocks.onClickCloseButton).toHaveBeenCalled();
     });
 
-    test('click event on link/item triggers "onClickCloseButton" method',async () => {
+    test('click event on link/item triggers "onClickCloseButton" method', async () => {
       wrapper.setProps({
         items: {
           ...items,
@@ -90,7 +90,7 @@ describe('CpOffcanvasNavigation', () => {
         isVisible: true,
       });
       wrapper.setMethods({
-        onClickCloseButton: methodMocks.onClickCloseButton
+        onClickCloseButton: methodMocks.onClickCloseButton,
       });
 
       await wrapper.vm.$nextTick();

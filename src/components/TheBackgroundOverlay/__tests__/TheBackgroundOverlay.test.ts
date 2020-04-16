@@ -55,25 +55,25 @@ describe('CpBackgroundOverlay', () => {
       ${true}   | ${'is'}     | ${true}
       ${false}  | ${'is not'} | ${false}
     `(
-      'template $visibility rendered when isVisible is $isVisible',
-      async ({ isVisible, expected }) => {
-        wrapper.setProps({
-          isVisible,
-        });
-        await wrapper.vm.$nextTick();
+  'template $visibility rendered when isVisible is $isVisible',
+  async ({ isVisible, expected }) => {
+    wrapper.setProps({
+      isVisible,
+    });
+    await wrapper.vm.$nextTick();
 
-        expect((wrapper.vm.$el.childElementCount || 0) > 0).toBe(expected);
-      },
-    );
+    expect((wrapper.vm.$el.childElementCount || 0) > 0).toBe(expected);
+  },
+);
 
-    test('click event on overlay triggers "clickBackgroundOverlay" method',async () => {
+    test('click event on overlay triggers "clickBackgroundOverlay" method', async () => {
       wrapper.setProps({
         isVisible: true,
       });
       await wrapper.vm.$nextTick();
 
       wrapper.setMethods({
-        clickBackgroundOverlay: methodMocks.clickBackgroundOverlay
+        clickBackgroundOverlay: methodMocks.clickBackgroundOverlay,
       });
 
       expect(methodMocks.clickBackgroundOverlay).not.toHaveBeenCalled();

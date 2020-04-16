@@ -8,7 +8,11 @@ describe('CpFooter', () => {
   let wrapper: Wrapper<CpFooter>;
 
   beforeEach((): void => {
-    wrapper = shallowMount(CpFooter);
+    wrapper = shallowMount(CpFooter, {
+      mocks: {
+        $glossary: jest.fn(() => ''),
+      },
+    });
   });
 
   afterEach(() => {

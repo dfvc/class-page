@@ -31,7 +31,7 @@ export const activities = [
     description: 'activity description 3',
     dateCreation: '03-01-2020',
     dateChanged: '',
-  }
+  },
 ];
 
 export const selectedSubjects = [

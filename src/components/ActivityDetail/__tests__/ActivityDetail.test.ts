@@ -52,18 +52,18 @@ describe('CpActivityDetail', () => {
       ${''}           | ${'empty'}          | ${false}
       ${'31-01-2020'} | ${'not empty'}      | ${true}
     `(
-      '"hasDeliveryDate" returns $expected when delivery date is $verboseDeliveryDate',
-      ({ deliveryDate, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryDate,
-          },
-        });
-
-        expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
+  '"hasDeliveryDate" returns $expected when delivery date is $verboseDeliveryDate',
+  ({ deliveryDate, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryDate,
       },
-    );
+    });
+
+    expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
+  },
+);
 
     test.each`
       deliveryMethod        | verboseDeliveryMethod | expected
@@ -71,37 +71,37 @@ describe('CpActivityDetail', () => {
       ${''}                 | ${'empty'}            | ${false}
       ${'delivery method'}  | ${'not empty'}        | ${true}
     `(
-      '"hasDeliveryMethod" returns $expected when delivery method is $verboseDeliveryMethod',
-      ({ deliveryMethod, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryMethod,
-          },
-        });
-
-        expect((wrapper.vm as any).hasDeliveryMethod).toBe(expected);
+  '"hasDeliveryMethod" returns $expected when delivery method is $verboseDeliveryMethod',
+  ({ deliveryMethod, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryMethod,
       },
-    );
+    });
+
+    expect((wrapper.vm as any).hasDeliveryMethod).toBe(expected);
+  },
+);
 
     test.each`
-      attachments     | verboseAttachments  | expected
+      testAttachments | verboseAttachments  | expected
       ${undefined}    | ${'not defined'}    | ${false}
       ${''}           | ${'empty'}          | ${false}
       ${attachments}  | ${'not empty'}      | ${true}
     `(
-      '"hasAttachments" returns $expected when attachments are $verboseAttachments',
-      ({ attachments, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            attachments,
-          },
-        });
-
-        expect((wrapper.vm as any).hasAttachments).toBe(expected);
+  '"hasAttachments" returns $expected when attachments are $verboseAttachments',
+  ({ testAttachments, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        attachments: testAttachments,
       },
-    );
+    });
+
+    expect((wrapper.vm as any).hasAttachments).toBe(expected);
+  },
+);
   });
 
   /**
@@ -115,11 +115,11 @@ describe('CpActivityDetail', () => {
       ${attachments[2]} | ${'unknown'}            | ${'attachment'}
       ${{}}             | ${'not defined'}        | ${'attachment'}
     `(
-      '"attachmentIcon" returns "$expected" when attachment type is $verboseAttachment',
-      ({ attachment, expected }) => {
-        expect((wrapper.vm as any).attachmentIcon(attachment)).toEqual(expected);
-      },
-    );
+  '"attachmentIcon" returns "$expected" when attachment type is $verboseAttachment',
+  ({ attachment, expected }) => {
+    expect((wrapper.vm as any).attachmentIcon(attachment)).toEqual(expected);
+  },
+);
   });
 
   /**
@@ -131,73 +131,73 @@ describe('CpActivityDetail', () => {
       ${true}   | ${'is'}     | ${true}
       ${false}  | ${'is not'} | ${false}
     `(
-      'template $visibility rendered when isVisible is $isVisible',
-      async ({ isVisible, expected }) => {
-        wrapper.setProps({
-          ...activity,
-          isVisible,
-        });
-        await wrapper.vm.$nextTick();
+  'template $visibility rendered when isVisible is $isVisible',
+  async ({ isVisible, expected }) => {
+    wrapper.setProps({
+      ...activity,
+      isVisible,
+    });
+    await wrapper.vm.$nextTick();
 
-        expect((wrapper.vm.$el.childElementCount || 0) > 0).toBe(expected);
-      },
-    );
+    expect((wrapper.vm.$el.childElementCount || 0) > 0).toBe(expected);
+  },
+);
 
     test.each`
       deliveryDate    | condition                       | expected
       ${''}           | ${'not rendered when not set'}  | ${false}
       ${'31-01-2020'} | ${'rendered when set'}          | ${true}
     `(
-      'delivery date is $condition',
-      async ({ deliveryDate, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryDate,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.find(selectors.activityDeliveryDate).exists()).toBe(expected);
+  'delivery date is $condition',
+  async ({ deliveryDate, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryDate,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(selectors.activityDeliveryDate).exists()).toBe(expected);
+  },
+);
 
     test.each`
       deliveryMethod        | condition                       | expected
       ${''}                 | ${'not rendered when not set'}  | ${false}
       ${'delivery method'}  | ${'rendered when set'}          | ${true}
     `(
-      'delivery method is $condition',
-      async ({ deliveryMethod, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryMethod,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.find(selectors.activityDeliveryMethod).exists()).toBe(expected);
+  'delivery method is $condition',
+  async ({ deliveryMethod, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryMethod,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(selectors.activityDeliveryMethod).exists()).toBe(expected);
+  },
+);
 
     test.each`
-      attachments     | condition                       | expected
+      testAttachments | condition                       | expected
       ${''}           | ${'not rendered when not set'}  | ${false}
       ${attachments}  | ${'rendered when set'}          | ${true}
     `(
-      'attachments are $condition',
-      async ({ attachments, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            attachments,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.find(selectors.activityAttachments).exists()).toBe(expected);
+  'attachments are $condition',
+  async ({ testAttachments, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        attachments: testAttachments,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(selectors.activityAttachments).exists()).toBe(expected);
+  },
+);
   });
 });

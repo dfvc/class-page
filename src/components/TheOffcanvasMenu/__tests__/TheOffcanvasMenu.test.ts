@@ -1,5 +1,3 @@
-jest.mock('body-scroll-lock');
-
 import {
   shallowMount,
   Wrapper,
@@ -15,6 +13,8 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock';
+
+jest.mock('body-scroll-lock');
 
 describe('CpOffcanvasMenu', () => {
   let wrapper: Wrapper<CpOffcanvasMenu>;
@@ -74,7 +74,7 @@ describe('CpOffcanvasMenu', () => {
 
       expect(disableBodyScroll).toHaveBeenCalledWith(
         wrapper.vm.$el,
-        { 'reserveScrollBarGap': true },
+        { reserveScrollBarGap: true },
       );
     });
 
@@ -94,7 +94,7 @@ describe('CpOffcanvasMenu', () => {
       expect(enableBodyScroll).toHaveBeenCalledWith(wrapper.vm.$el);
     });
 
-    test(`"click" event on menu button triggers "closeMenu" method`, () => {
+    test('"click" event on menu button triggers "closeMenu" method', () => {
       wrapper.setMethods({
         openMenu: methodMocks.openMenu,
       });

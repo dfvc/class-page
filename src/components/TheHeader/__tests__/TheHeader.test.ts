@@ -43,14 +43,14 @@ describe('CpHeader', () => {
       ${0}              | ${'0'}                    | ${false}
       ${100}            | ${'> 0'}                  | ${true}
     `(
-      '"hasShadow" returns $expected when scrollTopPosition is $verboseScrollTopPosition',
-      ({ scrollTopPosition, expected }) => {
-        wrapper.setData({
-          scrollTopPosition,
-        });
-        expect((wrapper.vm as any).hasShadow).toBe(expected);
-      },
-    );
+  '"hasShadow" returns $expected when scrollTopPosition is $verboseScrollTopPosition',
+  ({ scrollTopPosition, expected }) => {
+    wrapper.setData({
+      scrollTopPosition,
+    });
+    expect((wrapper.vm as any).hasShadow).toBe(expected);
+  },
+);
   });
 
   /**

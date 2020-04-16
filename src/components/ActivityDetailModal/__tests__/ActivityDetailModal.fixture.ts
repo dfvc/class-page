@@ -13,7 +13,7 @@ export const activity = {
 export const selectors = {
   CpBackgroundOverlay: 'cp-background-overlay-stub',
   CpActivityDetail: 'cp-activity-detail-stub',
-}
+};
 
 export const events = {
   onClickBackgroundOverlay: 'on-click-background-overlay',

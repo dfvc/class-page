@@ -51,25 +51,25 @@ describe('CpActivityTile', () => {
       ${''}           | ${'empty'}          | ${false}
       ${'31-01-2020'} | ${'not empty'}      | ${true}
     `(
-      '"hasDeliveryDate" returns $expected when delivery date is $verboseDeliveryDate',
-      ({ deliveryDate, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryDate,
-          },
-        });
-
-        expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
+  '"hasDeliveryDate" returns $expected when delivery date is $verboseDeliveryDate',
+  ({ deliveryDate, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryDate,
       },
-    );
+    });
+
+    expect((wrapper.vm as any).hasDeliveryDate).toBe(expected);
+  },
+);
   });
 
   /**
    * Methods
    */
   describe('Methods', () => {
-    test('"openActivityDetailModal" set isActivityDetailModalOpen to true',() => {
+    test('"openActivityDetailModal" set isActivityDetailModalOpen to true', () => {
       wrapper.setData({
         isActivityDetailModalOpen: false,
       });
@@ -78,7 +78,7 @@ describe('CpActivityTile', () => {
       expect((wrapper.vm as any).isActivityDetailModalOpen).toBe(true);
     });
 
-    test('"closeActivityDetailModal" set isActivityDetailModalOpen to false',() => {
+    test('"closeActivityDetailModal" set isActivityDetailModalOpen to false', () => {
       wrapper.setData({
         isActivityDetailModalOpen: true,
       });
@@ -92,9 +92,9 @@ describe('CpActivityTile', () => {
    * Template / User Interaction
    */
   describe('Template / User Interaction', () => {
-    test('click event on activity tile triggers "openActivityDetailModal" method',() => {
+    test('click event on activity tile triggers "openActivityDetailModal" method', () => {
       wrapper.setMethods({
-        openActivityDetailModal: methodMocks.openActivityDetailModal
+        openActivityDetailModal: methodMocks.openActivityDetailModal,
       });
 
       expect(methodMocks.openActivityDetailModal).not.toHaveBeenCalled();
@@ -103,9 +103,9 @@ describe('CpActivityTile', () => {
       expect(methodMocks.openActivityDetailModal).toHaveBeenCalled();
     });
 
-    test('close activity modal event triggers "closeActivityDetailModal" method',() => {
+    test('close activity modal event triggers "closeActivityDetailModal" method', () => {
       wrapper.setMethods({
-        closeActivityDetailModal: methodMocks.closeActivityDetailModal
+        closeActivityDetailModal: methodMocks.closeActivityDetailModal,
       });
 
       expect(methodMocks.closeActivityDetailModal).not.toHaveBeenCalled();
@@ -119,18 +119,18 @@ describe('CpActivityTile', () => {
       ${''}           | ${'not rendered when not set'}  | ${false}
       ${'31-01-2020'} | ${'rendered when set'}          | ${true}
     `(
-      'delivery date is $condition',
-      async ({ deliveryDate, expected }) => {
-        wrapper.setProps({
-          activity: {
-            ...activity,
-            deliveryDate,
-          },
-        });
-        await wrapper.vm.$nextTick();
-
-        expect(wrapper.find(selectors.activityDeliveryDate).exists()).toBe(expected);
+  'delivery date is $condition',
+  async ({ deliveryDate, expected }) => {
+    wrapper.setProps({
+      activity: {
+        ...activity,
+        deliveryDate,
       },
-    );
+    });
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find(selectors.activityDeliveryDate).exists()).toBe(expected);
+  },
+);
   });
 });
