@@ -2,7 +2,7 @@
   <main class="cp-start-page">
     <div class="cp-start-page__banner">
       <cp-banner
-        :content="content.bannerTop"
+        :content="banner"
         class="fluid-container"
       />
     </div>
@@ -12,7 +12,7 @@
       </h1>
     </div>
     <cp-activity-list
-      :activities="content.activities"
+      :activities="activities"
       :max-activities="5"
       :subject-filter="false"
       class="fluid-container"
@@ -37,15 +37,16 @@
 <script lang="ts">
 import {
   Component,
-  Prop,
   Vue,
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
 import CpBanner from '@/components/Banner/Banner.component.vue';
-import { startPageContent } from '@/data/start-page.data';
-import { activitiesNavigationItem } from '@/data/main-navigation.data';
-import { IStartPage } from '@/types/start-page.type';
+import { activitiesNavigationItem } from '@/repositories/json/main-navigation.json';
 import { IMainNavigationItem } from '@/types/header-menu.type';
+import { IBanner } from '@/types/banner.type';
+import { IActivity } from '@/types/activity.type';
+import { startPageBanner } from '@/repositories/json/banner.json';
+import { activities } from '@/repositories/json/activities.json';
 
 @Component({
   name: 'cp-start-page',
@@ -56,14 +57,12 @@ import { IMainNavigationItem } from '@/types/header-menu.type';
 })
 export default class CpStartPage extends Vue {
   /**
-   * Props
-   */
-  @Prop({ type: Object, default: () => startPageContent })
-  public content: IStartPage;
-
-  /**
    * Data
    */
+  public banner: IBanner = startPageBanner;
+
+  public activities: IActivity[] = activities;
+
   public activitiesNavigationItem: IMainNavigationItem = activitiesNavigationItem;
 }
 </script>

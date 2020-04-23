@@ -29,7 +29,7 @@ import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import CpSelect from '@/components/Select/Select.component.vue';
-import { subjects } from '@/data/subjects.data';
+import { subjects } from '@/repositories/json/subjects.json';
 import { reverse, sortBy } from 'lodash';
 
 @Component({

@@ -1,4 +1,4 @@
-import { subjects } from '@/data/subjects.data';
+import { subjects } from '@/repositories/json/subjects.json';
 import { IActivity } from '@/types/activity.type';
 
 const subjectsMap: any = [];

@@ -20,14 +20,13 @@
 <script lang="ts">
 import {
   Component,
-  Prop,
   Vue,
 } from 'vue-property-decorator';
 import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
 import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpWave from '@/components/Wave/Wave.vue';
-import { headerTitle } from '@/data/header-title.data';
-import { mainNavigationItems } from '@/data/main-navigation.data';
+import { headerTitle } from '@/repositories/json/header-title.json';
+import { mainNavigationItems } from '@/repositories/json/main-navigation.json';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 
@@ -40,13 +39,11 @@ import { IMainNavigationItem } from '@/types/header-menu.type';
 })
 export default class App extends Vue {
   /**
-   * Props
+   * Data
    */
-  @Prop({ type: Array, default: () => mainNavigationItems })
-  public mainNavigationItems: IMainNavigationItem[];
+  public mainNavigationItems: IMainNavigationItem[] = mainNavigationItems;
 
-  @Prop({ type: Object, default: () => headerTitle })
-  public headerTitle: IHeaderTitle;
+  public headerTitle: IHeaderTitle = headerTitle;
 }
 </script>
 
