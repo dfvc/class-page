@@ -17,6 +17,7 @@ module.exports = {
     'no-empty': ['error', { allowEmptyCatch: true }],
     'no-plusplus': 'off',
     'no-multiple-empty-lines': ['error', { max: 1 }],
+    'no-underscore-dangle': 'off',
     'import/no-extraneous-dependencies': 'off',
     'class-methods-use-this': 'off',
     'max-len': 'off',

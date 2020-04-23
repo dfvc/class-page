@@ -7,7 +7,7 @@
       />
     </div>
     <div class="fluid-container">
-      <h1 class="fluid-h1 my-6 bg-white text-main-700 border-main-700 border-b-2">
+      <h1 class="fluid-h1 my-6 text-main-700 border-main-700 border-b-2">
         {{ $glossary('activity.LAST_ACTIVITIES_LIST_TITLE') }}
       </h1>
     </div>
@@ -74,8 +74,8 @@ export default class CpStartPage extends Vue {
       background: linear-gradient(
           theme('colors.main.400'),
           theme('colors.main.400') 50%,
-          theme('colors.white') 50%,
-          theme('colors.white')
+          transparent 50%,
+          transparent
       );
     }
   }

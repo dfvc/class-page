@@ -1,6 +1,6 @@
 <template>
   <main class="cp-activity-page fluid-container">
-    <h1 class="fluid-h1 my-6 bg-white text-main-700 border-main-700 border-b-2">
+    <h1 class="fluid-h1 my-6 text-main-700 border-main-700 border-b-2">
       {{ $glossary('activity.ACTIVITY_LIST_TITLE') }}
     </h1>
     <cp-activity-list :activities="content.activities" />
