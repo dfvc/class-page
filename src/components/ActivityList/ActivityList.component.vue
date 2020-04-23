@@ -2,7 +2,7 @@
   <section class="cp-activity-list">
     <cp-select
       v-if="subjectFilter"
-      :options="subjects"
+      :options="subjectsData.items"
       :multiple="true"
       label="name"
       label-selected="shortName"
@@ -27,9 +27,9 @@ import {
 } from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
+import { SubjectsJsonDataSource } from '@/data-sources/subjects/subjects.json-data-source';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import CpSelect from '@/components/Select/Select.component.vue';
-import { subjects } from '@/repositories/json/subjects.json';
 import { reverse, sortBy } from 'lodash';
 
 @Component({
@@ -55,7 +55,7 @@ export default class CpActivityList extends Vue {
   /**
    * Data
    */
-  public subjects: ISubject[] = subjects;
+  public subjectsData: SubjectsJsonDataSource = new SubjectsJsonDataSource();
 
   public selectedSubjects: ISubject[] = [];
 
@@ -70,6 +70,13 @@ export default class CpActivityList extends Vue {
     visibleActivities = this.sliceActivities(visibleActivities);
 
     return visibleActivities;
+  }
+
+  /**
+   * Events
+   */
+  public created(): void {
+    this.subjectsData.sortByName();
   }
 
   /**
