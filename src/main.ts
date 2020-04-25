@@ -1,12 +1,17 @@
 import '@/styles/_index.scss';
 import Vue from 'vue';
 import { glossary } from '@/glossary/index.glossary';
+import { firebaseConfig } from '@/../config/firebase.config';
+import firebase from 'firebase/app';
 import { routes } from '@/routes/routes';
 import VueRouter from 'vue-router';
 import CpIcon from '@/components/Icon/Icon.component.vue';
-import App from './App.vue';
+import App from '@/App.vue';
 
 Vue.config.productionTip = false;
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 // Global Vars
 Vue.prototype.$glossary = glossary;

@@ -1,7 +1,7 @@
 <template>
   <section class="cp-activity-list">
     <cp-select
-      v-if="subjectFilter"
+      v-if="subjectFilter && !subjectsData.isLoading"
       :options="subjectsData.items"
       :multiple="true"
       label="name"
@@ -27,7 +27,7 @@ import {
 } from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
-import { SubjectsJsonDataSource } from '@/data-sources/subjects/subjects.json-data-source';
+import { SubjectsFirebaseDataSource } from '@/data-sources/subjects/subjects.firebase-data-source';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import CpSelect from '@/components/Select/Select.component.vue';
 import { reverse, sortBy } from 'lodash';
@@ -55,7 +55,7 @@ export default class CpActivityList extends Vue {
   /**
    * Data
    */
-  public subjectsData: SubjectsJsonDataSource = new SubjectsJsonDataSource();
+  public subjectsData: SubjectsFirebaseDataSource = new SubjectsFirebaseDataSource();
 
   public selectedSubjects: ISubject[] = [];
 
@@ -75,7 +75,10 @@ export default class CpActivityList extends Vue {
   /**
    * Events
    */
-  public created(): void {
+  public async mounted(): Promise<void> {
+    if (!this.subjectFilter) return;
+
+    await this.subjectsData.load();
     this.subjectsData.sortByName();
   }
 
@@ -90,11 +93,11 @@ export default class CpActivityList extends Vue {
     if (this.selectedSubjects.length === 0) return activities;
 
     const selectedSubjectsShortNames = this.selectedSubjects.map((selectedSubject) => (
-      selectedSubject.shortName
+      selectedSubject.shortName.toLowerCase()
     ));
 
     return activities.filter(
-      (activity) => selectedSubjectsShortNames.includes(activity.subject.shortName),
+      (activity) => selectedSubjectsShortNames.includes(activity.subject.shortName.toLowerCase()),
     );
   }
 

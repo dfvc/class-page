@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: 'AIzdfvcaSyC0Lk8x2xf0pk06lhLxpiKYLg_Fbg6jz8k',
+  apiKey: 'AIzaSyC0Lk8x2xf0pk06lhLxpiKYLg_Fbg6jz8k',
   authDomain: 'class-page-108d4.firebaseapp.com',
   databaseURL: 'https://class-page-108d4.firebaseio.com',
   projectId: 'class-page-108d4',
