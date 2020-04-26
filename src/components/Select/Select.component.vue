@@ -1,4 +1,3 @@
-import { disableBodyScroll } from "body-scroll-lock";import { enableBodyScroll } from "body-scroll-lock";
 <template>
   <v-select
     v-model="selected"
