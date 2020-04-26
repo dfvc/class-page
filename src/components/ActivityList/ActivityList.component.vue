@@ -1,5 +1,9 @@
 <template>
   <section class="cp-activity-list">
+    <cp-content-loading
+      v-if="subjectFilter && subjectsData.isLoading"
+      class="mt-4 md:w-1/2 lg:w-2/5 h-12"
+    />
     <cp-select
       v-if="subjectFilter && !subjectsData.isLoading"
       :options="subjectsData.items"
@@ -29,6 +33,7 @@ import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
 import { SubjectsFirebaseDataSource } from '@/data-sources/subjects/subjects.firebase-data-source';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
+import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
 import CpSelect from '@/components/Select/Select.component.vue';
 import { reverse, sortBy } from 'lodash';
 
@@ -36,6 +41,7 @@ import { reverse, sortBy } from 'lodash';
   name: 'cp-activity-list',
   components: {
     CpActivityTile,
+    CpContentLoading,
     CpSelect,
   },
 })
