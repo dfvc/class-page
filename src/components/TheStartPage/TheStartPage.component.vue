@@ -44,9 +44,9 @@ import CpBanner from '@/components/Banner/Banner.component.vue';
 import { activitiesNavigationItem } from '@/repositories/json/main-navigation.json';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import { IBanner } from '@/types/banner.type';
-import { IActivity } from '@/types/activity.type';
 import { startPageBanner } from '@/repositories/json/banner.json';
-import { activities } from '@/repositories/json/activities.json';
+import { ActivitiesFirebaseDataSource } from '@/data-sources/activities/activities.firebase-data-source';
+import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 
 @Component({
   name: 'cp-start-page',
@@ -59,11 +59,18 @@ export default class CpStartPage extends Vue {
   /**
    * Data
    */
+  public activities: ActivitiesDataSource = new ActivitiesFirebaseDataSource();
+
   public banner: IBanner = startPageBanner;
 
-  public activities: IActivity[] = activities;
-
   public activitiesNavigationItem: IMainNavigationItem = activitiesNavigationItem;
+
+  /**
+   * Events
+   */
+  public async created(): Promise<void> {
+    await this.activities.load();
+  }
 }
 </script>
 

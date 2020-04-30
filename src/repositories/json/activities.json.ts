@@ -1,12 +1,6 @@
-import { subjects } from '@/repositories/json/subjects.json';
-import { IActivity } from '@/types/activity.type';
-
-const subjectsMap: any = [];
-subjects.forEach((s) => { subjectsMap[s.shortName.toLowerCase()] = s; });
-
-export const activities: IActivity[] = [
+export const activities = [
   {
-    subject: subjectsMap.et,
+    subject: 'et',
     description: 'Construção de um marcador de livros.',
     attachments: [
       {
@@ -21,7 +15,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.ev,
+    subject: 'ev',
     description: 'Efetuar resumo do artigo disponível no website da Fundação Calouste Gulbenkian (link abaixo) sobre a artista Maria Antónia Siza. Devem também realizar um autorretrato com base nos desenhos da referida artista.',
     attachments: [
       {
@@ -41,7 +35,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.ing,
+    subject: 'ing',
     description: 'Aceder ao site da Leya (link abaixo), inscrever-se na sala do 5º ano com o código "qfszs" e realizar os testes disponíveis.',
     attachments: [
       {
@@ -55,14 +49,14 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.mat,
+    subject: 'mat',
     description: 'Realizar a ficha de trabalho das páginas 16, 17, 22 e 23 do manual - parte 2.',
     deliveryMethod: 'Início das aulas.',
     dateCreation: '19-03-2020',
     dateChanged: '',
   },
   {
-    subject: subjectsMap.cn,
+    subject: 'cn',
     description: 'Realizar o relatório da atividade efetuada em sala de aula.',
     attachments: [
       {
@@ -77,7 +71,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.ef,
+    subject: 'ef',
     description: 'Consulta ao site oficial da plataforma FiTescola (leitura e familiarização sobre a ferramenta de trabalho).',
     attachments: [
       {
@@ -95,14 +89,14 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.hgp,
+    subject: 'hgp',
     description: 'Responder às perguntas das páginas 92 e 93 e à ficha n.º 8 do caderno de atividades.',
     deliveryMethod: 'Início das aulas.',
     dateCreation: '13-03-2020',
     dateChanged: '',
   },
   {
-    subject: subjectsMap.hgp,
+    subject: 'hgp',
     description: 'Enviar fotografia do astrolábio pedido anteriormente.',
     deliveryDate: '27-03-2020',
     deliveryMethod: 'Enviar fotografia para <a href="mailto: filomenaandrade@aevrsa.com">filomenaandrade@aevrsa.com</a>',
@@ -110,7 +104,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.por,
+    subject: 'por',
     description: 'Realizar uma ficha de leitura com base na leitura autónoma de um livro.',
     attachments: [
       {
@@ -124,7 +118,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.ef,
+    subject: 'ef',
     description: 'Continuação da tarefa da semana anterior, concretamente da consulta ao site oficial da plataforma FiTescola (leitura e familiarização sobre a ferramenta de trabalho).',
     attachments: [
       {
@@ -142,7 +136,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.tic,
+    subject: 'tic',
     description: 'Efetuar a autoavaliação.',
     attachments: [
       {
@@ -156,7 +150,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.cd,
+    subject: 'cd',
     description: 'Efetuar a autoavaliação.',
     attachments: [
       {
@@ -170,7 +164,7 @@ export const activities: IActivity[] = [
     dateChanged: '',
   },
   {
-    subject: subjectsMap.em,
+    subject: 'em',
     description: 'Efetuar a correção do teste de avaliação, com exeção da parte auditiva.',
     attachments: [
       {

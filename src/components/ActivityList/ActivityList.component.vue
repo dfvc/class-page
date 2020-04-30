@@ -15,7 +15,15 @@
       class="cp-activity-list__filter mt-4 md:w-1/2 lg:w-2/5"
       @onSelect="subjectSelectionChanged"
     />
+    <div v-if="activities.isLoading">
+      <cp-content-loading
+        v-for="index in 3"
+        :key="index"
+        class="my-4 h-32"
+      />
+    </div>
     <cp-activity-tile
+      v-else
       v-for="(activity, index) in visibleActivities"
       :key="index"
       :activity="activity"
@@ -31,11 +39,16 @@ import {
 } from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
+import { SubjectsDataSource } from '@/data-sources/subjects/subjects.data-source';
 import { SubjectsFirebaseDataSource } from '@/data-sources/subjects/subjects.firebase-data-source';
+import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
 import CpSelect from '@/components/Select/Select.component.vue';
-import { reverse, sortBy } from 'lodash';
+import {
+  reverse,
+  sortBy,
+} from 'lodash';
 
 @Component({
   name: 'cp-activity-list',
@@ -49,8 +62,8 @@ export default class CpActivityList extends Vue {
   /**
    * Props
    */
-  @Prop({ type: Array, required: true })
-  public activities: IActivity[];
+  @Prop({ type: Object, required: true })
+  public activities: ActivitiesDataSource;
 
   @Prop({ type: Number, default: -1 })
   public maxActivities: number;
@@ -61,7 +74,7 @@ export default class CpActivityList extends Vue {
   /**
    * Data
    */
-  public subjectsData: SubjectsFirebaseDataSource = new SubjectsFirebaseDataSource();
+  public subjectsData: SubjectsDataSource = new SubjectsFirebaseDataSource();
 
   public selectedSubjects: ISubject[] = [];
 
@@ -69,7 +82,8 @@ export default class CpActivityList extends Vue {
    * Computed Props
    */
   public get visibleActivities(): IActivity[] {
-    let visibleActivities = this.activities;
+    console.log(this.activities.items);
+    let visibleActivities = this.activities.items;
 
     visibleActivities = this.filterActivities(visibleActivities);
     visibleActivities = this.sortActivitiesByDateCreation(visibleActivities);
@@ -81,7 +95,7 @@ export default class CpActivityList extends Vue {
   /**
    * Events
    */
-  public async mounted(): Promise<void> {
+  public async created(): Promise<void> {
     if (!this.subjectFilter) return;
 
     await this.subjectsData.load();

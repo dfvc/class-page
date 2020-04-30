@@ -13,8 +13,8 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
-import { IActivity } from '@/types/activity.type';
-import { activities } from '@/repositories/json/activities.json';
+import { ActivitiesFirebaseDataSource } from '@/data-sources/activities/activities.firebase-data-source';
+import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 
 @Component({
   name: 'cp-activity-page',
@@ -26,6 +26,15 @@ export default class CpActivityPage extends Vue {
   /**
    * Data
    */
-  public activities: IActivity[] = activities;
+  public activities: ActivitiesDataSource = new ActivitiesFirebaseDataSource();
+
+  /**
+   * Events
+   */
+  public async created(): Promise<void> {
+    await setTimeout(async () => {
+      await this.activities.load();
+    }, 2000);
+  }
 }
 </script>

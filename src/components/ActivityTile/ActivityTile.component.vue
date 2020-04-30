@@ -1,5 +1,10 @@
 <template>
+  <cp-content-loading
+    v-if="isLoading"
+    class="my-4 h-32"
+  />
   <article
+    v-else
     :style="{ borderColor: activity.subject.color }"
     class="cp-activity-tile relative flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8 border-t duration-300 hover:shadow-md group"
     @click="openActivityDetailModal"
@@ -94,12 +99,14 @@ import {
 } from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
 import CpActivityDetailModal from '@/components/ActivityDetailModal/ActivityDetailModal.component.vue';
+import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
 import VClamp from 'vue-clamp';
 
 @Component({
   name: 'cp-activity-tile',
   components: {
     CpActivityDetailModal,
+    CpContentLoading,
     VClamp,
   },
 })
@@ -109,6 +116,9 @@ export default class CpActivityTile extends Vue {
    */
   @Prop({ type: Object, required: true })
   public activity: IActivity;
+
+  @Prop({ type: Boolean, default: false })
+  public isLoading: boolean;
 
   /**
    * Computed Prop
