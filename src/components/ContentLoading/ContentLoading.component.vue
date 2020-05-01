@@ -18,7 +18,7 @@ export default class CpContentLoading extends Vue {
 <style lang="scss" scoped>
   .cp-content-loading {
     @apply relative;
-    @apply bg-gray-200 bg-opacity-25;
+    @apply bg-gray-200 bg-opacity-50;
     @apply rounded;
     @apply overflow-hidden;
 

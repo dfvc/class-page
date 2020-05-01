@@ -110,6 +110,7 @@ export default class CpSelect extends Vue {
       }
 
       &__dropdown-toggle {
+        @apply rounded;
         @apply bg-white;
         min-height: theme('spacing.12');
       }

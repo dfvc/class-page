@@ -21,7 +21,7 @@ module.exports = {
       .plugin('html')
       .tap((args) => {
         args[0].title = appConfig.title;
-        args[0].mainColor = defaultTheme.colors[appConfig.theme]['400'];
+        args[0].mainColor = defaultTheme.colors[appConfig.theme.mainColor]['400'];
 
         return args;
       });
