@@ -32,9 +32,7 @@ export default class CpActivityPage extends Vue {
    * Events
    */
   public async created(): Promise<void> {
-    await setTimeout(async () => {
-      await this.activities.load();
-    }, 2000);
+    await this.activities.load();
   }
 }
 </script>

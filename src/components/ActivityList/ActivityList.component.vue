@@ -17,7 +17,7 @@
     />
     <div v-if="activities.isLoading">
       <cp-content-loading
-        v-for="index in 3"
+        v-for="index in maxActivityPlaceholders"
         :key="index"
         class="my-4 h-32"
       />
@@ -90,6 +90,10 @@ export default class CpActivityList extends Vue {
     visibleActivities = this.sliceActivities(visibleActivities);
 
     return visibleActivities;
+  }
+
+  public get maxActivityPlaceholders(): number {
+    return this.maxActivities > 0 ? this.maxActivities : 10;
   }
 
   /**
