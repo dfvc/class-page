@@ -82,7 +82,6 @@ export default class CpActivityList extends Vue {
    * Computed Props
    */
   public get visibleActivities(): IActivity[] {
-    console.log(this.activities.items);
     let visibleActivities = this.activities.items;
 
     visibleActivities = this.filterActivities(visibleActivities);
