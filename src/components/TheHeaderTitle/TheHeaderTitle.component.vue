@@ -1,21 +1,21 @@
 <template>
   <div class="cp-header-title">
     <h1 class="cp-header-title__headline font-bold text-white leading-tight">
-      {{ title.headline }}
+      {{ title.title }}
     </h1>
     <div
       v-if="displaySubHeadline"
       class="cp-header-title__sub-headline text-xs text-main-900 leading-none tracking-tighter md:tracking-normal"
     >
       <span
-        v-if="title.subHeadlineRow1"
-        :class="{ 'border-r border-main-600 pr-2 mr-2': title.subHeadlineRow2 }"
+        v-if="title.subTitleRow1"
+        :class="{ 'border-r border-main-600 pr-2 mr-2': title.subTitleRow2 }"
         class="cp-header-title__sub-headline-row1"
-      >{{ title.subHeadlineRow1 }}</span>
+      >{{ title.subTitleRow1 }}</span>
       <span
-        v-if="title.subHeadlineRow2"
+        v-if="title.subTitleRow2"
         class="cp-header-title__sub-headline-row2"
-      >{{ title.subHeadlineRow2 }}</span>
+      >{{ title.subTitleRow2 }}</span>
     </div>
   </div>
 </template>
@@ -42,8 +42,8 @@ export default class CpHeaderTitle extends Vue {
    * Computed Props
    */
   public displaySubHeadline(): boolean {
-    return (this.title.subHeadlineRow1 || '').length > 0
-      || (this.title.subHeadlineRow2 || '').length > 0;
+    return (this.title.subTitleRow1 || '').length > 0
+      || (this.title.subTitleRow2 || '').length > 0;
   }
 }
 </script>

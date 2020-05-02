@@ -1,7 +1,7 @@
 import { IHeaderTitle } from '@/types/header-title.type';
 
 export const title: IHeaderTitle = {
-  headline: 'title',
+  title: 'title',
 };
 
 export const selectors = {

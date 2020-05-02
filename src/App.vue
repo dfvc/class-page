@@ -26,7 +26,6 @@ import {
 import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
 import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpWave from '@/components/Wave/Wave.vue';
-import { headerTitle } from '@/repositories/json/header-title.json';
 import { mainNavigationItems } from '@/repositories/json/main-navigation.json';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
@@ -44,35 +43,10 @@ export default class App extends Vue {
    */
   public mainNavigationItems: IMainNavigationItem[] = mainNavigationItems;
 
-  public headerTitle: IHeaderTitle = headerTitle;
+  public headerTitle: IHeaderTitle = {
+    title: Vue.prototype.$glossary('header.TITLE'),
+    subTitleRow1: Vue.prototype.$glossary('header.SUBTITLE_ROW1'),
+    subTitleRow2: Vue.prototype.$glossary('header.SUBTITLE_ROW2'),
+  };
 }
 </script>
-
-<style lang="scss">
-  .cp-app-body {
-    /*background: linear-gradient(*/
-    /*    theme('colors.main.400'),*/
-    /*    theme('colors.main.400') theme('spacing.40'),*/
-    /*    theme('colors.white') theme('spacing.40'),*/
-    /*    theme('colors.white')*/
-    /*);*/
-
-    /*@screen md {*/
-    /*  background: linear-gradient(*/
-    /*      theme('colors.main.400'),*/
-    /*      theme('colors.main.400') calc(theme('spacing.40') + theme('spacing.4')),*/
-    /*      theme('colors.white') calc(theme('spacing.40') + theme('spacing.4')),*/
-    /*      theme('colors.white')*/
-    /*  );*/
-    /*}*/
-
-    /*@screen lg {*/
-    /*  background: linear-gradient(*/
-    /*      theme('colors.main.400'),*/
-    /*      theme('colors.main.400') theme('spacing.48'),*/
-    /*      theme('colors.white') theme('spacing.48'),*/
-    /*      theme('colors.white')*/
-    /*  );*/
-    /*}*/
-  }
-</style>

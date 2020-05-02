@@ -15,5 +15,5 @@ export const navigationItems: IMainNavigationItem[] = [
 ];
 
 export const title: IHeaderTitle = {
-  headline: 'title',
+  title: 'title',
 };

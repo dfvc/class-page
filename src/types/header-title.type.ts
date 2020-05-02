@@ -1,5 +1,5 @@
 export interface IHeaderTitle {
-  headline: string;
-  subHeadlineRow1?: string;
-  subHeadlineRow2?: string;
+  title: string;
+  subTitleRow1?: string;
+  subTitleRow2?: string;
 }

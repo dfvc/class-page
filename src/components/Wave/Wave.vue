@@ -20,7 +20,7 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { wavePathDraws } from '@/repositories/json/wave-paths.json';
+import { wavePathDraws } from '@/components/Wave/data/wave-paths.json';
 
 const TRANSITION_DURATION_THRESHOLD = 1;
 
