@@ -1,7 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const defaultTheme = require('tailwindcss/defaultTheme');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const appConfig = require('./config/app.config');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 const customBorderRadius = {
   none: {
@@ -25,6 +25,25 @@ const customBorderRadius = {
 };
 
 module.exports = {
+  purge: {
+    content: [
+      './src/**/*.vue',
+      './src/**/*.scss',
+    ],
+    options: {
+      whitelistPatterns: [
+        // Vue transition related
+        /-(leave|enter|appear)(|-(to|from|active))$/,
+        // Vue transition-group related
+        /^(?!cursor-move).+-move$/,
+        // Vue-router default classes
+        /^router-link(|-exact)-active$/,
+        // vue-select
+        /vs.*/,
+      ],
+      defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+    },
+  },
   theme: {
     extend: {
       spacing: {
@@ -32,7 +51,9 @@ module.exports = {
       },
       borderRadius: {
         ...defaultTheme.borderRadius,
-        ...customBorderRadius[appConfig.theme.corners] ? customBorderRadius[appConfig.theme.corners] : {},
+        ...customBorderRadius[appConfig.theme.corners]
+          ? customBorderRadius[appConfig.theme.corners]
+          : {},
       },
       colors: {
         main: defaultTheme.colors[appConfig.theme.mainColor],
