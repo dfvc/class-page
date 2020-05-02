@@ -9,6 +9,7 @@
         <router-view />
       </div>
       <cp-wave
+        v-if="$appConfig.theme.useFooterWaves"
         :transition-duration="20"
         class="absolute right-0 bottom-0 left-0 z-10 text-main-400"
       />

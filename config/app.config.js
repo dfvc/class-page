@@ -1,8 +1,8 @@
 module.exports = {
   title: '5º C | Tarefas Escolares',
   theme: {
-    mainColor: 'teal',
+    mainColor: 'blue',
     corners: 'smooth',
-    useFooterWaves: false,
+    useFooterWaves: true,
   },
 };

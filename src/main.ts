@@ -8,12 +8,17 @@ import VueRouter from 'vue-router';
 import CpIcon from '@/components/Icon/Icon.component.vue';
 import App from '@/App.vue';
 
+/* eslint-disable @typescript-eslint/no-var-requires */
+const appConfig = require('@/../config/app.config');
+/* eslint-enable @typescript-eslint/no-var-requires */
+
 Vue.config.productionTip = false;
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
 // Global Vars
+Vue.prototype.$appConfig = appConfig;
 Vue.prototype.$glossary = glossary;
 
 // Global Components
