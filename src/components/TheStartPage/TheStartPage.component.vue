@@ -41,10 +41,9 @@ import {
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
 import CpBanner from '@/components/Banner/Banner.component.vue';
-import { activitiesNavigationItem } from '@/repositories/json/main-navigation.json';
+import { activitiesNavigationItem } from '@/routes/main-navigation';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import { IBanner } from '@/types/banner.type';
-import { startPageBanner } from '@/repositories/json/banner.json';
 import { ActivitiesFirebaseDataSource } from '@/data-sources/activities/activities.firebase-data-source';
 import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 
@@ -61,7 +60,12 @@ export default class CpStartPage extends Vue {
    */
   public activities: ActivitiesDataSource = new ActivitiesFirebaseDataSource();
 
-  public banner: IBanner = startPageBanner;
+  public banner: IBanner = {
+    headline: '',
+    subHeadline: '',
+    link: '',
+    bgImage: 'https://c4.wallpaperflare.com/wallpaper/22/796/979/photography-of-body-of-water-with-rocks-gotland-sweden-gotland-sweden-wallpaper-preview.jpg',
+  };
 
   public activitiesNavigationItem: IMainNavigationItem = activitiesNavigationItem;
 

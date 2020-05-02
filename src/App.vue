@@ -26,7 +26,7 @@ import {
 import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
 import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpWave from '@/components/Wave/Wave.vue';
-import { mainNavigationItems } from '@/repositories/json/main-navigation.json';
+import { mainNavigationItems } from '@/routes/main-navigation';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 
