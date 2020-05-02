@@ -1,4 +1,5 @@
 export enum EFirebaseCollections {
-  SUBJECTS = 'subjects',
   ACTIVITIES = 'activities',
+  ACTIVITY_ATTACHMENTS = 'activity-attachments',
+  SUBJECTS = 'subjects',
 }

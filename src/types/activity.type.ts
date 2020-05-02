@@ -11,6 +11,7 @@ export interface IActivity {
 }
 
 export interface IActivityAttachment {
+  id: string;
   url: string;
   text: string;
   type: string;

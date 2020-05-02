@@ -3,6 +3,7 @@ import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-
 import { IActivity } from '@/types/activity.type';
 import { FirebaseClient } from '@/clients/firebase/firebase.client';
 import { SubjectsFirebaseDataSource } from '@/data-sources/subjects/subjects.firebase-data-source';
+import { ActivityAttachmentsFirebaseDataSource } from '@/data-sources/activity-attachments/activity-attachments.firebase-data-source';
 import { EFirebaseCollections } from '@/clients/firebase/firebase.enum';
 
 export class ActivitiesFirebaseDataSource extends ActivitiesDataSource {
@@ -10,18 +11,19 @@ export class ActivitiesFirebaseDataSource extends ActivitiesDataSource {
     this.isLoading = true;
     const client = new FirebaseClient<IActivity>(EFirebaseCollections.ACTIVITIES);
     const items = await client.getAll();
-    Vue.set(this, 'items', await this.expandedItemsWithSubjects(items));
+    Vue.set(this, 'items', await this.expandedItems(items));
     this.isLoading = false;
   }
 
-  protected async expandedItemsWithSubjects(rawItems: any[]): Promise<IActivity[]> {
-    const subjects = new SubjectsFirebaseDataSource();
-    await subjects.load();
-    const subjectsMap: any = subjects.getIndexedByShortName();
+  protected async expandedItems(rawItems: any[]): Promise<IActivity[]> {
+    let items = rawItems;
 
-    return rawItems.map((rawItem) => ({
-      ...rawItem,
-      subject: subjectsMap[rawItem.subject],
-    }));
+    const subjects = new SubjectsFirebaseDataSource();
+    items = await this.expandedItemsWithSubjects(items, subjects);
+
+    const attachments = new ActivityAttachmentsFirebaseDataSource();
+    items = await this.expandedItemsWithAttachments(items, attachments);
+
+    return items;
   }
 }

@@ -2,13 +2,7 @@ export const activities = [
   {
     subject: 'et',
     description: 'Construção de um marcador de livros.',
-    attachments: [
-      {
-        url: '#',
-        text: 'Enunciado',
-        type: 'doc',
-      },
-    ],
+    attachments: ['AAT-1'],
     deliveryDate: '23-03-2020',
     deliveryMethod: 'Enviar fotografia do marcador para elisabeteisabel@aevrsa.com',
     dateCreation: '19-03-2020',
@@ -17,18 +11,7 @@ export const activities = [
   {
     subject: 'ev',
     description: 'Efetuar resumo do artigo disponível no website da Fundação Calouste Gulbenkian (link abaixo) sobre a artista Maria Antónia Siza. Devem também realizar um autorretrato com base nos desenhos da referida artista.',
-    attachments: [
-      {
-        url: '#',
-        text: 'Enunciado',
-        type: 'doc',
-      },
-      {
-        url: 'https://gulbenkian.pt/',
-        text: 'Fundação Calouste Gulbenkian',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-2', 'AAT-3'],
     deliveryDate: '23-03-2020',
     deliveryMethod: 'Enviar fotografia para elisabeteisabel@aevrsa.com',
     dateCreation: '19-03-2020',
@@ -37,13 +20,7 @@ export const activities = [
   {
     subject: 'ing',
     description: 'Aceder ao site da Leya (link abaixo), inscrever-se na sala do 5º ano com o código "qfszs" e realizar os testes disponíveis.',
-    attachments: [
-      {
-        url: 'https://auladigital.leya.com/',
-        text: 'Leya',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-4'],
     deliveryDate: '23-03-2020',
     dateCreation: '19-03-2020',
     dateChanged: '',
@@ -58,13 +35,7 @@ export const activities = [
   {
     subject: 'cn',
     description: 'Realizar o relatório da atividade efetuada em sala de aula.',
-    attachments: [
-      {
-        url: '#',
-        text: 'Relatório',
-        type: 'doc',
-      },
-    ],
+    attachments: ['AAT-5'],
     deliveryDate: '23-03-2020',
     deliveryMethod: 'Enviar fotografia para cristinabarbosa@aevrsa.com',
     dateCreation: '19-03-2020',
@@ -73,18 +44,7 @@ export const activities = [
   {
     subject: 'ef',
     description: 'Consulta ao site oficial da plataforma FiTescola (leitura e familiarização sobre a ferramenta de trabalho).',
-    attachments: [
-      {
-        url: '#',
-        text: 'Enunciado',
-        type: 'doc',
-      },
-      {
-        url: 'https://fitescola.dge.mec.pt',
-        text: 'FiTescola',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-6', 'AAT-7'],
     dateCreation: '19-03-2020',
     dateChanged: '',
   },
@@ -106,13 +66,7 @@ export const activities = [
   {
     subject: 'por',
     description: 'Realizar uma ficha de leitura com base na leitura autónoma de um livro.',
-    attachments: [
-      {
-        url: '#',
-        text: 'Ficha de Leitura',
-        type: 'doc',
-      },
-    ],
+    attachments: ['AAT-8'],
     deliveryMethod: 'Início das aulas.',
     dateCreation: '23-03-2020',
     dateChanged: '',
@@ -120,31 +74,14 @@ export const activities = [
   {
     subject: 'ef',
     description: 'Continuação da tarefa da semana anterior, concretamente da consulta ao site oficial da plataforma FiTescola (leitura e familiarização sobre a ferramenta de trabalho).',
-    attachments: [
-      {
-        url: '#',
-        text: 'Enunciado',
-        type: 'doc',
-      },
-      {
-        url: 'https://fitescola.dge.mec.pt',
-        text: 'FiTescola',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-6', 'AAT-7'],
     dateCreation: '24-03-2020',
     dateChanged: '',
   },
   {
     subject: 'tic',
     description: 'Efetuar a autoavaliação.',
-    attachments: [
-      {
-        url: 'https://forms.gle/CJZtQMc9WCVn7JpAA',
-        text: 'Ficha de Autoavaliação',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-9'],
     deliveryDate: '27-03-2020',
     dateCreation: '24-03-2020',
     dateChanged: '',
@@ -152,13 +89,7 @@ export const activities = [
   {
     subject: 'cd',
     description: 'Efetuar a autoavaliação.',
-    attachments: [
-      {
-        url: 'https://forms.gle/UX491RSA6JWyqk6D7',
-        text: 'Ficha de Autoavaliação',
-        type: 'url',
-      },
-    ],
+    attachments: ['AAT-10'],
     deliveryDate: '27-03-2020',
     dateCreation: '24-03-2020',
     dateChanged: '',
@@ -166,13 +97,7 @@ export const activities = [
   {
     subject: 'em',
     description: 'Efetuar a correção do teste de avaliação, com exeção da parte auditiva.',
-    attachments: [
-      {
-        url: '#',
-        text: 'Teste de Avaliação',
-        type: 'doc',
-      },
-    ],
+    attachments: ['AAT-11'],
     deliveryMethod: '1ª sexta-feira de aulas',
     dateCreation: '25-03-2020',
     dateChanged: '',
