@@ -1,7 +1,12 @@
 <template>
   <div class="cp-header-title">
     <h1 class="cp-header-title__headline font-bold text-white leading-tight">
-      {{ title.title }}
+      <router-link
+        :to="title.titleLink.url"
+        :title="title.titleLink.text"
+      >
+        {{ title.title }}
+      </router-link>
     </h1>
     <div
       v-if="displaySubHeadline"

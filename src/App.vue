@@ -26,7 +26,10 @@ import {
 import CpFooter from '@/components/TheFooter/TheFooter.component.vue';
 import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpWave from '@/components/Wave/Wave.vue';
-import { mainNavigationItems } from '@/routes/main-navigation';
+import {
+  homeNavigationItem,
+  mainNavigationItems,
+} from '@/routes/main-navigation';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 
@@ -45,6 +48,7 @@ export default class App extends Vue {
 
   public headerTitle: IHeaderTitle = {
     title: Vue.prototype.$glossary('header.TITLE'),
+    titleLink: homeNavigationItem,
     subTitleRow1: Vue.prototype.$glossary('header.SUBTITLE_ROW1'),
     subTitleRow2: Vue.prototype.$glossary('header.SUBTITLE_ROW2'),
   };

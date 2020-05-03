@@ -3,26 +3,32 @@ import CpAboutPage from '@/components/TheAboutPage/TheAboutPage.component.vue';
 import CpActivityPage from '@/components/TheActivityPage/TheActivityPage.component.vue';
 import CpStartPage from '@/components/TheStartPage/TheStartPage.component.vue';
 import CpUtilityPage from '@/components/TheUtilityPage/TheUtilityPage.component.vue';
+import {
+  aboutNavigationItem,
+  activitiesNavigationItem,
+  homeNavigationItem,
+  utilitiesNavigationItem,
+} from '@/routes/main-navigation';
 
 export const routes: RouteConfig[] = [
-  {
-    path: '/',
-    component: CpStartPage,
-  },
   {
     path: '*',
     component: CpStartPage,
   },
   {
-    path: '/atividades',
+    path: homeNavigationItem.url,
+    component: CpStartPage,
+  },
+  {
+    path: activitiesNavigationItem.url,
     component: CpActivityPage,
   },
   {
-    path: '/utilidades',
+    path: utilitiesNavigationItem.url,
     component: CpUtilityPage,
   },
   {
-    path: '/acerca',
+    path: aboutNavigationItem.url,
     component: CpAboutPage,
   },
 ];

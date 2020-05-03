@@ -2,6 +2,10 @@ import { IHeaderTitle } from '@/types/header-title.type';
 
 export const title: IHeaderTitle = {
   title: 'title',
+  titleLink: {
+    url: '#',
+    text: 'Go to Title',
+  },
 };
 
 export const selectors = {

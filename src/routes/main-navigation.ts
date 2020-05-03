@@ -13,7 +13,7 @@ export const activitiesNavigationItem: IMainNavigationItem = {
 };
 
 export const utilitiesNavigationItem: IMainNavigationItem = {
-  url: 'utilidades',
+  url: '/utilidades',
   text: 'Utilidades',
   icon: 'cloud-computing',
 };

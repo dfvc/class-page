@@ -16,4 +16,8 @@ export const navigationItems: IMainNavigationItem[] = [
 
 export const title: IHeaderTitle = {
   title: 'title',
+  titleLink: {
+    url: '#',
+    text: 'Go to Title',
+  },
 };
