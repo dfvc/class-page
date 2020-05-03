@@ -3,4 +3,5 @@ export interface IMainNavigationItem {
   text: string;
   target?: string;
   icon?: string;
+  visibility?: string[];
 }

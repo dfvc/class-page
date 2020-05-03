@@ -24,9 +24,25 @@ export const aboutNavigationItem: IMainNavigationItem = {
   icon: 'question-mark',
 };
 
+export const loginNavigationItem: IMainNavigationItem = {
+  url: '/login',
+  text: 'Iniciar Sessão',
+  icon: 'enter',
+  visibility: ['non-auth'],
+};
+
+export const logoutNavigationItem: IMainNavigationItem = {
+  url: '/logout',
+  text: 'Terminar Sessão',
+  icon: 'exit',
+  visibility: ['auth'],
+};
+
 export const mainNavigationItems: IMainNavigationItem[] = [
   homeNavigationItem,
   activitiesNavigationItem,
   utilitiesNavigationItem,
   aboutNavigationItem,
+  loginNavigationItem,
+  logoutNavigationItem,
 ];
