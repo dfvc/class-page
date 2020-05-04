@@ -18,6 +18,8 @@ Vue.config.productionTip = false;
 firebase.initializeApp(firebaseConfig);
 
 // Global Vars
+const EventBus = new Vue();
+Vue.prototype.$event = EventBus;
 Vue.prototype.$appConfig = appConfig;
 Vue.prototype.$glossary = glossary;
 
