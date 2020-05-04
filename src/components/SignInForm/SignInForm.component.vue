@@ -38,8 +38,10 @@ import {
   Component,
   Mixins,
   Prop,
+  Vue,
 } from 'vue-property-decorator';
 import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
+import { EEvents } from '@/enums/events.enum';
 
 @Component({
   name: 'cp-sign-in-form',
@@ -50,6 +52,15 @@ export default class CpSignInForm extends Mixins(CpAuth) {
    */
   @Prop({ type: Boolean, default: false })
   public isVisible: boolean;
+
+  /**
+   * Events
+   */
+  public mounted(): void {
+    Vue.prototype.$event.$on(EEvents.SIGN_OUT, () => {
+      this.signOut();
+    });
+  }
 
   /**
    * Methods

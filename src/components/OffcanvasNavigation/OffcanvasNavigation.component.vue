@@ -26,7 +26,21 @@
             v-if="showNavigationItem(item)"
             class="cp-offcanvas-navigation__item"
           >
+            <div
+              v-if="item.name === 'signin'"
+              :title="item.text"
+              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200 cursor-pointer"
+              @click="onClickNavigationItem($event, item)"
+            >
+              <cp-icon
+                :name="item.icon"
+                :alt="item.text"
+                class="mr-2 h-6 w-6"
+              />
+              {{ item.text }}
+            </div>
             <router-link
+              v-else
               :to="item.url"
               :title="item.text"
               class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
@@ -56,6 +70,7 @@ import {
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
 import CpSignInModal from '@/components/SignInModal/SignInModal.component.vue';
+import { EEvents } from '@/enums/events.enum';
 
 @Component({
   name: 'cp-offcanvas-navigation',
@@ -94,8 +109,8 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
   }
 
   public onClickNavigationItem(event: Event, item: IMainNavigationItem): void {
-    if (item.url === '/login') { Vue.prototype.$event.$emit('EVENT_NAME'); }
-    if (item.url === '/logout') { this.signOut(); }
+    if (item.name === 'signin') { Vue.prototype.$event.$emit(EEvents.OPEN_SIGN_IN_MODAL); }
+    if (item.name === 'signout') { Vue.prototype.$event.$emit(EEvents.SIGN_OUT); }
 
     this.$emit('on-close-offcanvas-navigation');
   }

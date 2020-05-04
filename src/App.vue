@@ -40,6 +40,7 @@ import {
 } from '@/routes/main-navigation';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
+import { EEvents } from '@/enums/events.enum';
 
 @Component({
   components: {
@@ -68,7 +69,7 @@ export default class App extends Vue {
    * Events
    */
   public mounted(): void {
-    Vue.prototype.$event.$on('EVENT_NAME', () => {
+    Vue.prototype.$event.$on(EEvents.OPEN_SIGN_IN_MODAL, () => {
       this.openSignInModal();
     });
   }
