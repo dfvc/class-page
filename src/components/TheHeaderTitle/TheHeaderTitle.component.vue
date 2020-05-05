@@ -44,7 +44,7 @@ export default class CpHeaderTitle extends Vue {
   public title: IHeaderTitle;
 
   /**
-   * Computed Props
+   * Methods
    */
   public displaySubHeadline(): boolean {
     return (this.title.subTitleRow1 || '').length > 0

@@ -6,6 +6,12 @@
     <div class="cp-header__inner fluid-container flex items-center py-6">
       <cp-offcanvas-menu :navigation-items="navigationItems" />
       <cp-header-title :title="title" />
+      <div
+        v-if="isUserAuthenticated"
+        class="flex-1 self-end hidden md:block text-right text-xs text-main-100 leading-none tracking-tighter md:tracking-normal"
+      >
+        {{ authenticatedUser.email }}
+      </div>
     </div>
   </header>
 </template>
@@ -13,13 +19,14 @@
 <script lang="ts">
 import {
   Component,
+  Mixins,
   Prop,
-  Vue,
 } from 'vue-property-decorator';
 import { IHeaderTitle } from '@/types/header-title.type';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import CpOffcanvasMenu from '@/components/TheOffcanvasMenu/TheOffcanvasMenu.component.vue';
 import CpHeaderTitle from '@/components/TheHeaderTitle/TheHeaderTitle.component.vue';
+import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
 
 const SHADOW_THRESHOLD: number = 88;
 
@@ -30,7 +37,7 @@ const SHADOW_THRESHOLD: number = 88;
     CpOffcanvasMenu,
   },
 })
-export default class CpHeader extends Vue {
+export default class CpHeader extends Mixins(CpAuth) {
   /**
    * Props
    */

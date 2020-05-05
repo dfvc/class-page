@@ -2,7 +2,7 @@
   <div class="cp-input cp-form__element flex items-center border border-solid border-main-400 rounded">
     <label
       :for="name"
-      class="mx-3"
+      class="mx-3 whitespace-no-wrap"
     >
       {{ label }}
     </label>
@@ -13,7 +13,7 @@
       :type="type"
       :placeholder="placeholder"
       :autofocus="autoFocus"
-      class="flex-1 p-3"
+      class="flex-1 w-full p-3"
       @input="$emit('input', $event.target.value)"
     >
   </div>
