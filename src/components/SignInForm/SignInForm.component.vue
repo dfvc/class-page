@@ -128,10 +128,10 @@ export default class CpSignInForm extends Mixins(CpAuth) {
   public onClickCloseButton(): void {
     this.$emit('on-close-sign-in-form');
     this.resetFormFieldValues();
+    this.resetAuthenticationError();
   }
 
   public async submitSignInForm(): Promise<void> {
-    this.resetAuthenticationError();
     await this.signIn(this.formFieldValues.email, this.formFieldValues.password);
 
     if (this.isUserAuthenticated) {
