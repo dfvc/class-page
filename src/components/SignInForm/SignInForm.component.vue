@@ -4,6 +4,11 @@
     name="cp-sign-in-form__transition"
   >
     <section class="cp-sign-in-form fluid-container fluid-container--with-vertical fixed m-auto bg-white rounded-lg shadow-2xl">
+      <cp-content-loading
+        v-if="isSigningIn"
+        :contained="true"
+      />
+
       <div class="cp-sign-in-form__content flex flex-col h-full overflow-y-auto scrolling-touch">
         <div class="cp-sign-in-form__header sticky top-0 flex justify-between items-center bg-main-500 rounded-lg">
           <h1 class="cp-sign-in-form__headline flex-grow text-lg md:text-xl text-white p-3">
@@ -23,10 +28,40 @@
         </div>
 
         <div class="cp-sign-in-form__body flex-grow">
-          FORM
-          <p @click="submitSignInForm">
-            LOGIN
-          </p>
+          <form
+            :id="formName"
+            class="cp-form mt-6"
+            @keypress.enter="submitSignInForm"
+          >
+            <cp-input
+              v-model="formFieldValues.email"
+              :name="formFieldNames.email"
+              :auto-focus="true"
+              :label="$glossary('auth.SIGNIN_EMAIL')"
+            />
+
+            <cp-input
+              v-model="formFieldValues.password"
+              :name="formFieldNames.password"
+              :label="$glossary('auth.SIGNIN_PASSWORD')"
+              type="password"
+            />
+
+            <p
+              v-if="authenticationError.length"
+              class="mt-6 text-red-700 text-xs"
+            >
+              {{ authenticationError }}
+            </p>
+
+            <div class="flex justify-end mt-6">
+              <cp-button
+                :label="$glossary('auth.SIGNIN_ENTER')"
+                type="button"
+                @click.native.prevent="submitSignInForm"
+              />
+            </div>
+          </form>
         </div>
       </div>
     </section>
@@ -41,10 +76,19 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
+import CpButton from '@/components/Button/Button.component.vue';
+import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
+import CpInput from '@/components/Form/Input.component.vue';
 import { EEvents } from '@/enums/events.enum';
+import { IFormFieldsSignIn } from '@/types/form-sign-in.type';
 
 @Component({
   name: 'cp-sign-in-form',
+  components: {
+    CpButton,
+    CpContentLoading,
+    CpInput,
+  },
 })
 export default class CpSignInForm extends Mixins(CpAuth) {
   /**
@@ -54,8 +98,24 @@ export default class CpSignInForm extends Mixins(CpAuth) {
   public isVisible: boolean;
 
   /**
+   * Data
+   */
+  public formName: string = 'sign-in-form';
+
+  public formFieldNames: IFormFieldsSignIn = {
+    email: `${this.formName}__email`,
+    password: `${this.formName}__password`,
+  }
+
+  public formFieldValues: IFormFieldsSignIn;
+
+  /**
    * Events
    */
+  public created(): void {
+    this.resetFormFieldValues();
+  }
+
   public mounted(): void {
     Vue.prototype.$event.$on(EEvents.SIGN_OUT, () => {
       this.signOut();
@@ -67,11 +127,23 @@ export default class CpSignInForm extends Mixins(CpAuth) {
    */
   public onClickCloseButton(): void {
     this.$emit('on-close-sign-in-form');
+    this.resetFormFieldValues();
   }
 
-  public submitSignInForm(): void {
-    this.signIn();
-    this.onClickCloseButton();
+  public async submitSignInForm(): Promise<void> {
+    this.resetAuthenticationError();
+    await this.signIn(this.formFieldValues.email, this.formFieldValues.password);
+
+    if (this.isUserAuthenticated) {
+      this.onClickCloseButton();
+    }
+  }
+
+  private resetFormFieldValues(): void {
+    this.formFieldValues = {
+      email: '',
+      password: '',
+    };
   }
 }
 </script>

@@ -1,0 +1,7 @@
+.cp-form {
+  &__element {
+    &:not(:last-of-type) {
+      @apply mb-3;
+    }
+  }
+}
