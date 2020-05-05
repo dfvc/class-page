@@ -20,25 +20,41 @@
       </button>
 
       <ul class="h-full overflow-y-auto overflow-x-hidden scrolling-touch -mt-2">
-        <li
-          v-for="(item, index) in items"
-          :key="index"
-          class="cp-offcanvas-navigation__item"
-        >
-          <router-link
-            :to="item.url"
-            :title="item.text"
-            class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
-            @click.native="onClickCloseButton"
+        <template v-for="(item, index) in items">
+          <li
+            :key="index"
+            v-if="showNavigationItem(item)"
+            class="cp-offcanvas-navigation__item"
           >
-            <cp-icon
-              :name="item.icon"
-              :alt="item.text"
-              class="mr-2 h-6 w-6"
-            />
-            {{ item.text }}
-          </router-link>
-        </li>
+            <div
+              v-if="item.name === 'signin'"
+              :title="item.text"
+              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200 cursor-pointer"
+              @click="onClickNavigationItem($event, item)"
+            >
+              <cp-icon
+                :name="item.icon"
+                :alt="item.text"
+                class="mr-2 h-6 w-6"
+              />
+              {{ item.text }}
+            </div>
+            <router-link
+              v-else
+              :to="item.url"
+              :title="item.text"
+              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
+              @click.native="onClickNavigationItem($event, item)"
+            >
+              <cp-icon
+                :name="item.icon"
+                :alt="item.text"
+                class="mr-2 h-6 w-6"
+              />
+              {{ item.text }}
+            </router-link>
+          </li>
+        </template>
       </ul>
     </nav>
   </transition>
@@ -47,15 +63,22 @@
 <script lang="ts">
 import {
   Component,
+  Mixins,
   Prop,
   Vue,
 } from 'vue-property-decorator';
 import { IMainNavigationItem } from '@/types/header-menu.type';
+import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
+import CpSignInModal from '@/components/SignInModal/SignInModal.component.vue';
+import { EEvents } from '@/enums/events.enum';
 
 @Component({
   name: 'cp-offcanvas-navigation',
+  components: {
+    CpSignInModal,
+  },
 })
-export default class CpOffcanvasNavigation extends Vue {
+export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
   /**
    * Props
    */
@@ -68,7 +91,27 @@ export default class CpOffcanvasNavigation extends Vue {
   /**
    * Methods
    */
+  public showNavigationItem(item: IMainNavigationItem): boolean {
+    if (item.visibility) {
+      if (
+        (item.visibility.filter((visibility) => visibility === 'auth').length && !this.isUserAuthenticated)
+        || (item.visibility.filter((visibility) => visibility === 'non-auth').length && this.isUserAuthenticated)
+      ) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
   public onClickCloseButton(): void {
+    this.$emit('on-close-offcanvas-navigation');
+  }
+
+  public onClickNavigationItem(event: Event, item: IMainNavigationItem): void {
+    if (item.name === 'signin') { Vue.prototype.$event.$emit(EEvents.OPEN_SIGN_IN_MODAL); }
+    if (item.name === 'signout') { Vue.prototype.$event.$emit(EEvents.SIGN_OUT); }
+
     this.$emit('on-close-offcanvas-navigation');
   }
 }

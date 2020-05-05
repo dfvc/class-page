@@ -7,6 +7,7 @@ import {
   aboutNavigationItem,
   activitiesNavigationItem,
   homeNavigationItem,
+  signOutNavigationItem,
   utilitiesNavigationItem,
 } from '@/routes/main-navigation';
 
@@ -30,5 +31,9 @@ export const routes: RouteConfig[] = [
   {
     path: aboutNavigationItem.url,
     component: CpAboutPage,
+  },
+  {
+    path: signOutNavigationItem.url,
+    redirect: homeNavigationItem.url,
   },
 ];

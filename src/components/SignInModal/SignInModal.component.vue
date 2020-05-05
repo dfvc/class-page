@@ -1,13 +1,12 @@
 <template>
-  <div class="cp-activity-detail-modal z-40 cursor-default">
+  <div class="cp-sign-in-modal z-40 cursor-default">
     <cp-background-overlay
       :is-visible="isVisible"
       @on-click-background-overlay="clickBackgroundOverlay"
     />
-    <cp-activity-detail
-      :activity="activity"
+    <cp-sign-in-form
       :is-visible="isVisible"
-      @on-close-activity-detail="closeActivityDetail"
+      @on-close-sign-in-form="closeSignInDetail"
     />
   </div>
 </template>
@@ -19,9 +18,8 @@ import {
   Vue,
   Watch,
 } from 'vue-property-decorator';
-import { IActivity } from '@/types/activity.type';
-import CpActivityDetail from '@/components/ActivityDetail/ActivityDetail.component.vue';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
+import CpSignInForm from '@/components/SignInForm/SignInForm.component.vue';
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -29,19 +27,16 @@ import {
 } from 'body-scroll-lock';
 
 @Component({
-  name: 'cp-activity-detail-modal',
+  name: 'cp-sign-in-modal',
   components: {
-    CpActivityDetail,
     CpBackgroundOverlay,
+    CpSignInForm,
   },
 })
-export default class CpActivityDetailModal extends Vue {
+export default class CpSignInModal extends Vue {
   /**
    * Props
    */
-  @Prop({ type: Object, required: true })
-  public activity: IActivity;
-
   @Prop({ type: Boolean, default: false })
   public isVisible: boolean;
 
@@ -79,13 +74,13 @@ export default class CpActivityDetailModal extends Vue {
   /**
    * Methods
    */
-  public closeActivityDetail(): void {
-    this.$emit('on-close-activity-detail-modal');
+  public closeSignInDetail(): void {
+    this.$emit('on-close-sign-in-modal');
   }
 
   public clickBackgroundOverlay(): void {
     if (this.closeOnClickOutside) {
-      this.closeActivityDetail();
+      this.closeSignInDetail();
     }
   }
 }

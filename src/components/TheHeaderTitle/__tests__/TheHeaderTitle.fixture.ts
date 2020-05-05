@@ -3,6 +3,7 @@ import { IHeaderTitle } from '@/types/header-title.type';
 export const title: IHeaderTitle = {
   title: 'title',
   titleLink: {
+    name: 'root',
     url: '#',
     text: 'Go to Title',
   },
