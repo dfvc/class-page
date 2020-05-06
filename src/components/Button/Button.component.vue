@@ -1,6 +1,8 @@
 <template>
-  <button class="cp-button">
-    {{ label }}
+  <button class="cp-button p-3 rounded bg-main-600 text-white hover:bg-main-500">
+    <slot>
+      {{ label }}
+    </slot>
   </button>
 </template>
 
@@ -18,20 +20,7 @@ export default class CpButton extends Vue {
   /**
    * Props
    */
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, default: '' })
   public label: string;
 }
 </script>
-
-<style lang="scss" scoped>
-  .cp-button {
-    @apply p-3;
-    @apply rounded;
-    @apply bg-main-600;
-    @apply text-white;
-
-    &:hover {
-      @apply bg-main-500;
-    }
-  }
-</style>
