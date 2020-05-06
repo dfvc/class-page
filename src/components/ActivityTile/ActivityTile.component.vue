@@ -6,9 +6,13 @@
   <article
     v-else
     :style="{ borderColor: activity.subject.color }"
-    class="cp-activity-tile relative flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8 border-t duration-300 hover:shadow-md group"
+    class="cp-activity-tile relative z-auto flex p-3 md:p-4 xl:px-8 my-4 rounded-lg shadow-lg cursor-pointer border-r-8 border-t duration-300 hover:shadow-md group overflow-hidden"
     @click="openActivityDetailModal"
+    @mouseenter="startPerformingRippleAnimation"
+    @mouseleave="stopPerformingRippleAnimation"
   >
+    <cp-ripple :ripple-data="rippleAnimation" />
+
     <div class="cp-activity-tile__icon flex-shrink-0 flex items-center">
       <div
         :style="{ backgroundColor: activity.subject.color }"
@@ -98,8 +102,10 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import { IActivity } from '@/types/activity.type';
+import { IRipple } from '@/types/ripple.type';
 import CpActivityDetailModal from '@/components/ActivityDetailModal/ActivityDetailModal.component.vue';
 import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
+import CpRipple from '@/components/Ripple/Ripple.component.vue';
 import VClamp from 'vue-clamp';
 
 @Component({
@@ -107,6 +113,7 @@ import VClamp from 'vue-clamp';
   components: {
     CpActivityDetailModal,
     CpContentLoading,
+    CpRipple,
     VClamp,
   },
 })
@@ -132,6 +139,12 @@ export default class CpActivityTile extends Vue {
    */
   public isActivityDetailModalOpen: boolean = false;
 
+  public rippleAnimation: IRipple = {
+    isVisible: false,
+    x: 0,
+    y: 0,
+  };
+
   /**
    * Methods
    */
@@ -141,6 +154,16 @@ export default class CpActivityTile extends Vue {
 
   public closeActivityDetailModal(): void {
     this.isActivityDetailModalOpen = false;
+  }
+
+  public startPerformingRippleAnimation(event: any): void {
+    this.rippleAnimation.isVisible = true;
+    this.rippleAnimation.x = event.clientX - event.target.offsetLeft;
+    this.rippleAnimation.y = event.clientY - event.target.offsetTop;
+  }
+
+  public stopPerformingRippleAnimation(): void {
+    this.rippleAnimation.isVisible = false;
   }
 }
 </script>
