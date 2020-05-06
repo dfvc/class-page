@@ -44,7 +44,7 @@ import CpBanner from '@/components/Banner/Banner.component.vue';
 import { activitiesNavigationItem } from '@/routes/main-navigation';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import { IBanner } from '@/types/banner.type';
-import { ActivitiesFirebaseDataSource } from '@/data-sources/activities/activities.firebase-data-source';
+import { ActivitiesFirestoreDataSource } from '@/data-sources/activities/activities.firestore-data-source';
 import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 
 @Component({
@@ -58,7 +58,7 @@ export default class CpStartPage extends Vue {
   /**
    * Data
    */
-  public activities: ActivitiesDataSource = new ActivitiesFirebaseDataSource();
+  public activities: ActivitiesDataSource = new ActivitiesFirestoreDataSource();
 
   public banner: IBanner = {
     headline: '',

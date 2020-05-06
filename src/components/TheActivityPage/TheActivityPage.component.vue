@@ -13,7 +13,7 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
-import { ActivitiesFirebaseDataSource } from '@/data-sources/activities/activities.firebase-data-source';
+import { ActivitiesFirestoreDataSource } from '@/data-sources/activities/activities.firestore-data-source';
 import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 
 @Component({
@@ -26,7 +26,7 @@ export default class CpActivityPage extends Vue {
   /**
    * Data
    */
-  public activities: ActivitiesDataSource = new ActivitiesFirebaseDataSource();
+  public activities: ActivitiesDataSource = new ActivitiesFirestoreDataSource();
 
   /**
    * Events

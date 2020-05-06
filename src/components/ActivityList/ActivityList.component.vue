@@ -40,7 +40,7 @@ import {
 import { IActivity } from '@/types/activity.type';
 import { ISubject } from '@/types/subject.type';
 import { SubjectsDataSource } from '@/data-sources/subjects/subjects.data-source';
-import { SubjectsFirebaseDataSource } from '@/data-sources/subjects/subjects.firebase-data-source';
+import { SubjectsFirestoreDataSource } from '@/data-sources/subjects/subjects.firestore-data-source';
 import { ActivitiesDataSource } from '@/data-sources/activities/activities.data-source';
 import CpActivityTile from '@/components/ActivityTile/ActivityTile.component.vue';
 import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
@@ -74,7 +74,7 @@ export default class CpActivityList extends Vue {
   /**
    * Data
    */
-  public subjectsData: SubjectsDataSource = new SubjectsFirebaseDataSource();
+  public subjectsData: SubjectsDataSource = new SubjectsFirestoreDataSource();
 
   public selectedSubjects: ISubject[] = [];
 

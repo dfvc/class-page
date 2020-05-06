@@ -4,7 +4,7 @@ import 'firebase/firestore';
 import QuerySnapshot = firebase.firestore.QuerySnapshot;
 import DocumentData = firebase.firestore.DocumentData;
 
-export class FirebaseClient<T> {
+export class FirestoreClient<T> {
   private db: firebase.firestore.Firestore;
 
   private collection: string;
