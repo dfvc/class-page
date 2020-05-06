@@ -31,7 +31,7 @@
           <form
             :id="formName"
             class="cp-form mt-6"
-            @keypress.enter="submitSignInForm"
+            @keypress.enter="performSignIn"
           >
             <cp-input
               v-model="formFieldValues.email"
@@ -58,10 +58,25 @@
               <cp-button
                 :label="$glossary('auth.SIGNIN_ENTER')"
                 type="button"
-                @click.native.prevent="submitSignInForm"
+                @click.native.prevent="performSignIn"
+                class="w-1/3"
               />
             </div>
           </form>
+        </div>
+
+        <div class="cp-form-sign-in__providers flex flex-col mt-6 pt-6 border-t border-main-500">
+          <cp-button
+            type="button"
+            @click.native.prevent="performSignIn('google')"
+            class="cp-button__google flex text-red"
+          >
+            <cp-icon
+              name="google"
+              class="text-white h-6 w-6"
+            />
+            <span>{{ $glossary('auth.SIGNIN_WITH_GOOGLE') }}</span>
+          </cp-button>
         </div>
       </div>
     </section>
@@ -80,6 +95,7 @@ import CpButton from '@/components/Button/Button.component.vue';
 import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
 import CpInput from '@/components/Form/Input.component.vue';
 import { EEvents } from '@/enums/events.enum';
+import { EAuthProviders } from '@/enums/auth-providers.enum';
 import { IFormFieldsSignIn } from '@/types/form-sign-in.type';
 
 @Component({
@@ -131,8 +147,8 @@ export default class CpSignInForm extends Mixins(CpAuth) {
     this.resetAuthenticationError();
   }
 
-  public async submitSignInForm(): Promise<void> {
-    await this.signIn(this.formFieldValues.email, this.formFieldValues.password);
+  public async performSignIn(provider: string = EAuthProviders.EMAIL_PASSWORD): Promise<void> {
+    await this.signIn(provider, this.formFieldValues.email, this.formFieldValues.password);
 
     if (this.isUserAuthenticated) {
       this.onClickCloseButton();
@@ -177,6 +193,26 @@ export default class CpSignInForm extends Mixins(CpAuth) {
     &__transition-enter,
     &__transition-leave-to {
       @apply opacity-0;
+    }
+
+    /deep/ .cp-button {
+      &__google {
+        @apply bg-gray-200;
+        @apply text-gray-700;
+
+        svg {
+          @apply text-gray-700;
+        }
+
+        span {
+          @apply ml-3 pl-3;
+          @apply border-l border-gray-400;
+        }
+
+        &:hover {
+          @apply bg-gray-100;
+        }
+      }
     }
   }
 </style>

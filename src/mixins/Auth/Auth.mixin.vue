@@ -5,6 +5,7 @@ import {
 } from 'vue-property-decorator';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import { EAuthProviders } from '@/enums/auth-providers.enum';
 
 @Component
 export default class CpAuth extends Vue {
@@ -23,6 +24,10 @@ export default class CpAuth extends Vue {
 
   private auth: firebase.auth.Auth = firebase.auth();
 
+  private googleProvider = new firebase.auth.GoogleAuthProvider().setCustomParameters(
+    { prompt: 'consent' },
+  );
+
   /**
    * Events
    */
@@ -36,10 +41,17 @@ export default class CpAuth extends Vue {
   /**
    * Methods
    */
-  public async signIn(email: string, password: string): Promise<void> {
+  public async signIn(provider: string, email?: string, password?: string): Promise<void> {
     try {
       this.isSigningIn = true;
-      await this.auth.signInWithEmailAndPassword(email, password);
+      switch (provider) {
+        case EAuthProviders.GOOGLE:
+          await this.auth.signInWithPopup(this.googleProvider);
+          break;
+        case EAuthProviders.EMAIL_PASSWORD:
+        default:
+          await this.auth.signInWithEmailAndPassword(email || '', password || '');
+      }
     } catch (error) {
       this.authenticationError = error.message;
     } finally {
