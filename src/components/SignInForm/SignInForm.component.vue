@@ -65,28 +65,22 @@
           </form>
         </div>
 
-        <div class="cp-form-sign-in__providers flex flex-col mt-6 pt-6 border-t border-main-500">
+        <div
+          v-if="authProviderList.length"
+          class="cp-form-sign-in__providers flex flex-col mt-6 pt-6 border-t border-main-500"
+        >
           <cp-button
+            v-for="authProvider in authProviderList"
+            :key="authProvider"
             type="button"
-            @click.native.prevent="performSignIn('google')"
-            class="cp-button__auth cp-button__auth--google"
+            :class="`cp-button__auth cp-button__auth--${authProvider}`"
+            @click.native.prevent="performSignIn(authProvider)"
           >
             <cp-icon
-              name="google"
+              :name="authProvider"
               class="h-6 w-6"
             />
-            <span>{{ $glossary('auth.SIGNIN_WITH_GOOGLE') }}</span>
-          </cp-button>
-          <cp-button
-            type="button"
-            @click.native.prevent="performSignIn('twitter')"
-            class="cp-button__auth cp-button__auth--twitter"
-          >
-            <cp-icon
-              name="twitter"
-              class="h-6 w-6"
-            />
-            <span>{{ $glossary('auth.SIGNIN_WITH_TWITTER') }}</span>
+            <span>{{ $glossary(`auth.SIGNIN_WITH_${authProvider.toUpperCase()}`) }}</span>
           </cp-button>
         </div>
       </div>
@@ -137,6 +131,13 @@ export default class CpSignInForm extends Mixins(CpAuth) {
   public formFieldValues: IFormFieldsSignIn;
 
   /**
+   * Computed Props
+   */
+  public get authProviderList(): string[] {
+    return Object.keys(this.authProviders);
+  }
+
+  /**
    * Events
    */
   public created(): void {
@@ -176,6 +177,10 @@ export default class CpSignInForm extends Mixins(CpAuth) {
 </script>
 
 <style lang="scss" scoped>
+  $googleColor: #edf2f7;
+  $twitterColor: #1da1f2;
+  $githubColor: #24292e;
+
   .cp-sign-in-form {
     right: theme('spacing.3');
     left: theme('spacing.3');
@@ -207,9 +212,6 @@ export default class CpSignInForm extends Mixins(CpAuth) {
     }
 
     /deep/ .cp-button {
-      $googleColor: #edf2f7;
-      $twitterColor: #1da1f2;
-
       &__auth {
         @apply flex;
 
@@ -248,6 +250,18 @@ export default class CpSignInForm extends Mixins(CpAuth) {
 
           &:hover {
             background-color: lighten($twitterColor, 6%);
+          }
+        }
+
+        &--github {
+          background-color: $githubColor;
+
+          span {
+            border-left-color: darken($githubColor, 8%);
+          }
+
+          &:hover {
+            background-color: lighten($githubColor, 6%);
           }
         }
       }

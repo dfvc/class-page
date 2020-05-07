@@ -48,6 +48,11 @@ export default class CpHeader extends Mixins(CpAuth) {
   public title: IHeaderTitle;
 
   /**
+   * Data
+   */
+  public scrollTopPosition: number = 0;
+
+  /**
    * Computed Props
    */
   public get hasShadow(): boolean {
@@ -57,11 +62,6 @@ export default class CpHeader extends Mixins(CpAuth) {
   public get authenticatedUserTag(): string {
     return this.authenticatedUser?.displayName ?? this.authenticatedUser?.email ?? '';
   }
-
-  /**
-   * Data
-   */
-  public scrollTopPosition: number = 0;
 
   /**
    * Events

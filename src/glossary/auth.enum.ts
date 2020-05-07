@@ -7,4 +7,5 @@ export enum EAuthGlossary {
   SIGNIN_CANCEL = 'Cancelar',
   SIGNIN_WITH_GOOGLE = 'Entrar com Google',
   SIGNIN_WITH_TWITTER = 'Entrar com Twitter',
+  SIGNIN_WITH_GITHUB = 'Entrar com Github',
 }
