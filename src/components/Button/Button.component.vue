@@ -1,5 +1,5 @@
 <template>
-  <button class="cp-button p-3 rounded bg-main-600 text-white hover:bg-main-500">
+  <button class="cp-button p-3 rounded bg-main-500 text-white hover:bg-main-400 transition-colors duration-200">
     <slot>
       {{ label }}
     </slot>

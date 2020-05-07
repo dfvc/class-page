@@ -24,9 +24,16 @@ export default class CpAuth extends Vue {
 
   private auth: firebase.auth.Auth = firebase.auth();
 
+  private authProviders = {
+    google: new firebase.auth.GoogleAuthProvider().setCustomParameters({ prompt: 'consent' }),
+    twitter: new firebase.auth.TwitterAuthProvider(),
+  }
+
   private googleProvider = new firebase.auth.GoogleAuthProvider().setCustomParameters(
     { prompt: 'consent' },
   );
+
+  private twitterProvider = new firebase.auth.TwitterAuthProvider();
 
   /**
    * Events
@@ -46,7 +53,10 @@ export default class CpAuth extends Vue {
       this.isSigningIn = true;
       switch (provider) {
         case EAuthProviders.GOOGLE:
-          await this.auth.signInWithPopup(this.googleProvider);
+          await this.auth.signInWithPopup(this.authProviders.google);
+          break;
+        case EAuthProviders.TWITTER:
+          await this.auth.signInWithPopup(this.authProviders.twitter);
           break;
         case EAuthProviders.EMAIL_PASSWORD:
         default:

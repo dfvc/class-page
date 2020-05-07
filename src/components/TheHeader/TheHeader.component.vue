@@ -10,7 +10,7 @@
         v-if="isUserAuthenticated"
         class="flex-1 self-end hidden md:block text-right text-xs text-main-100 leading-none tracking-tighter md:tracking-normal"
       >
-        {{ authenticatedUser.email }}
+        {{ authenticatedUserTag }}
       </div>
     </div>
   </header>
@@ -52,6 +52,10 @@ export default class CpHeader extends Mixins(CpAuth) {
    */
   public get hasShadow(): boolean {
     return this.scrollTopPosition > SHADOW_THRESHOLD;
+  }
+
+  public get authenticatedUserTag(): string {
+    return this.authenticatedUser?.displayName ?? this.authenticatedUser?.email ?? '';
   }
 
   /**

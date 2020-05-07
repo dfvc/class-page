@@ -49,7 +49,7 @@
 
             <p
               v-if="authenticationError.length"
-              class="mt-6 text-red-700 text-xs"
+              class="mt-6 text-red-700 text-sm"
             >
               {{ authenticationError }}
             </p>
@@ -69,13 +69,24 @@
           <cp-button
             type="button"
             @click.native.prevent="performSignIn('google')"
-            class="cp-button__google flex text-red"
+            class="cp-button__auth cp-button__auth--google"
           >
             <cp-icon
               name="google"
-              class="text-white h-6 w-6"
+              class="h-6 w-6"
             />
             <span>{{ $glossary('auth.SIGNIN_WITH_GOOGLE') }}</span>
+          </cp-button>
+          <cp-button
+            type="button"
+            @click.native.prevent="performSignIn('twitter')"
+            class="cp-button__auth cp-button__auth--twitter"
+          >
+            <cp-icon
+              name="twitter"
+              class="h-6 w-6"
+            />
+            <span>{{ $glossary('auth.SIGNIN_WITH_TWITTER') }}</span>
           </cp-button>
         </div>
       </div>
@@ -196,21 +207,48 @@ export default class CpSignInForm extends Mixins(CpAuth) {
     }
 
     /deep/ .cp-button {
-      &__google {
-        @apply bg-gray-200;
-        @apply text-gray-700;
+      $googleColor: #edf2f7;
+      $twitterColor: #1da1f2;
 
-        svg {
-          @apply text-gray-700;
-        }
+      &__auth {
+        @apply flex;
 
         span {
           @apply ml-3 pl-3;
-          @apply border-l border-gray-400;
+          @apply border-l;
         }
 
-        &:hover {
-          @apply bg-gray-100;
+        &:not(:last-of-type) {
+          @apply mb-3;
+        }
+
+        &--google {
+          @apply text-gray-700;
+          background-color: $googleColor;
+
+          svg {
+            @apply text-gray-700;
+          }
+
+          span {
+            border-left-color: darken($googleColor, 8%);
+          }
+
+          &:hover {
+            background-color: lighten($googleColor, 2%);
+          }
+        }
+
+        &--twitter {
+          background-color: $twitterColor;
+
+          span {
+            border-left-color: darken($twitterColor, 8%);
+          }
+
+          &:hover {
+            background-color: lighten($twitterColor, 6%);
+          }
         }
       }
     }
