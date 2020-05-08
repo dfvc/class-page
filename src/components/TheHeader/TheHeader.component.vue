@@ -4,7 +4,7 @@
     class="cp-header sticky top-0 z-30 bg-main-400"
   >
     <div class="cp-header__inner fluid-container flex items-center py-6">
-      <cp-offcanvas-menu :navigation-items="navigationItems" />
+      <cp-offcanvas-menu :navigation="navigation" />
       <cp-header-title :title="title" />
       <div
         v-if="isUserAuthenticated"
@@ -23,7 +23,7 @@ import {
   Prop,
 } from 'vue-property-decorator';
 import { IHeaderTitle } from '@/types/header-title.type';
-import { IMainNavigationItem } from '@/types/header-menu.type';
+import { IMainNavigation } from '@/types/header-menu.type';
 import CpOffcanvasMenu from '@/components/TheOffcanvasMenu/TheOffcanvasMenu.component.vue';
 import CpHeaderTitle from '@/components/TheHeaderTitle/TheHeaderTitle.component.vue';
 import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
@@ -42,7 +42,7 @@ export default class CpHeader extends Mixins(CpAuth) {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public navigationItems: IMainNavigationItem[];
+  public navigation: IMainNavigation[];
 
   @Prop({ type: Object, required: true })
   public title: IHeaderTitle;

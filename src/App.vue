@@ -3,7 +3,7 @@
     <div class="relative flex-auto flex-shrink-0 pb-6">
       <div class="relative z-20">
         <cp-header
-          :navigation-items="mainNavigationItems"
+          :navigation="mainNavigation"
           :title="headerTitle"
         />
         <router-view />
@@ -35,11 +35,13 @@ import CpHeader from '@/components/TheHeader/TheHeader.component.vue';
 import CpSignInModal from '@/components/SignInModal/SignInModal.component.vue';
 import CpWave from '@/components/Wave/Wave.vue';
 import {
+  authNavigation,
   homeNavigationItem,
-  mainNavigationItems,
-} from '@/routes/main-navigation';
+  managementNavigation,
+  publicNavigation,
+} from '@/router/main-navigation';
 import { IHeaderTitle } from '@/types/header-title.type';
-import { IMainNavigationItem } from '@/types/header-menu.type';
+import { IMainNavigation } from '@/types/header-menu.type';
 import { EEvents } from '@/enums/events.enum';
 
 @Component({
@@ -54,7 +56,11 @@ export default class App extends Vue {
   /**
    * Data
    */
-  public mainNavigationItems: IMainNavigationItem[] = mainNavigationItems;
+  public mainNavigation: IMainNavigation[] = [
+    publicNavigation,
+    managementNavigation,
+    authNavigation,
+  ];
 
   public headerTitle: IHeaderTitle = {
     title: Vue.prototype.$glossary('header.TITLE'),

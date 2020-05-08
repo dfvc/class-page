@@ -8,8 +8,10 @@ import {
   activitiesNavigationItem,
   homeNavigationItem,
   signOutNavigationItem,
+  subjectsManagementNavigationItem,
   utilitiesNavigationItem,
-} from '@/routes/main-navigation';
+} from '@/router/main-navigation';
+import CpActivityManagementPage from '@/components/TheActivityManagementPage/TheActivityManagementPage.component.vue';
 
 export const routes: RouteConfig[] = [
   {
@@ -35,5 +37,9 @@ export const routes: RouteConfig[] = [
   {
     path: signOutNavigationItem.url,
     redirect: homeNavigationItem.url,
+  },
+  {
+    path: subjectsManagementNavigationItem.url,
+    component: CpActivityManagementPage,
   },
 ];

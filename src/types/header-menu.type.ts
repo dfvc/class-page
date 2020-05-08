@@ -6,3 +6,8 @@ export interface IMainNavigationItem {
   icon?: string;
   visibility?: string[];
 }
+
+export interface IMainNavigation {
+  title?: string;
+  items: IMainNavigationItem[];
+}

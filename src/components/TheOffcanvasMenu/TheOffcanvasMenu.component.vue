@@ -18,7 +18,7 @@
 
     <cp-offcanvas-navigation
       :is-visible="isMenuOpen"
-      :items="navigationItems"
+      :navigation="navigation"
       @on-close-offcanvas-navigation="closeMenu"
     />
   </div>
@@ -30,7 +30,7 @@ import {
   Prop,
   Vue, Watch,
 } from 'vue-property-decorator';
-import { IMainNavigationItem } from '@/types/header-menu.type';
+import { IMainNavigation } from '@/types/header-menu.type';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import CpOffcanvasNavigation from '@/components/OffcanvasNavigation/OffcanvasNavigation.component.vue';
 import {
@@ -50,7 +50,7 @@ export default class CpOffcanvasMenu extends Vue {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public navigationItems: IMainNavigationItem[];
+  public navigation: IMainNavigation[];
 
   /**
    * Data

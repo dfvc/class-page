@@ -41,7 +41,7 @@ import {
 } from 'vue-property-decorator';
 import CpActivityList from '@/components/ActivityList/ActivityList.component.vue';
 import CpBanner from '@/components/Banner/Banner.component.vue';
-import { activitiesNavigationItem } from '@/routes/main-navigation';
+import { activitiesNavigationItem } from '@/router/main-navigation';
 import { IMainNavigationItem } from '@/types/header-menu.type';
 import { IBanner } from '@/types/banner.type';
 import { ActivitiesFirestoreDataSource } from '@/data-sources/activities/activities.firestore-data-source';

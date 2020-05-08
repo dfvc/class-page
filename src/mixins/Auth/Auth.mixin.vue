@@ -37,6 +37,7 @@ export default class CpAuth extends Vue {
     this.auth.onAuthStateChanged((user) => {
       this.isUserAuthenticated = !!user;
       this.authenticatedUser = user;
+      Vue.prototype.$auth = !!user;
     });
   }
 

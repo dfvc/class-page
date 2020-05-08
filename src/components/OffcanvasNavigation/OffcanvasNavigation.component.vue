@@ -5,7 +5,7 @@
   >
     <nav
       v-show="isVisible"
-      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-main-400 text-main-900 text-xl shadow-2xl"
+      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-main-400 text-main-900 text-lg shadow-2xl h-full overflow-y-auto overflow-x-hidden scrolling-touch"
     >
       <button
         :title="$glossary('app.CLOSE')"
@@ -19,43 +19,55 @@
         />
       </button>
 
-      <ul class="h-full overflow-y-auto overflow-x-hidden scrolling-touch -mt-2">
-        <template v-for="(item, index) in items">
+      <template v-for="(navigationItem, index) in navigation">
+        <ul
+          v-if="showNavigationList(navigationItem)"
+          :key="index"
+          class="cp-offcanvas-navigation__group"
+        >
           <li
-            :key="index"
-            v-if="showNavigationItem(item)"
-            class="cp-offcanvas-navigation__item"
+            v-if="hasTitle(navigationItem)"
+            class="cp-offcanvas-navigation__item bg-main-200 rounded-tl rounded-tr text-sm pt-1 pr-1 pl-1 text-center"
           >
-            <div
-              v-if="item.name === 'signin'"
-              :title="item.text"
-              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200 cursor-pointer"
-              @click="onClickNavigationItem($event, item)"
-            >
-              <cp-icon
-                :name="item.icon"
-                :alt="item.text"
-                class="mr-2 h-6 w-6"
-              />
-              {{ item.text }}
-            </div>
-            <router-link
-              v-else
-              :to="item.url"
-              :title="item.text"
-              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
-              @click.native="onClickNavigationItem($event, item)"
-            >
-              <cp-icon
-                :name="item.icon"
-                :alt="item.text"
-                class="mr-2 h-6 w-6"
-              />
-              {{ item.text }}
-            </router-link>
+            {{ navigationItem.title }}
           </li>
-        </template>
-      </ul>
+          <template v-for="(item, index) in navigationItem.items">
+            <li
+              :key="index"
+              v-if="showNavigationItem(item)"
+              class="cp-offcanvas-navigation__item"
+            >
+              <div
+                v-if="item.name === 'signin'"
+                :title="item.text"
+                class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 rounded hover:border-l-8 transition-all duration-200 cursor-pointer"
+                @click="onClickNavigationItem($event, item)"
+              >
+                <cp-icon
+                  :name="item.icon"
+                  :alt="item.text"
+                  class="mr-2 h-6 w-6"
+                />
+                {{ item.text }}
+              </div>
+              <router-link
+                v-else
+                :to="item.url"
+                :title="item.text"
+                class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
+                @click.native="onClickNavigationItem($event, item)"
+              >
+                <cp-icon
+                  :name="item.icon"
+                  :alt="item.text"
+                  class="mr-2 h-6 w-6"
+                />
+                {{ item.text }}
+              </router-link>
+            </li>
+          </template>
+        </ul>
+      </template>
     </nav>
   </transition>
 </template>
@@ -67,7 +79,10 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
-import { IMainNavigationItem } from '@/types/header-menu.type';
+import {
+  IMainNavigation,
+  IMainNavigationItem,
+} from '@/types/header-menu.type';
 import CpAuth from '@/mixins/Auth/Auth.mixin.vue';
 import CpSignInModal from '@/components/SignInModal/SignInModal.component.vue';
 import { EEvents } from '@/enums/events.enum';
@@ -83,7 +98,7 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
    * Props
    */
   @Prop({ type: Array, required: true })
-  public items: IMainNavigationItem[];
+  public navigation: IMainNavigation[];
 
   @Prop({ type: Boolean, default: false })
   public isVisible: boolean;
@@ -91,6 +106,16 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
   /**
    * Methods
    */
+  public hasTitle(navigationItem: IMainNavigation): boolean {
+    return navigationItem.title !== undefined && navigationItem.title.length > 0;
+  }
+
+  public showNavigationList(navigationItem: IMainNavigation): boolean {
+    return navigationItem.items.filter(
+      (item: IMainNavigationItem) => this.showNavigationItem(item),
+    ).length > 0;
+  }
+
   public showNavigationItem(item: IMainNavigationItem): boolean {
     if (item.visibility) {
       if (
@@ -123,6 +148,16 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
 
     &__close-button {
       right: theme('spacing.8');
+    }
+
+    &__group {
+      &:first-of-type {
+        @apply -mt-2;
+      }
+
+      &:not(:first-of-type) {
+        @apply mt-6;
+      }
     }
 
     &__item {
