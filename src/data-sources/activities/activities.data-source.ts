@@ -7,6 +7,14 @@ export abstract class ActivitiesDataSource {
 
   public isLoading: boolean = true;
 
+  public count(): number {
+    return this.isLoading ? 0 : this.items.length;
+  }
+
+  public isEmpty(): boolean {
+    return this.isLoading ? true : this.items.length === 0;
+  }
+
   public abstract load(): void;
 
   protected abstract async expandedItems(rawItems: any[]): Promise<IActivity[]>;

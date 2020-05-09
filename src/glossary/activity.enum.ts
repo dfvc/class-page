@@ -15,5 +15,4 @@ export enum EActivityGlossary {
   ACTIVITY_LIST_TITLE = 'Lista de Atividades Propostas',
   SUBJECTS_PLACEHOLDER_SELECT = 'Filtar por Disciplina',
   SUBJECTS_NO_MATCHES_SELECT = 'Disciplina não encontrada',
-  ACTIVITY_MANAGEMENT_LIST_TITLE = 'Gestão de Atividades',
 }

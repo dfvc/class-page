@@ -3,6 +3,7 @@ import CpAboutPage from '@/components/TheAboutPage/TheAboutPage.component.vue';
 import CpActivityPage from '@/components/TheActivityPage/TheActivityPage.component.vue';
 import CpStartPage from '@/components/TheStartPage/TheStartPage.component.vue';
 import CpUtilityPage from '@/components/TheUtilityPage/TheUtilityPage.component.vue';
+import CpSubjectManagementPage from '@/components/TheSubjectManagementPage/TheSubjectManagementPage.component.vue';
 import {
   aboutNavigationItem,
   activitiesNavigationItem,
@@ -11,7 +12,6 @@ import {
   subjectsManagementNavigationItem,
   utilitiesNavigationItem,
 } from '@/router/main-navigation';
-import CpActivityManagementPage from '@/components/TheActivityManagementPage/TheActivityManagementPage.component.vue';
 
 export const routes: RouteConfig[] = [
   {
@@ -40,6 +40,6 @@ export const routes: RouteConfig[] = [
   },
   {
     path: subjectsManagementNavigationItem.url,
-    component: CpActivityManagementPage,
+    component: CpSubjectManagementPage,
   },
 ];

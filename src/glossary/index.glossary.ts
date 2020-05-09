@@ -3,6 +3,7 @@ import { EAppGlossary } from '@/glossary/app.enum';
 import { EAuthGlossary } from '@/glossary/auth.enum';
 import { EFooterGlossary } from '@/glossary/footer.enum';
 import { EHeaderGlossary } from '@/glossary/header.enum';
+import { ESubjectManagementGlossary } from '@/glossary/subject-management.enum';
 
 export const glossaryItems: any = {
   activity: EActivityGlossary,
@@ -10,6 +11,7 @@ export const glossaryItems: any = {
   auth: EAuthGlossary,
   footer: EFooterGlossary,
   header: EHeaderGlossary,
+  'subject-management': ESubjectManagementGlossary,
 };
 
 export function glossary(item: string): string {

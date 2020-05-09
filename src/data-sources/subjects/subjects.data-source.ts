@@ -20,5 +20,13 @@ export abstract class SubjectsDataSource {
     );
   }
 
+  public count(): number {
+    return this.isLoading ? 0 : this.items.length;
+  }
+
+  public isEmpty(): boolean {
+    return this.isLoading ? true : this.items.length === 0;
+  }
+
   public abstract load(): void;
 }
