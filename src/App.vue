@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="cp-app-body flex flex-col h-full font-sans antialiased">
+  <div id="app" class="cp-app-body text-main-900 flex flex-col h-full font-sans antialiased">
     <div class="relative flex-auto flex-shrink-0 pb-6">
       <div class="relative z-20">
         <cp-header

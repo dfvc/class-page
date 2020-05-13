@@ -1,7 +1,7 @@
 module.exports = {
   title: '5º C | Tarefas Escolares',
   theme: {
-    mainColor: 'green',
+    mainColor: 'orange',
     corners: 'standard',
     useFooterWaves: true,
   },

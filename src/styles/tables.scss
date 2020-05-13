@@ -1,4 +1,6 @@
 .cp-table {
+  $root: &;
+
   @apply w-full;
   @apply border-separate;
   border-spacing: 0 theme('spacing.1');
@@ -39,7 +41,6 @@
       @apply p-3;
       @apply bg-main-100;
       @apply cursor-pointer;
-      @apply transition-colors duration-100;
 
       &:first-of-type {
         @apply rounded-tl;
@@ -49,6 +50,25 @@
       &:last-of-type {
         @apply rounded-tr;
         @apply rounded-br;
+      }
+
+      &#{$root}__actions {
+        div {
+          @apply flex;
+        }
+
+        button {
+          @apply p-1;
+          @apply text-gray-900;
+
+          &:hover {
+            @apply text-gray-700;
+          }
+
+          &:not(:last-of-type) {
+            @apply mr-3;
+          }
+        }
       }
     }
 

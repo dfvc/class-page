@@ -29,4 +29,8 @@ export abstract class SubjectsDataSource {
   }
 
   public abstract load(): void;
+
+  public abstract async delete(subject: ISubject): Promise<boolean>;
+
+  public abstract async update(subject: ISubject): Promise<boolean>;
 }

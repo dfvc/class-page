@@ -1,75 +1,55 @@
 <template>
-  <transition
-    name="cp-offcanvas-navigation__transition"
-    mode="in-out"
-  >
-    <nav
-      v-show="isVisible"
-      class="cp-offcanvas-navigation fixed top-0 bottom-0 left-0 p-8 w-full bg-main-400 text-main-900 text-lg shadow-2xl h-full overflow-y-auto overflow-x-hidden scrolling-touch"
-    >
-      <button
-        :title="$glossary('app.CLOSE')"
-        class="cp-offcanvas-navigation__close-button absolute p-0 w-6 h-6"
-        @click="onClickCloseButton"
+  <nav class="cp-offcanvas-navigation text-main-900 text-lg">
+    <template v-for="(navigationItem, index) in navigation">
+      <ul
+        v-if="showNavigationList(navigationItem)"
+        :key="index"
+        class="cp-offcanvas-navigation__group"
       >
-        <cp-icon
-          :alt="$glossary('app.CLOSE')"
-          name="cross"
-          class="text-white h-6 w-6"
-        />
-      </button>
-
-      <template v-for="(navigationItem, index) in navigation">
-        <ul
-          v-if="showNavigationList(navigationItem)"
-          :key="index"
-          class="cp-offcanvas-navigation__group"
+        <li
+          v-if="hasTitle(navigationItem)"
+          class="cp-offcanvas-navigation__item bg-main-200 rounded-tl rounded-tr text-sm pt-1 pr-1 pl-1 text-center"
         >
+          {{ navigationItem.title }}
+        </li>
+        <template v-for="(item, index) in navigationItem.items">
           <li
-            v-if="hasTitle(navigationItem)"
-            class="cp-offcanvas-navigation__item bg-main-200 rounded-tl rounded-tr text-sm pt-1 pr-1 pl-1 text-center"
+            :key="index"
+            v-if="showNavigationItem(item)"
+            class="cp-offcanvas-navigation__item"
           >
-            {{ navigationItem.title }}
-          </li>
-          <template v-for="(item, index) in navigationItem.items">
-            <li
-              :key="index"
-              v-if="showNavigationItem(item)"
-              class="cp-offcanvas-navigation__item"
+            <div
+              v-if="item.name === 'signin'"
+              :title="item.text"
+              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 rounded hover:border-l-8 transition-all duration-200 cursor-pointer"
+              @click="onClickNavigationItem($event, item)"
             >
-              <div
-                v-if="item.name === 'signin'"
-                :title="item.text"
-                class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 rounded hover:border-l-8 transition-all duration-200 cursor-pointer"
-                @click="onClickNavigationItem($event, item)"
-              >
-                <cp-icon
-                  :name="item.icon"
-                  :alt="item.text"
-                  class="mr-2 h-6 w-6"
-                />
-                {{ item.text }}
-              </div>
-              <router-link
-                v-else
-                :to="item.url"
-                :title="item.text"
-                class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
-                @click.native="onClickNavigationItem($event, item)"
-              >
-                <cp-icon
-                  :name="item.icon"
-                  :alt="item.text"
-                  class="mr-2 h-6 w-6"
-                />
-                {{ item.text }}
-              </router-link>
-            </li>
-          </template>
-        </ul>
-      </template>
-    </nav>
-  </transition>
+              <cp-icon
+                :name="item.icon"
+                :alt="item.text"
+                class="mr-2 h-6 w-6"
+              />
+              {{ item.text }}
+            </div>
+            <router-link
+              v-else
+              :to="item.url"
+              :title="item.text"
+              class="cp-offcanvas-navigation__link flex items-center py-3 px-2 border-l-0 border-main-200 hover:border-l-8 transition-all duration-200"
+              @click.native="onClickNavigationItem($event, item)"
+            >
+              <cp-icon
+                :name="item.icon"
+                :alt="item.text"
+                class="mr-2 h-6 w-6"
+              />
+              {{ item.text }}
+            </router-link>
+          </li>
+        </template>
+      </ul>
+    </template>
+  </nav>
 </template>
 
 <script lang="ts">
@@ -100,9 +80,6 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
   @Prop({ type: Array, required: true })
   public navigation: IMainNavigation[];
 
-  @Prop({ type: Boolean, default: false })
-  public isVisible: boolean;
-
   /**
    * Methods
    */
@@ -129,27 +106,17 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
     return true;
   }
 
-  public onClickCloseButton(): void {
-    this.$emit('on-close-offcanvas-navigation');
-  }
-
   public onClickNavigationItem(event: Event, item: IMainNavigationItem): void {
     if (item.name === 'signin') { Vue.prototype.$event.$emit(EEvents.OPEN_SIGN_IN_MODAL); }
     if (item.name === 'signout') { Vue.prototype.$event.$emit(EEvents.SIGN_OUT); }
 
-    this.$emit('on-close-offcanvas-navigation');
+    this.$emit('on-click-offcanvas-navigation-item');
   }
 }
 </script>
 
 <style lang="scss" scoped>
   .cp-offcanvas-navigation {
-    max-width: 375px;
-
-    &__close-button {
-      right: theme('spacing.8');
-    }
-
     &__group {
       &:first-of-type {
         @apply -mt-2;
@@ -169,16 +136,6 @@ export default class CpOffcanvasNavigation extends Mixins(CpAuth) {
     .router-link-exact-active {
       @apply text-white;
       @apply pointer-events-none;
-    }
-
-    &__transition-enter-active,
-    &__transition-leave-active {
-      @apply transition-transform duration-300 ease-in-out;
-    }
-
-    &__transition-enter,
-    &__transition-leave-to {
-      @apply transform -translate-x-full;
     }
   }
 </style>

@@ -13,14 +13,18 @@
 
     <cp-background-overlay
       :is-visible="isMenuOpen"
-      @on-click-background-overlay="closeMenu"
+      @on-click-background-overlay="closeFlyout"
     />
 
-    <cp-offcanvas-navigation
+    <cp-offcanvas-flyout
       :is-visible="isMenuOpen"
-      :navigation="navigation"
-      @on-close-offcanvas-navigation="closeMenu"
-    />
+      @on-close-offcanvas-flyout="closeFlyout"
+    >
+      <cp-offcanvas-navigation
+        :navigation="navigation"
+        @on-click-offcanvas-navigation-item="closeFlyout"
+      />
+    </cp-offcanvas-flyout>
   </div>
 </template>
 
@@ -28,9 +32,11 @@
 import {
   Component,
   Prop,
-  Vue, Watch,
+  Vue,
+  Watch,
 } from 'vue-property-decorator';
 import { IMainNavigation } from '@/types/header-menu.type';
+import CpOffcanvasFlyout from '@/components/TheOffcanvasFlyout/TheOffcanvasFlyout.component.vue';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import CpOffcanvasNavigation from '@/components/OffcanvasNavigation/OffcanvasNavigation.component.vue';
 import {
@@ -41,6 +47,7 @@ import {
 @Component({
   name: 'cp-offcanvas-menu',
   components: {
+    CpOffcanvasFlyout,
     CpBackgroundOverlay,
     CpOffcanvasNavigation,
   },
@@ -64,7 +71,7 @@ export default class CpOffcanvasMenu extends Vue {
     this.isMenuOpen = true;
   }
 
-  public closeMenu(): void {
+  public closeFlyout(): void {
     this.isMenuOpen = false;
   }
 

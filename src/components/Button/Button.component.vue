@@ -1,5 +1,8 @@
 <template>
-  <button class="cp-button p-3 rounded bg-main-500 text-white hover:bg-main-400 transition-colors duration-200">
+  <button
+    class="cp-button p-3 rounded transition-colors duration-200"
+    :class="classList"
+  >
     <slot>
       {{ label }}
     </slot>
@@ -22,5 +25,20 @@ export default class CpButton extends Vue {
    */
   @Prop({ type: String, default: '' })
   public label: string;
+
+  @Prop({ type: String, default: 'primary' })
+  public mode: string;
+
+  /**
+   * Computed Props
+   */
+  public get classList(): string {
+    switch (this.mode) {
+      case 'link':
+        return 'bg-transparent';
+      default:
+        return 'bg-main-500 hover:bg-main-400 text-white';
+    }
+  }
 }
 </script>
