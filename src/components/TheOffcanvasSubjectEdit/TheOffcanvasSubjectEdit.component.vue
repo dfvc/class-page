@@ -35,13 +35,22 @@
           additional-label-class-list="text-sm text-main-500"
           class="bg-white"
         />
-        <cp-input
-          v-model="formFieldValues.color"
-          :name="formFieldNames.color"
-          :label="$glossary('subject-management.EDIT_COLOR')"
-          additional-label-class-list="text-sm text-main-500"
-          class="bg-white"
-        />
+        <cp-color-picker
+          :color="formFieldValues.color"
+          @input="updateSubjectColor"
+        >
+          <cp-input
+            v-model="formFieldValues.color"
+            :name="formFieldNames.color"
+            :label="$glossary('subject-management.EDIT_COLOR')"
+            additional-label-class-list="text-sm text-main-500"
+            class="bg-white pointer-events-none"
+          />
+          <div
+            class="subject-edit-form__color-swatch absolute top-0 right-0 m-1 h-10 w-10 rounded"
+            :style="{ backgroundColor: formFieldValues.color }"
+          />
+        </cp-color-picker>
         <cp-input
           v-model="formFieldValues.icon"
           :name="formFieldNames.icon"
@@ -71,6 +80,7 @@ import {
 } from 'vue-property-decorator';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import CpButton from '@/components/Button/Button.component.vue';
+import CpColorPicker from '@/components/ColorPicker/ColorPicker.component.vue';
 import CpInput from '@/components/Form/Input.component.vue';
 import CpOffcanvasFlyout from '@/components/TheOffcanvasFlyout/TheOffcanvasFlyout.component.vue';
 import { ISubject } from '@/types/subject.type';
@@ -81,6 +91,7 @@ import { IFormFieldsSubjectEdit } from '@/types/form-subject-edit.type';
   components: {
     CpBackgroundOverlay,
     CpButton,
+    CpColorPicker,
     CpInput,
     CpOffcanvasFlyout,
   },
@@ -124,5 +135,17 @@ export default class CpOffcanvasSubjectEdit extends Vue {
   public performSubjectEdit(): void {
     this.$emit('on-subject-edit-save', this.formFieldValues);
   }
+
+  public updateSubjectColor(color: any): void {
+    this.formFieldValues.color = color;
+  }
 }
 </script>
+
+<style lang="scss" scoped>
+  .subject-edit-form {
+    &__color-swatch {
+      top: 1px;
+    }
+  }
+</style>

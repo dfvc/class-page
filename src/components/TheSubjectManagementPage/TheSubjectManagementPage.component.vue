@@ -50,6 +50,7 @@ import {
   disableBodyScroll,
   enableBodyScroll,
 } from 'body-scroll-lock';
+import { clone } from 'lodash';
 
 @Component({
   name: 'cp-subject-management-page',
@@ -98,7 +99,7 @@ export default class CpSubjectManagementPage extends Vue {
    * Methods
    */
   public async editSubject(subject: ISubject): Promise<void> {
-    this.subjectToEdit = subject;
+    this.subjectToEdit = clone(subject);
     this.openEditSubjectFlyout();
   }
 
@@ -111,7 +112,12 @@ export default class CpSubjectManagementPage extends Vue {
   }
 
   public async updateSubject(subject: ISubject): Promise<void> {
-    if (await this.subjects.update(subject)) {
+    const subjectMap = {
+      ...subject,
+      shortName: subject.shortName.toLowerCase(),
+    };
+
+    if (await this.subjects.update(subjectMap)) {
       this.closeEditSubjectFlyout();
       this.subjects.load();
     } else {
@@ -125,6 +131,7 @@ export default class CpSubjectManagementPage extends Vue {
 
   private closeEditSubjectFlyout(): void {
     this.isSubjectsEditFlyoutOpen = false;
+    this.subjectToEdit = {} as ISubject;
   }
 }
 </script>
