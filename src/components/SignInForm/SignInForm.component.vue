@@ -21,7 +21,7 @@
           >
             <cp-icon
               :alt="$glossary('app.CLOSE')"
-              name="cross"
+              path="cross"
               class="text-white h-6 w-6"
             />
           </button>
@@ -77,7 +77,7 @@
             @click.native.prevent="performSignIn(authProvider)"
           >
             <cp-icon
-              :name="authProvider"
+              :path="authProvider"
               class="h-6 w-6"
             />
             <span>{{ $glossary(`auth.SIGNIN_WITH_${authProvider.toUpperCase()}`) }}</span>

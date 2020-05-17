@@ -25,7 +25,7 @@
       >
         {{ $glossary('activity.SEE_ALL_ACTIVITIES') }}
         <cp-icon
-          name="fast-forward"
+          path="fast-forward"
           :alt="activitiesNavigationItem.text"
           class="ml-1 h-4 w-4"
         />

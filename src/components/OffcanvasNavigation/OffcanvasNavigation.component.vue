@@ -25,7 +25,7 @@
               @click="onClickNavigationItem($event, item)"
             >
               <cp-icon
-                :name="item.icon"
+                :path="item.icon"
                 :alt="item.text"
                 class="mr-2 h-6 w-6"
               />
@@ -39,7 +39,7 @@
               @click.native="onClickNavigationItem($event, item)"
             >
               <cp-icon
-                :name="item.icon"
+                :path="item.icon"
                 :alt="item.text"
                 class="mr-2 h-6 w-6"
               />

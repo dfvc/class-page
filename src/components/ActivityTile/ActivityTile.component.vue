@@ -15,7 +15,7 @@
         class="cp-activity-tile__icon-wrapper rounded-full mr-3 md:mr-4 p-2"
       >
         <cp-icon
-          :name="activity.subject.icon"
+          :path="activity.subject.icon"
           :title="activity.subject.name"
           :alt="activity.subject.name"
           class="text-white h-8 w-8"
@@ -49,7 +49,7 @@
         >
           <cp-icon
             :alt="$glossary('activity.REQUEST_DATE')"
-            name="calendar"
+            path="calendar"
             class="text-main-700 h-4 w-4 mr-1"
           />
           <span class="text-sm md:text-base text-main-700 leading-none">
@@ -63,7 +63,7 @@
         >
           <cp-icon
             :alt="$glossary('activity.DELIVERY_DATE')"
-            name="delivery"
+            path="delivery"
             class="text-main-700 h-4 w-4 mr-1"
           />
           <span class="text-sm md:text-base text-main-700 leading-none">
@@ -77,7 +77,7 @@
       <cp-icon
         :title="$glossary('app.SEE_DETAIL')"
         :alt="$glossary('app.EXPAND')"
-        name="expand"
+        path="expand"
         class="text-main-700 h-4 w-4 mt-px mr-px"
       />
     </div>

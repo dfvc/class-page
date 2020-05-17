@@ -16,7 +16,7 @@
       >
         <cp-icon
           :alt="$glossary('app.CLOSE')"
-          name="cross"
+          path="cross"
           class="text-white h-6 w-6"
         />
       </button>

@@ -8,7 +8,6 @@
     <cp-offcanvas-flyout
       :is-visible="isOpen"
       position="right"
-      class="text-main-900"
       @on-close-offcanvas-flyout="closeFlyout"
     >
       <h1 class="text-white text-xl pb-2 border-b-2 border-white">
@@ -51,13 +50,28 @@
             :style="{ backgroundColor: formFieldValues.color }"
           />
         </cp-color-picker>
-        <cp-input
-          v-model="formFieldValues.icon"
-          :name="formFieldNames.icon"
-          :label="$glossary('subject-management.EDIT_ICON')"
-          additional-label-class-list="text-sm text-main-500"
-          class="bg-white"
-        />
+        <div class="relative">
+          <cp-input-file
+            v-model="formFieldValues.icon"
+            type="file"
+            :name="formFieldNames.icon"
+            :label="$glossary('subject-management.EDIT_ICON')"
+            accept=".svg"
+            additional-label-class-list="text-sm text-main-500"
+            class="bg-white"
+            @input="updateIcon"
+          />
+          <div
+            v-if="iconFilePreviewSrc.length"
+            class="subject-edit-form__icon-preview absolute top-0 right-0 flex justify-center items-center m-1 h-10 w-10 border border-main-400 bg-white rounded pointer-events-none"
+          >
+            <cp-icon
+              :path="iconFilePreviewSrc"
+              :alt="$glossary('subject-management.EDIT_ICON_PREVIEW')"
+              class="h-6 w-6"
+            />
+          </div>
+        </div>
 
         <div class="flex justify-end mt-6">
           <cp-button
@@ -75,14 +89,17 @@
 <script lang="ts">
 import {
   Component,
+  Mixins,
   Prop,
-  Vue,
+  Watch,
 } from 'vue-property-decorator';
 import CpBackgroundOverlay from '@/components/TheBackgroundOverlay/TheBackgroundOverlay.component.vue';
 import CpButton from '@/components/Button/Button.component.vue';
 import CpColorPicker from '@/components/ColorPicker/ColorPicker.component.vue';
 import CpInput from '@/components/Form/Input.component.vue';
+import CpInputFile from '@/components/Form/InputFile.component.vue';
 import CpOffcanvasFlyout from '@/components/TheOffcanvasFlyout/TheOffcanvasFlyout.component.vue';
+import CpStorage from '@/mixins/Auth/Storage.mixin.vue';
 import { ISubject } from '@/types/subject.type';
 import { IFormFieldsSubjectEdit } from '@/types/form-subject-edit.type';
 
@@ -93,10 +110,11 @@ import { IFormFieldsSubjectEdit } from '@/types/form-subject-edit.type';
     CpButton,
     CpColorPicker,
     CpInput,
+    CpInputFile,
     CpOffcanvasFlyout,
   },
 })
-export default class CpOffcanvasSubjectEdit extends Vue {
+export default class CpOffcanvasSubjectEdit extends Mixins(CpStorage) {
   /**
    * Props
    */
@@ -118,11 +136,28 @@ export default class CpOffcanvasSubjectEdit extends Vue {
     color: `${this.formName}__color`,
   }
 
+  public iconFilePreviewSrc: string = '';
+
+  private iconFile: File|null = null;
+
   /**
    * Computed Props
    */
   public get formFieldValues(): IFormFieldsSubjectEdit {
     return this.subject;
+  }
+
+  /**
+   * Events
+   */
+  @Watch('isOpen')
+  public onIsOpenChange() {
+    if (this.isOpen) {
+      this.iconFilePreviewSrc = this.subject.icon;
+    } else {
+      this.iconFile = null;
+      this.iconFilePreviewSrc = '';
+    }
   }
 
   /**
@@ -133,18 +168,25 @@ export default class CpOffcanvasSubjectEdit extends Vue {
   }
 
   public performSubjectEdit(): void {
-    this.$emit('on-subject-edit-save', this.formFieldValues);
+    this.$emit('on-subject-edit-save', this.formFieldValues, this.iconFile);
   }
 
-  public updateSubjectColor(color: any): void {
+  public updateSubjectColor(color: string): void {
     this.formFieldValues.color = color;
+  }
+
+  public updateIcon(iconFile: File): void {
+    this.formFieldValues.icon = this.getFileNameFromPath(iconFile.name);
+    this.iconFilePreviewSrc = '';
+    this.iconFile = iconFile;
   }
 }
 </script>
 
 <style lang="scss" scoped>
   .subject-edit-form {
-    &__color-swatch {
+    &__color-swatch,
+    &__icon-preview {
       top: 1px;
     }
   }

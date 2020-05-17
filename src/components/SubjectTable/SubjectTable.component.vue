@@ -29,7 +29,8 @@
           </td>
           <td>
             <cp-icon
-              :name="subject.icon"
+              :path="subject.icon"
+              :local="false"
               class="h-6 w-6"
             />
           </td>
@@ -40,7 +41,7 @@
                 type="button"
               >
                 <cp-icon
-                  name="pencil"
+                  path="pencil"
                   class="h-4 w-4"
                   @click.native="onClickEditSubject(subject)"
                 />
@@ -51,7 +52,7 @@
                 @click.native.stop="onClickDeleteSubject(subject)"
               >
                 <cp-icon
-                  name="cross"
+                  path="cross"
                   class="h-4 w-4"
                 />
               </cp-button>

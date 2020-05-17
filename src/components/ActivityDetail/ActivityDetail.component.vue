@@ -7,7 +7,7 @@
       <div class="cp-activity-detail__content flex flex-col h-full overflow-y-auto scrolling-touch">
         <div class="cp-activity-detail__header sticky top-0 flex justify-between items-center bg-main-500 rounded-lg">
           <cp-icon
-            :name="activity.subject.icon"
+            :path="activity.subject.icon"
             :title="activity.subject.name"
             :alt="activity.subject.name"
             class="flex-shrink-0 ml-3 text-white h-8 w-8"
@@ -22,7 +22,7 @@
           >
             <cp-icon
               :alt="$glossary('app.CLOSE')"
-              name="cross"
+              path="cross"
               class="text-white h-6 w-6"
             />
           </button>
@@ -84,7 +84,7 @@
                     class="flex items-center"
                   >
                     <cp-icon
-                      :name="attachmentIcon(attachment)"
+                      :path="attachmentIcon(attachment)"
                       :alt="$glossary('activity.ATTACHMENT')"
                       class="mr-2 text-main-700 h-5 w-5"
                     />

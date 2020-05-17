@@ -36,8 +36,9 @@
 
 <script lang="ts">
 import {
-  Component, Prop,
-  Vue,
+  Component,
+  Mixins,
+  Prop,
   Watch,
 } from 'vue-property-decorator';
 import { SubjectsDataSource } from '@/data-sources/subjects/subjects.data-source';
@@ -45,7 +46,9 @@ import { SubjectsFirestoreDataSource } from '@/data-sources/subjects/subjects.fi
 import CpContentLoading from '@/components/ContentLoading/ContentLoading.component.vue';
 import CpOffcanvasSubjectEdit from '@/components/TheOffcanvasSubjectEdit/TheOffcanvasSubjectEdit.component.vue';
 import CpSubjectTable from '@/components/SubjectTable/SubjectTable.component.vue';
+import CpStorage from '@/mixins/Auth/Storage.mixin.vue';
 import { ISubject } from '@/types/subject.type';
+import { EStorageRefPresets } from '@/enums/storage-refs.enum';
 import {
   disableBodyScroll,
   enableBodyScroll,
@@ -60,7 +63,7 @@ import { clone } from 'lodash';
     CpSubjectTable,
   },
 })
-export default class CpSubjectManagementPage extends Vue {
+export default class CpSubjectManagementPage extends Mixins(CpStorage) {
   /**
    * Computed Props
    */
@@ -111,10 +114,18 @@ export default class CpSubjectManagementPage extends Vue {
     }
   }
 
-  public async updateSubject(subject: ISubject): Promise<void> {
+  public async updateSubject(subject: ISubject, iconFile: File): Promise<void> {
+    let initialIcon = subject.icon;
+
+    if (iconFile) {
+      await this.uploadFile(`${EStorageRefPresets.SUBJECT_ICON}${iconFile.name}`, iconFile);
+      initialIcon = await this.getDownloadUrl(`${EStorageRefPresets.SUBJECT_ICON}${iconFile.name}`);
+    }
+
     const subjectMap = {
       ...subject,
       shortName: subject.shortName.toLowerCase(),
+      icon: initialIcon,
     };
 
     if (await this.subjects.update(subjectMap)) {

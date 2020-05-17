@@ -10,5 +10,6 @@ export enum ESubjectManagementGlossary {
   EDIT_NAME = 'Nome',
   EDIT_COLOR = 'Cor',
   EDIT_ICON = 'Ícone',
+  EDIT_ICON_PREVIEW = 'Previsualização do Ícone',
   EDIT_SAVE_BUTTON = 'Guardar',
 }
