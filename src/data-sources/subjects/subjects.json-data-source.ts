@@ -10,12 +10,12 @@ export class SubjectsJsonDataSource extends SubjectsDataSource {
   }
 
   public async delete(subject: ISubject): Promise<boolean> {
-    console.log('DELETE');
+    // console.log('DELETE');
     return true;
   }
 
   public async update(subject: ISubject): Promise<boolean> {
-    console.log('UPDATE');
+    // console.log('UPDATE');
     return true;
   }
 }

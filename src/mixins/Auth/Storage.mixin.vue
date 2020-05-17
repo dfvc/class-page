@@ -48,7 +48,7 @@ export default class CpStorage extends Vue {
         this.uploadProgress = Math.round(((snapshot.bytesTransferred / snapshot.totalBytes) * 100) * 10) / 10;
       },
       (error: Error) => {
-        console.log(error.message);
+        // console.log(error.message);
         this.uploadStatus = 'idle';
         this.uploadProgress = 0;
       },

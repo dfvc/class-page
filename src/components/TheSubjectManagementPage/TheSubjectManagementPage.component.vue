@@ -110,7 +110,7 @@ export default class CpSubjectManagementPage extends Mixins(CpStorage) {
     if (await this.subjects.delete(subject)) {
       this.subjects.load();
     } else {
-      console.log('SUBJECT IN USE');
+      // console.log('SUBJECT IN USE');
     }
   }
 
@@ -132,7 +132,7 @@ export default class CpSubjectManagementPage extends Mixins(CpStorage) {
       this.closeEditSubjectFlyout();
       this.subjects.load();
     } else {
-      console.log('ERROR WHILE UPDATING');
+      // console.log('ERROR WHILE UPDATING');
     }
   }
 
